@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./logo.png" type="image/x-icon">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+    <script src="https://kit.fontawesome.com/c5bebe1cfa.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <title><?= $page_titel ?></title>
+</head>
+<body>
+    <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <meta name="description" content="">
+          <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+          <meta name="generator" content="Hugo 0.88.1">
+          <title>Sidebars · Bootstrap v5.1</title>
+          <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+          <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+          <meta name="theme-color" content="#7952b3">
+          <style>   
+          </style>
+        </head>
+        <body>
+   
+      <main class=" position-fixed">
+        <div class="d-flex flex-column p-3 bg-white" style="width: 220px;">
+          <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+            <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+            <?php if(empty($_SESSION)): ?>
+            <span class="fs-5 fw-semibold">Library</span>
+            <?php endif; ?>
+          </a>
+          <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                Home
+              </button>
+              <div class="collapse" id="home-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">Overview</a></li>
+                  <li><a href="#" class="link-dark rounded">Updates</a></li>
+                  <li><a href="#" class="link-dark rounded">Reports</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                Dashboard
+              </button>
+              <div class="collapse" id="dashboard-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">Overview</a></li>
+                  <li><a href="#" class="link-dark rounded">Weekly</a></li>
+                  <li><a href="#" class="link-dark rounded">Monthly</a></li>
+                  <li><a href="#" class="link-dark rounded">Annually</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                Orders
+              </button>
+              <div class="collapse" id="orders-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">New</a></li>
+                  <li><a href="#" class="link-dark rounded">Processed</a></li>
+                  <li><a href="#" class="link-dark rounded">Shipped</a></li>
+                  <li><a href="#" class="link-dark rounded">Returned</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="border-top my-3"></li>
+            <li class="mb-1">
+              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                Account
+              </button>
+              <div class="collapse" id="account-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="#" class="link-dark rounded">New...</a></li>
+                  <li><a href="#" class="link-dark rounded">Profile</a></li>
+                  <li><a href="#" class="link-dark rounded">Settings</a></li>
+                  <li><a href="#" class="link-dark rounded">Sign out</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="b-example-divider"></div>
+        </main>
+        <section style="transform: translateY(-50%,-50%); top:5%;left: 20%; position: absolute;">
+                    <?php if(empty($_SESSION)): ?>
+                        <h1 style="margin-left:320px;" class="text-center">Welcome To Our Library</h1> 
+                         <p class="fw-bolder py-3 mt-5"> A glimpse at some of our books :</p>
+                       <?php endif;?>
+                       
+</section>
+<footer style="transform: translateY(-50%,-50%); top:5%;left:17%; position: absolute;">
+        <div class="footer pt-5 pb-5 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                     <div class="info">
+                        <img class="mb-4 rounded-pill shadow" src="./storage/personnel/dev.jpg" alt="photo for me" width="80px" height="80px">
+                        <p class="mb-4">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odit harum nulla ipsa accusamus
+                        </p>
+                         <div class="copyright">
+                            create by <span>mejri talel</span>
+                            <div>&copy;2022-<span>lbezz</span></div>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-2">
+                    <div class="links">
+                        <h5 class="text-dark mb-4 mt-4">Links</h5>
+                        <ul class="list-unstyled 1h-lg">
+                            <li>Home</li>
+                            <li>Our services</li>
+                            <li>Portfolio</li>
+                            <li>testimonials</li>
+                            <li>Support</li>
+                            <li>Terms and Condition</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-2">
+                    <h5 class="text-dark mt-4 mb-4 1h-lg">About Us</h5>
+                    <ul class="list-unstyled">
+                        <li>Sign in</li>
+                        <li>Register</li>
+                        <li>About Us</li>
+                        <li>Blog</li>
+                        <li>Contact Us</li>
+                    </ul> 
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="contact">
+                        <h5 class="text-dark mt-4">Contact Us</h5>
+                        <p class="1h-lg mt-3 mb-5">Get in touch with us via mail phone.we are waiting for your call or message</p>
+                        <a class="btn rounded-pill main-btn w-100" href="#">talelmejri8@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" d-flex justify-content-center ">
+                 <ul class="d-flex mt-3 list-unstyled gap-3">
+                           <li>
+                            <a class="d-block text-dark display-6" href="#">
+                                <i class="fa-brands fa-facebook p-4"></i>
+                            </a>
+                           </li>
+                           <li>
+                            <a class="d-block text-dark display-6" href="#">
+                                <i class="fa-brands fa-github p-4"></i>
+                            </a>
+                           </li>
+                           <li>
+                            <a class="d-block text-dark display-6" href="#">
+                                <i class="fa-brands fa-instagram p-4"></i>
+                            </a>
+                           </li>
+                           <li>
+                            <a class="d-block text-dark display-6" href="#">
+                                <i class="fa-brands fa-twitter p-4"></i>
+                            </a>
+                           </li>
+                        </ul>
+             </div>
+        </div>
+    </div>
+ </footer>
+
+     </body>
+      </html>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>      
+</body>
