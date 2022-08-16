@@ -12,28 +12,14 @@
     <title><?= $page_titel ?></title>
 </head>
 <body>
-    <html lang="en">
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <meta name="description" content="">
-          <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-          <meta name="generator" content="Hugo 0.88.1">
-          <title></title>
-          <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
-          <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-          <meta name="theme-color" content="#7952b3">
-          <style>   
-          </style>
-        </head>
-        <body>
-   
       <main class=" position-fixed">
         <div class="d-flex flex-column p-3 bg-white" style="width: 220px;">
-          <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+          <a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
             <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
             <?php if(empty($_SESSION)): ?>
             <span class="fs-5 fw-semibold">Library</span>
+            <?php else : ?>
+              <span class="fs-5 fw-semibold"> <?=$_SESSION['name'];?></span>
             <?php endif; ?>
           </a>
           <ul class="list-unstyled ps-0">
@@ -83,9 +69,9 @@
               <div class="collapse" id="account-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                   <li><a href="#" class="link-dark rounded">New...</a></li>
-                  <li><a href="#" class="link-dark rounded">Profile</a></li>
+                  <li><a href="login.php" class="link-dark rounded">Profile</a></li>
                   <li><a href="#" class="link-dark rounded">Settings</a></li>
-                  <li><a href="#" class="link-dark rounded">Sign out</a></li>
+                  <li><a href="log_out.php" class="link-dark rounded">Sign out</a></li>
                 </ul>
               </div>
             </li>
@@ -93,11 +79,14 @@
         </div>
         <div class="b-example-divider"></div>
         </main>
-        <section style="transform: translateY(-50%,-50%); top:5%;left: 20%; position: absolute;">
-                    <?php if(empty($_SESSION)): ?>
+        <section style="transform: translateY(-50%,-50%); top:5%;left: 20%; position: absolute;z-index:1">
+                    <?php if(empty($template)): ?>
                         <h1 style="margin-left:320px;" class="text-center">Welcome To Our Library</h1> 
                          <p class="fw-bolder py-3 mt-5"> A glimpse at some of our books :</p>
-                       <?php endif;?>
+                      
+                       <?php else :
+                       include ($template.".phtml");
+                       endif;?>
                        
 </section>
 <footer style="transform: translateY(-50%,-50%); top:5%;left:17%; position: absolute;">
