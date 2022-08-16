@@ -18,6 +18,12 @@
                 echo 'connect failed :'.$e->getMessage();
             }
         }
+
+        public function launch_query(String $sql,Array $param=[]){
+            $query=parent::prepare($sql);
+            $query->execute($param);
+            return $query;
+        }
     }
 
 ?>
