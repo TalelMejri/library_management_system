@@ -19,7 +19,7 @@
             }
         }
 
-        public function launch_query(String $sql,Array $param=[]){
+        public function launch_query(String $sql,Array $param=[]):PDOStatement{  
             $query=parent::prepare($sql);
             $query->execute($param);
             return $query;
