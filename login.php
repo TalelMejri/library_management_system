@@ -11,15 +11,15 @@
             header("location:login.php?msg=All filed is empty&type=danger");
         }
 
-         if(empty($email)){
+        else if(empty($email)){
             header("location:login.php?msg=email is required&type=danger");
         }
 
-          /*if(filter_var($email,FILTER_VALIDATE_EMAIL)==false){
+        else if(filter_var($email,FILTER_VALIDATE_EMAIL)==false){
             header("location:login.php?msg=email is invalid&type=danger");
-        }*/
+        }
 
-         if(empty($password)){
+         else if(empty($password)){
             header("location:login.php?msg=password is required&type=danger");
         }
         else {
@@ -28,7 +28,7 @@
             if($verifier==false){
                header("location:login.php?msg=password or email is incorrect&type=danger");
             }else{
-                header("location:index.php");
+                header("location:profil_admin.php");
                 exit;
             }
         }
