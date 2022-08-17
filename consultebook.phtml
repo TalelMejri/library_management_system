@@ -1,19 +1,33 @@
-<div class="row">
 
+<style>
+.reglage_card{
+   transition-duration: 0.4s;
+   cursor:pointer;
+ }
+
+ .reglage_card:hover{
+    transform: scale(150px);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+ }
+</style>
+
+<div>
 <?php if(empty($books)): ?>
         no books 
  <?php endif;?>
-    <div class="col-md-4 ">
-    <?php foreach($books as $book) :?>  
-     <div class="card" style="width:18rem;">
-      <img src="<?= $book['avatar'] ?>" class="card-img-top" alt="photo book">
-         <div class="card-body">
-          <h5 class="card-title"><?=$book['name_book'];?></h5>
-           <p class="card-text"><?=$book['description_book'];?></p>
-           <p style="color:<?= $book['status']=='enable'? 'green' :''?>" ><?= $book['status'] ;?></p>
-         </div>
-    </div>
-    <?php endforeach;?>
+<div class="row ">
+ <?php foreach($books as $book) :?>  
+   <div class="col-lg-4 gap-5 mt-5">
+        <div class="card mx-1 reglage_card" style="width:18rem;">
+            <img src="<?= $book['avatar'] ?>" height="200px" class="card-img-top" alt="photo book">
+             <div class="card-body">
+                <h5 class="card-title">name   :<?=$book['name_book'];?></h5>
+                 <h5 class="card-title">author :<?=$book['author_book'];?></h5>
+                 decription : <p class="card-text"><?=$book['description_book'];?></p>
+                  Status :<span style="color:<?= $book['status']=='enable'? 'green' :''?>" ><?= $book['status'] ;?></span>
+             </div>
+        </div>
 </div>
-
+<?php endforeach;?>
+</div>
 </div>

@@ -141,17 +141,16 @@
         </div>
         <div class="b-example-divider"></div>
         </main>
-        <section style="transform: translateY(-50%,-50%); top:5%;left: 20%; position: absolute;z-index:1">
-                    <?php if(empty($template)): ?>
+        <section class="d-flex justify-content-center">
+              <?php if(empty($template)): ?>
                         <h1 style="margin-left:320px;" class="text-center">Welcome To Our Library</h1> 
                          <p class="fw-bolder py-3 mt-5"> A glimpse at some of our books :</p>
                       
-                       <?php else :
-                       include ($template.".phtml");
-                       endif;?>
+              <?php else :
+                    include ($template.".phtml");
+               endif;?>
                        
-</section>
-
+      </section>
 <?php if (empty($_SESSION['name']))  :?>
 <footer style="transform: translateY(-50%,-50%); top:5%;left:17%; position: absolute;">
         <div class="footer pt-5 pb-5 text-center">
