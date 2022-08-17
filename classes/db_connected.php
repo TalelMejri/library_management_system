@@ -19,10 +19,11 @@
             }
         }
 
-        public function launch_query(String $sql,Array $param=[]):PDOStatement{  
-            $query=parent::prepare($sql);
-            $query->execute($param);
-            return $query;
+        public function launch_query(string $sql,array $param = []):PDOStatement
+        {
+          $stmt=parent::prepare($sql);
+          $stmt->execute($param);
+          return $stmt;
         }
     }
 

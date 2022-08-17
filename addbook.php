@@ -4,9 +4,12 @@
         header("location:login.php");
         exit;
     }
+
 include "./classes/File.php";
 include "./classes/book_manager.php";
+
 $errors=[];
+
 if(isset($_POST['submit'])){
     extract($_POST);
  /*   echo "<pre>";
@@ -58,11 +61,11 @@ if(isset($_POST['submit'])){
     $avatar="./storage/book/".$file->getfilename();
     if(empty($errors)){
         $user=new book();
-        $verifie_add=$user->add_book($name_book);
+        $verifie_add=$user->add_book($name_book,$author,$description,$nbr,$avatar);
         if(!is_int($verifie_add)){
             $errors[0]=$verifie_add;
         }else{
-            header("location:profil_admin.php");
+            header("location:login.php");
             exit;
         }
     }
