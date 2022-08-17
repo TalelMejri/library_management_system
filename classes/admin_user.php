@@ -9,7 +9,7 @@
         }
 
         public function login_admin(String $email,String $pass):bool{
-            $sql="SELECT * FROM admin where email=:email AND password=:pass AND role=1";
+            $sql="SELECT * FROM admin where email=:email AND password=:pass";
             $query=$this->pdo->launch_query($sql,['email'=>$email,'pass'=>$pass]);
             $user=$query->fetch();
             if($user==false){
@@ -17,9 +17,10 @@
             }else{
                 $_SESSION['id']=$user['id'];
                 $_SESSION['name']=$user['name'];
+                $_SESSION['email']=$user['email'];
                 $_SESSION['password']=$user['password'];
                 $_SESSION['role']=$user['role'];
-                $_SESSION['avatar']=$user['avatar'];
+                $_SESSION['avatar_admin']=$user['avatar_admin'];
                 return true;
             }
         }
