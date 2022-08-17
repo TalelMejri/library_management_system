@@ -1,5 +1,5 @@
-<di class="container">
-<form action="<?=$_SERVER['PHP_SELF']?>" method="POST"  enctype="multipart/form-data">
+
+<form action="<?=$_SERVER['PHP_SELF']?>" method="POST" class="mt-5"  enctype="multipart/form-data">
    <?php if(!empty($errors)): ?>
     <div class="alert alert-danger" role="alert">
       <?=$errors[0]?>
@@ -22,4 +22,3 @@
      <br>
      <input type="submit" name="submit" value="add">
 </form>
-</div>

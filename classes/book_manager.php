@@ -26,6 +26,13 @@
             $query= $this->pdo->launch_query($sql);
             return $query->fetchAll();
          }
+
+         public function count_books():String{
+            $sql="SELECT count(*) FROM book";
+            $query=$this->pdo->launch_query($sql);
+            $value=$query->fetch();
+            return $value['count(*)'];
+         }
     }
 
 ?>
