@@ -33,6 +33,13 @@
             $value=$query->fetch();
             return $value['count(*)'];
          }
+
+         public function nombre_books_enabel_or_not(String $stat){
+            $sql="SELECT count(*) from book where status=:statu";
+            $query=$this->pdo->launch_query($sql,['statu'=>$stat]);
+            $value=$query->fetch();
+            return $value['count(*)'];
+         }
     }
 
 ?>
