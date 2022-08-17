@@ -1,3 +1,24 @@
-<form action="<?= $SERVER['PHP_SELF']?>" method="POST" enctype="multiple/form-data">
-    <label></label>
+
+<form action="<?=$_SERVER['PHP_SELF']?>" method="POST"  enctype="multipart/form-data">
+   <?php if(!empty($errors)): ?>
+    <div class="alert alert-danger" role="alert">
+      <?=$errors[0]?>
+    </div>
+    <?php endif;?>
+    <label>Name book</label>
+    <input type="text" name="name_book">
+    <br>
+    <label>author</label>
+    <input type="text" name="author">
+    <br>
+    <label >description</label>
+    <textarea name="description" cols="30" rows="10"></textarea>
+    <br> 
+    <label >nombre book</label>.
+     <input type="number" name="nbr">
+     <br>
+     <label>avatar</label>
+     <input type="file" name="avatar">
+     <br>
+     <input type="submit" name="submit" value="add">
 </form>
