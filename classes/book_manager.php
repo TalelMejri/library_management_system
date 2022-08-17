@@ -20,6 +20,12 @@
          ]);
           return $this->pdo->lastInsertId();
          }
+
+         public function get_all(){
+            $sql="SELECT * FROM book ";
+            $query= $this->pdo->launch_query($sql);
+            return $query->fetchAll();
+         }
     }
 
 ?>

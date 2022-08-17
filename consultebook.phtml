@@ -1,0 +1,19 @@
+<div class="row">
+
+<?php if(empty($books)): ?>
+        no books 
+ <?php endif;?>
+    <div class="col-md-4 ">
+    <?php foreach($books as $book) :?>  
+     <div class="card" style="width:18rem;">
+      <img src="<?= $book['avatar'] ?>" class="card-img-top" alt="photo book">
+         <div class="card-body">
+          <h5 class="card-title"><?=$book['name_book'];?></h5>
+           <p class="card-text"><?=$book['description_book'];?></p>
+           <p style="color:<?= $book['status']=='enable'? 'green' :''?>" ><?= $book['status'] ;?></p>
+         </div>
+    </div>
+    <?php endforeach;?>
+</div>
+
+</div>
