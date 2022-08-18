@@ -14,16 +14,17 @@
 <div>
     <h1 style="z-index:1;margin-left:690px;margin-top:15px">List Of Books :</h1>
 
-    <?php if(array_key_exists('type',$_GET)): ?>
-      <div class="alert alert-<?=$_GET['type']?>" role="alert">
-           <?=$_GET['msg'];?>
-      </div>
-    <?php endif;?>
+   
 
 <?php if(empty($books)): ?>
         no books 
  <?php endif;?>
 <div class="row" style="margin-left:290px">
+<?php if(array_key_exists('type',$_GET)): ?>
+      <div style="width:90%" class="mt-4 text-center alert alert-<?=$_GET['type']?>" role="alert">
+           <?=$_GET['msg'];?>
+      </div>
+    <?php endif;?>
  <?php foreach($books as $book) :?>  
    <div class="col-lg-4 mt-5">
         <div class="card mx-1 reglage_card" style="width:18rem;">
@@ -34,7 +35,10 @@
                  decription : <p class="card-text"><?=$book['description_book'];?></p>
                   Status :<span style="color:<?= $book['status']=='enable'? 'green' :''?>" ><?= $book['status'] ;?></span>
              </div>
-              <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">>Delete</button>
+             <div class="row mx-4 mb-2">
+              <button class="col-md-4 mx-4 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+              <button class="col-md-4 mx-2  btn btn-outline-warning" >Update</button>
+            </div>
         </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel<?=$book['idbook'];?>" aria-hidden="true">
   <div class="modal-dialog">
