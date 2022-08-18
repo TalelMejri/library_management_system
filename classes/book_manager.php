@@ -40,6 +40,11 @@
             $value=$query->fetch();
             return $value['count(*)'];
          }
+
+         public function delete_book(int $id):void{
+            $sql="DELETE from book where idbook=:id";
+            $this->pdo->launch_query($sql,['id'=>$id]);
+         }
     }
 
 ?>

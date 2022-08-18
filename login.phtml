@@ -1,5 +1,5 @@
 
-<form action="<?=$_SERVER['PHP_SELF'] ?>" method="POST">
+<form action="<?=$_SERVER['PHP_SELF'] ?>" method="POST" class="mt-5" style="z-index:1">
 <?php if(array_key_exists('type',$_GET)): ?>
 <div class="alert alert-<?=$_GET['type']?>" role="alert">
  <?= $_GET['msg'] ?>
