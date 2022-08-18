@@ -13,6 +13,13 @@
 
 <div>
     <h1 style="z-index:1;margin-left:690px;margin-top:15px">List Of Books :</h1>
+
+    <?php if(array_key_exists('type',$_GET)): ?>
+      <div class="alert alert-<?=$_GET['type']?>" role="alert">
+           <?=$_GET['msg'];?>
+      </div>
+    <?php endif;?>
+
 <?php if(empty($books)): ?>
         no books 
  <?php endif;?>
@@ -29,19 +36,19 @@
              </div>
               <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">>Delete</button>
         </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel.<?=$book['idbook'];?>" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel<?=$book['idbook'];?>" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel.<?=$book['idbook'];?>">Delete Book :</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel<?=$book['idbook'];?>">Delete Book :</h5>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
       </div>
       <div class="modal-body">
           Do you want delete <?=$book['name_book'];?> ?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <a href="delete.php?id=<?=$book['idbook']?>"> <button type="button" class="btn btn-danger">Delete</button></a>
       </div>
     </div>
   </div>
