@@ -7,6 +7,7 @@
 /** home page*/
 header{
     height: 100vh;
+    width: 100vw;
 }
 header{
     background-image: url(../images/back_library.jpg);
@@ -49,10 +50,6 @@ header ul li a::before{
     position: absolute;
     -webkit-text-stroke:1px var(--clr);
     border-right: 3px solid var(--clr);
-    margin-left:-2%;
+    margin-left:-11px;
 }
 
-header ul li a:hover::before{
-    width:20%;
-    filter: drop-shadow(0 0 25px var(--clr));
-}
