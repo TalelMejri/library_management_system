@@ -1,7 +1,7 @@
 .card_profe{
     width:70%;
     transform:translate(-50%,-50%);
-    top:66%;
+    top:55%;
     left:50%;
 }
 
@@ -15,4 +15,32 @@ header ul li a:hover::before{
     width:100px;
     filter: drop-shadow(0 0 25px var(--clr));
 }
+.more{
+    position: absolute;
+    transform: translate(-50%-50%);
+    top:85%;
+    left:30%;
+}
+
+
+/** large */
+@media screen and (min-width:988px){
+    .more{
+        position: absolute;
+        transform: translate(-50%-50%);
+        top: 80%;
+        left: 43%;
+    }
+}
+
+/** medium */
+@media screen and (min-width:450px){
+    .more{
+        position: absolute;
+        transform: translate(-50%-50%);
+        top: 80%;
+        left:43%;
+    }
+}
+
 
