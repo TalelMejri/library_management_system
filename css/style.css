@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/** home page*/
+header{
+    height: 100vh;
+}
+header{
+    background-image: url(../images/back_library.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header a{
+    color: #fff !important;
+    font-size: 18px;
+    font-weight: 600 !important;
+}
+
+header ul li a{
+    text-decoration: none;
+    font-size: 4em;
+    color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    -webkit-text-stroke:1px rgba(255,255,255,0.5);
+}
+/** nav bar */
+header ul li a{
+    text-decoration: none;
+    font-size: 4em;
+    color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    -webkit-text-stroke:1px rgba(255,255,255,0.5);
+}
+
+header ul li a::before{
+    content: attr(data-text);
+    width: 0;
+    color: var(--clr);
+    overflow: hidden;
+    transition: 1s;
+    position: absolute;
+    -webkit-text-stroke:1px var(--clr);
+    border-right: 3px solid var(--clr);
+    margin-left:-2%;
+}
+
+header ul li a:hover::before{
+    width:20%;
+    filter: drop-shadow(0 0 25px var(--clr));
+}

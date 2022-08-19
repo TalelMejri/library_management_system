@@ -13,26 +13,46 @@
   <link rel="stylesheet" href="./css/medium.css">
   <link rel="stylesheet" href="./css/large.css">
   <style>
+    .card_profe{
+    width:70% !important;
+    transform:translate(-50%,-50%);
+    top:60% !important;
+    left:50%;
+}
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg text-center text-uppercase fixed-top">
-            <div class="container">
+<header>
+      <nav class="navbar navbar-expand-lg text-center text-uppercase fixed-top">
+            <div class="container mt-4">
                 <a class="navbar-brand" href="#page-top">Our Library</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Accueil</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
+                        <li style="--clr:#00ade1" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-5 rounded" href="#portfolio" data-text="&nbsp;Accueil">Accueil</a></li>
+                        <li style="--clr:#ff6493" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-5 rounded" href="#about" data-text="&nbsp;About">About</a></li>
+                        <li style="--clr:#ff6535" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-5 rounded" href="#contact" data-text="&nbsp;Contact">Contact</a></li>
                     </ul>
                 </div> 
           </div>
-</nav>
-       
+      </nav>
+  <div class="card card_profe shadow">
+    <div class="card-body">
+      <h5 class="card-title text-center mb-2">Welcome <img src="./images/hello.png" width="40px" height="40px"/> </h5>
+      <h6 class="card-subtitle mb-2 text-muted text-center"> To Our Amazign Library <i class="fa-solid fa-book"></i> </h6>
+        <p class="card-text text-center py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus accusantium doloribus cupiditate amet laudantium maiores ab tempore magnam exercitationem aperiam.</p>
+        <div class="text-center mt-4 mb-2 ">
+        <a href="login.php" class="card-link mx-5 "><button class="btn btn-outline-primary">Sign In</button></a>
+        <a href="signup.php" class="card-link mx-5 "><button class="btn btn-outline-secondary">Sign Up</button></a>
+        </div>
+      </div>
+ </div>
+  
+</header>   
+
 
 </body>
 </html>
