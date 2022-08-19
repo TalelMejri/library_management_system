@@ -1,6 +1,18 @@
 .card_profe{
-    width:20% !important;
+    width:70%;
     transform:translate(-50%,-50%);
-    top:20% !important;
-    left:25%;
+    top:66%;
+    left:50%;
 }
+
+
+header ul li a:hover::before{
+    width:120px;
+    filter: drop-shadow(0 0 25px var(--clr));
+}
+
+#seconde a:hover::before{
+    width:100px;
+    filter: drop-shadow(0 0 25px var(--clr));
+}
+
