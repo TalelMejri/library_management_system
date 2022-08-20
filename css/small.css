@@ -75,16 +75,23 @@ section .service{
   #team{
     height: 100vh;
   }
+
 #team img{
     width: 100px;
     height:100px;
     border: 0.5rem solid rgba(0, 0, 0, 0.1);
 }
-.contact{
-    background-image: url(../images/map-image.png);
-
+#contact_us{
+    background-image: linear-gradient(to right ,#ece9e6,#fff);
+    width: 100%;
+  }
+ textarea{
+    width:170px;
+ }
+#image_contact{
+    width: 100px;
+    height: 100px;
 }
-
 
   /** card hover*/
  
@@ -106,6 +113,13 @@ section .service{
         height:250px;
         border: 0.5rem solid rgba(0, 0, 0, 0.1);
     }
+    textarea{
+        width: 150px;
+     }
+     #image_contact{
+        width: 250px;
+        height: 250px;
+    }
 }
 
 /** medium */
@@ -124,6 +138,13 @@ section .service{
         width: 200px;
         height:200px;
         border: 0.5rem solid rgba(0, 0, 0, 0.1);
+    }
+    textarea{
+        width: 100%;
+     }
+     #image_contact{
+        width: 200px;
+        height: 200px;
     }
 }
 

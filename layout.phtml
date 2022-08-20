@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="./css/small.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
+<style>
+ 
+</style>
 <body>
 
 <header>
@@ -156,7 +159,7 @@
 
   <article id="contact_us" class="contact py-5">
     <div class="container py-5">
-                <div class="text-center py-5">
+                <div class="text-center py-4">
                     <h2 class=" text-uppercase">Contact Us</h2>
                     <div class="divider-custom">
                    	   <div class="divider-custom-line" ></div>
@@ -164,51 +167,93 @@
                     	 <div class="divider-custom-line"></div>
                	   </div>
                 </div>
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                    <div class="row py-5">
-                        <div class="col-md-6 py-5">
-                            <div class="form-group mb-2">
-                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group mb-2">
-                                <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <div class="form-group ">
-                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
+             <form action="#" method="post" class="shadow p-4 m-3 rounded">
+              <h4 class="fw-bolder text-primary">Get In Touch</h4>
+              <p class="text-muted-primary">we are here for you ! how can we help ?</p>
+             <div class="row">
+               <div class="col-lg-6">
+              <div class="mb-3">
+                <input  type="name" class="form-control shadow" placeholder="Entre your name">
+              </div>
+              <div class="mb-3">
+            
+                <input type="email" placeholder="Entrer your email address" class="shadow form-control shadow" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+              <textarea placeholder="Go ahead , we are listening" class="shadow rounded" style="outline:none;border:none;padding:10px" name="message" cols="20"  rows="10"></textarea>
+              </div>
+                <button style="width:100%" name="submit" type="submit" class="mb-4 btn btn-outline-primary">Send</button>
+                </div>  
+                <div class="col-sm-6 text-center">
+                      <div class="row text-center">
+                        <div class="col-md-12 text-center mb-5">
+                          <img id="image_contact" src="./images/leisure _ relax, chill, sitting, drink, beverage, home, armchair, furniture, plant, decoration@2x.png" alt="">
                         </div>
-                        <div class="col-md-6 py-5 ">
-                            <div class="form-group form-group-textarea mb-md-0">
-                                <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        <div class="col-md-12 ">
+                             <div class="row mb-3 ">
+                                 <div class="col-md-2 ">
+                                 <span class="fa-stack fa-1x">
+                                   <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                   <i class="fas fa-location-dot fa-stack-1x text-white "></i>
+                                </span>
+                                </div>
+                                <div class="col-md-2 ">
+                                      Bahra
+                                </div>
+                            </div>
+                            <div class="row mb-3 ">
+                                 <div class="col-md-2 ">
+                                 <span class="fa-stack fa-1x">
+                                   <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                   <i class="fas fa-phone fa-stack-1x text-white "></i>
+                                </span>
+                                </div>
+                                <div class="col-md-2 ">
+                                      +21629036027
+                                </div>
+                            </div>
+                            <div class="row ">
+                                 <div class="col-md-2 ">
+                                 <span class="fa-stack fa-1x">
+                                   <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                   <i class="fas fa-envelope fa-stack-1x text-white "></i>
+                                </span>
+                                </div>
+                                <div class="col-md-2 ">
+                                      talelmejri8@gmail.com
+                                </div>
                             </div>
                         </div>
                     </div>
- 
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center text-dark">
-                            <div class="fw-bolder">Your Message Send successful!</div>
-                            <br />
-                        </div>
-                    </div>
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger ">Error sending message!</div></div>
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
-                </form>
-            </div>
+                    </div>  
+                </div>
+              </div>  
+              </form>
+
+          </div>
     </article>
 
 </section>
-<footer>
-
+<footer >
+     <div class="container-fluid py-3 bg-secondary">
+        <div class="row text-center">
+           <div class="col-md-4 text-white">Copyright &copy; Library lbeez 2022</div>
+           <div class="col-md-4">
+              <a class="btn btn-warning text-white mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a class="btn btn-warning text-white mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn  btn-warning text-white mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+           </div>
+           <div class="col-md-4"> 
+              <a class="text-white text-decoration-none me-3" href="#">Privacy Policy</a>
+              <a class="text-white text-decoration-none" href="#">Terms of Use</a>
+           </div>
+        </div>
+     </div>
 </footer>
 
 </body>
 <script src="./js/script.js"></script>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
 <script src="https://kit.fontawesome.com/c5bebe1cfa.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </html>
