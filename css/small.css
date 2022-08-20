@@ -4,8 +4,6 @@
     top:55%;
     left:50%;
 }
-
-
 header ul li a:hover::before{
     width:120px;
     filter: drop-shadow(0 0 25px var(--clr));
@@ -74,11 +72,19 @@ section .service{
     height: 100vh;
     background-image: linear-gradient(to right ,#fc354c,#0abfbc);
   }
+  #team{
+    height: 100vh;
+  }
 #team img{
     width: 100px;
     height:100px;
     border: 0.5rem solid rgba(0, 0, 0, 0.1);
 }
+.contact{
+    background-image: url(../images/map-image.png);
+    height: 100vh;
+}
+
   /** card hover*/
  
   
