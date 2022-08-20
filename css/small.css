@@ -82,8 +82,9 @@ section .service{
 }
 .contact{
     background-image: url(../images/map-image.png);
-    height: 100vh;
+
 }
+
 
   /** card hover*/
  
