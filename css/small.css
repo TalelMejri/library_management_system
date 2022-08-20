@@ -22,12 +22,16 @@ header ul li a:hover::before{
     left:30%;
 }
 
+header nav.sticky{
+    background-color: black;
+    padding: 10px 70px;
+}
+
 section{
     height: 100vh;
     width: 100%;
     background-image: linear-gradient(to right , #70e1f5,#ffd194);
 }
-
 
 /** large */
 @media screen and (min-width:988px){
