@@ -34,6 +34,7 @@
         }
         
     }
+    $profil=null;
     $show=true;
     $page_titel="login";
     $template="login";
