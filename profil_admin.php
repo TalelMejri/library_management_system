@@ -12,7 +12,7 @@
     $not_enable='not_enable';
     $number_book_not_enable=$a->nombre_books_enabel_or_not($not_enable);
     $page_titel="Accueil";
-    $profil=true;
+    $show=null;
     $template="profil_admin";
     include "./layout.phtml";
 ?>
