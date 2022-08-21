@@ -1,17 +1,45 @@
+<style>
+input{
+  height:60px;
+}
+</style>
 
-<form action="<?=$_SERVER['PHP_SELF'] ?>" method="POST" class="mt-5" style="z-index:1">
-<?php if(array_key_exists('type',$_GET)): ?>
-<div class="alert alert-<?=$_GET['type']?>" role="alert">
- <?= $_GET['msg'] ?>
+<div class="login">
+   <div class="d-flex justify-content-center py-3">
+        <button class="text-center btn btn-outline-info d-block"><a href="layout.phtml"><i class="fa-solid fa-house-user display-4"></i></a> </button>
+  </div>
+<div class="row justify-content-center my-3">   
+    <div class="col-xl-10">
+          <div class="row container shadow-lg my-5 rounded">
+                <div style="background-color:red;" class="col-lg-6 d-lg-block">
+                </div>
+                <div class="col-lg-6 py-5">
+                      <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Welcome Back !</h1>
+                      </div>
+                    <form action="<?=$_SERVER['PHP_SELF'] ?>" method="POST">
+                          <?php if(array_key_exists('type',$_GET)): ?>
+                              <div class="alert alert-<?=$_GET['type']?>" role="alert">
+                                 <?= $_GET['msg'] ?>
+                               </div>
+                          <?php endif;?>
+                      <div class="mb-3">
+                          <input  type="text" placeholder="Entrer Email Address..." name="email" class="form-control rounded-pill p-4" id="exampleInputEmail1">
+                      </div>
+                      <div class="mb-3">
+                         <input type="password" placeholder="Password" name="password" class="form-control rounded-pill p-4" id="exampleInputPassword1">
+                      </div>
+                          <button type="submit" name="submit" class="btn btn-primary btn-block w-100 rounded-pill">Login</button>
+                      </form>
+                      <hr>
+                      <div class="text-center py-2 mb-1">
+                              <a href="forgot_password.php">Forgot Password ?</a>
+                       </div>
+                       <div class="text-center">
+                              <a href="signup.php">Create an Account !</a>
+                      </div> 
+                </div>
+          </div>
+    </div>
 </div>
-<?php endif;?>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="text" name="email" class="form-control" id="exampleInputEmail1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1"  class="form-label">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

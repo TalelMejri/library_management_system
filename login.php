@@ -34,7 +34,7 @@
         }
         
     }
-
+    $show=true;
     $page_titel="login";
     $template="login";
     include "./layout.phtml";

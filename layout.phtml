@@ -11,7 +11,8 @@
 </head>
 <body>
 
-<header>
+<?php if(empty($_SESSION) && !$show):?>
+<header id="accueil">
       <nav class="navbar navbar-expand-lg text-center text-uppercase fixed-top">
             <div class="container mt-4">
                 <a class="navbar-brand" href="#page-top">Our Library</a>
@@ -20,7 +21,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li style="--clr:#00ade1" class="nav-item mx-4 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-5 rounded" href="#portfolio" data-text="&nbsp;Accueil">Accueil</a></li>
+                        <li style="--clr:#00ade1" class="nav-item mx-4 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-5 rounded" href="#accueil" data-text="&nbsp;Accueil">Accueil</a></li>
                         <li id="seconde" style="--clr:#ff6493" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-5 rounded" href="#service" data-text="&nbsp;Service">Service</a></li>
                         <li style="--clr:#ff6535" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-5 rounded" href="#pupular_books" data-text="&nbsp;Popular_books">Popular_Books</a></li>
                         <li style="--clr:#ff6535" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-5 rounded" href="#team" data-text="&nbsp;profil">profil</a></li>
@@ -35,8 +36,8 @@
       <h6 class="card-subtitle mb-2 text-muted text-center"> To Our Amazign Library <i class="fa-solid fa-book"></i> </h6>
         <p class="card-text text-center py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus accusantium doloribus cupiditate amet laudantium maiores ab tempore magnam exercitationem aperiam.</p>
         <div class="mt-4 mb-2 text-center">
-        <a href="login.php"  class="card-link text-center mx-4 "><button class="btn btn-outline-primary mb-2">Sign In</button></a>
-        <a href="signup.php" class="card-link text-center mx-5"><button class="btn btn-outline-secondary">Sign Up</button></a>
+        <a href="login.php"   class="card-link text-center mx-4 "><button class="btn btn-outline-primary mb-2">Sign In</button></a>
+        <a href="signup.php"  class="card-link text-center mx-5"><button class="btn btn-outline-secondary">Sign Up</button></a>
         </div>
       </div>
  </div>
@@ -45,8 +46,9 @@
   </div>
 </header>  
 
-<section >
 
+
+<section>
    <article id="service" class="service py-5">
             <div class="container py-5">
                 <div class="text-center py-3">
@@ -248,7 +250,11 @@
      </div>
 
 </footer>
+<?php else: ?>
 
+   <?php include $template.".phtml"; ?>
+
+   <?php endif;?>
 </body>
 <script src="./js/script.js"></script>
 <script src="https://kit.fontawesome.com/c5bebe1cfa.js" crossorigin="anonymous"></script>

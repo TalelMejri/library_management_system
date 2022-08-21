@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if(empty($_SESSION['name'])){
+        header("location:layout.phtml");
+        exit;
+    }
     include "./classes/book_manager.php";
     $a=new book();
     $number_all_book=$a->count_books();
