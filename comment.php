@@ -16,7 +16,7 @@
             goto shoform;
         }else{
                 $query=new comment();
-                $query->addmessage($name,$email,$messages);  
+                $value=$query->addmessage($name,$email,$messages);
         }
     }
      shoform:

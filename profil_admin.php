@@ -5,6 +5,7 @@
         exit;
     }
     include "./classes/book_manager.php";
+    include "./classes/comments_manager.php";
     $a=new book();
     $number_all_book=$a->count_books();
     $enable='enable';
@@ -18,6 +19,9 @@
         $pourcentage_book_issue=0;
         $pourcentage_book_enable=0;
     }
+
+    $lastmessages=new comment();
+    $lastmessage=$lastmessages->getlastmessage();
 
     $page_titel="Dashbord";
     $show=null;
