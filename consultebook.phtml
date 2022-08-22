@@ -11,21 +11,21 @@
  }
 </style>
 
-<div>
-    <h1 style="z-index:1;margin-left:690px;margin-top:15px">List Of Books :</h1>
+<div class="text-center" >
+    <h1 class="text-center pt-3">List Of Books :</h1>
 <?php if(empty($books)): ?>
         no books 
  <?php endif;?>
-<div class="row" style="margin-left:290px">
+<div class="row d-flex justify-content-center">
 <?php if(array_key_exists('type',$_GET)): ?>
       <div style="width:90%" class="mt-4 text-center alert alert-<?=$_GET['type']?>" role="alert">
            <?=$_GET['msg'];?>
       </div>
     <?php endif;?>
  <?php foreach($books as $book) :?>  
-   <div class="col-lg-4 mt-5">
-        <div class="card mx-1 reglage_card" style="width:18rem;">
-            <img src="<?= $book['avatar'] ?>" height="200px" class="card-img-top" alt="photo book">
+   <div class="col-lg-4 py-4 mx-5">
+        <div class="card mx-1 reglage_card" >
+            <img src="<?= $book['avatar'] ?>" height="200px" class="card-img-top " alt="photo book">
              <div class="card-body">
                 <h5 class="card-title">name   :<?=$book['name_book'];?></h5>
                  <h5 class="card-title">author :<?=$book['author_book'];?></h5>
