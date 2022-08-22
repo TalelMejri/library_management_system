@@ -19,7 +19,7 @@
         $pourcentage_book_enable=0;
     }
 
-    $page_titel="Accueil";
+    $page_titel="Dashbord";
     $show=null;
     $template="profil_admin";
     include "./layout.phtml";
