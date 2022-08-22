@@ -1,33 +1,83 @@
-<section class="mt-5">
+<div class="content_overview">
+
+<div class="row px-4  pt-5">
+
+<div class="col-md-4 mb-4 ">
+        <div class="card border-left-red shadow h-100 py-2">
+                  <div class="card-body">
+                         <div class="row align-items-center">
+                               <div class="col mr-2">
+                                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            nombre of all the books</div>
+                                   <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$number_all_book?></div>
+                                </div>
+                                 <div class="col-auto">
+                                       <i class="fa-solid fa-2x fa-book text-gray-300"></i>
+                                  </div>
+                            </div>
+                     </div>
+          </div>
+</div>
+
+<div class="col-md-4  mb-4 ">
+        <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                         <div class="row no-gutters align-items-center">
+                               <div class="col mr-2">
+                                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                   nombre of Books enable</div>
+                                   <div class="h5 mb-0 font-weight-bold "><?=$number_book_enable?></div>
+                                </div>
+                                 <div class="col-auto">
+                                       <i class="fa-solid fa-2x  fa-book-bookmark"></i>
+                                  </div>
+                            </div>
+                     </div>
+          </div>
+</div>
   
-<div class="row">
 
-  <div class="col-lg-4">
-    <div class="card">
-      <div class="card-body text-center bg-info">
-         <strong class="mb-3">nombre of all the books</strong>
-         <p class="mt-4" style="font-size:20px"><?=$number_all_book?></p>
-      </div>
-    </div>
-  </div>
+<div class="col-md-4 mb-4 ">
+        <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                         <div class="row no-gutters align-items-center">
+                               <div class="col mr-2">
+                                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                   nombre of books issue</div>
+                                   <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$number_book_not_enable?></div>
+                                </div>
+                                 <div class="col-auto">
+                                    <i class="fa-solid fa-2x fa-book-atlas"></i>
+                                  </div>
+                            </div>
+                     </div>
+          </div>
+</div>
 
-  <div class="col-lg-4">
-    <div class="card">
-      <div class="card-body text-center bg-primary">
-         <strong class="mb-3">nombre of Books enable</strong>
-         <p class="mt-4" style="font-size:20px"><?=$number_book_enable?></p>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-lg-4">
-    <div class="card">
-      <div class="card-body bg-warning text-center">
-      <strong class="mb-3">nombre of books <br> issue</strong>
-         <p class="mt-4" style="font-size:20px"><?=$number_book_not_enable?></p>
-      </div>
+ <div class="col-md-4 py-5">
+    <div class="card shadow mb-4 py-2">
+        <div class="card-header">
+            <h6 class="m-0 font-wieght-bold text-center text-shadow">Reveiw</h6>
+        </div>
+        <div class="card-body">
+                <h4 class="small font-weight-bold">
+                    books issue <span class="float-end"><?=$pourcentage_book_issue?>%</span>
+                </h4>
+                <div class="progress mb-2">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: <?=$pourcentage_book_issue?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <h4 class="small font-weight-bold">
+                    books Enable <span class="float-end"><?=$pourcentage_book_enable?>%</span>
+                </h4>
+                <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: <?=$pourcentage_book_enable?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+        </div>
     </div>
-  </div>
+ </div>
+</div>
+ 
 
 </div>
-</section>
