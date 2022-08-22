@@ -77,9 +77,11 @@
         </div>
     </div>
  </div>
+ <div class="card w-50 h-50 mt-5 text-center  col-md-4">
+<?php if(empty($lastmessage)): ?>
+       <p class="mt-2"> no comments</p>
+    <?php else :?>
 
-
-<div class="card w-50 h-50 mt-5 text-center  col-md-4">
         <div class="card-header text-center ">
             Last Commentaire
         </div>
@@ -90,6 +92,7 @@
         </div>
     </div>
 </div>
+<?php endif;?>
 
 
 </div>
