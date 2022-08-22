@@ -22,7 +22,7 @@
         public function getlastmessage(){
          $sql="SELECT * FROM commentaire order by id DESC Limit 1";
          $query= $this->pdo->launch_query($sql);
-         return $query->fetchAll();
+         return $query->fetch();
         }
 
         public function allmessages(){

@@ -20,9 +20,8 @@
         $pourcentage_book_enable=0;
     }
 
-    $lastmessages=new comment();
-    $lastmessage=$lastmessages->getlastmessage();
-
+    $last=new comment();
+    $lastmessage=$last->getlastmessage();
     $page_titel="Dashbord";
     $show=null;
     $template="profil_admin";
