@@ -233,15 +233,18 @@
              <div class="row">
                <div class="col-lg-6">
               <div class="mb-3">
-                <input  type="name" class="form-control shadow" placeholder="Entre your name">
+                <input  type="name" name="name" class="form-control shadow" placeholder="Entre your name" <?= array_key_exists('name',$errors) ? 'is-invalid' :''; ?> >
+                <small class="text-danger"><?= array_key_exists('name',$errors) ? $errors['name'] :''; ?></small>
               </div>
               <div class="mb-3">
             
-                <input type="email" placeholder="Entrer your email address" class="shadow form-control shadow" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="email" name="email" placeholder="Entrer your email address" <?= array_key_exists('email',$errors) ? 'is-invalid' :'';?> class="shadow form-control shadow" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <small class="text-danger"><?= array_key_exists('email',$errors) ? $errors['email'] :''; ?></small>
               </div>
               <div class="mb-3">
-              <textarea placeholder="Go ahead , we are listening" class="shadow rounded" style="outline:none;border:none;padding:10px" name="message" cols="20"  rows="10"></textarea>
-              </div>
+              <textarea placeholder="Go ahead , we are listening" class="shadow rounded" style="outline:none;border:none;padding:10px" <?= array_key_exists('message',$errors) ? 'is-invalid' :'';?> name="messages" cols="20"  rows="10"></textarea>
+              <small class="text-danger"><?= array_key_exists('message',$errors) ? $errors['message'] :''; ?></small>  
+            </div>
                 <button style="width:100%" name="submit" type="submit" class="mb-4 btn btn-outline-primary">Send</button>
                 </div>  
                 <div class="col-sm-6 text-center">
