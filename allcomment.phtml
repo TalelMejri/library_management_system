@@ -1,0 +1,19 @@
+
+<div class=" d-flex justify-content-center">
+     <h4 class="text-center mb-5">List of Comments</h4>
+     <div class="row ">
+     <?php foreach ($comments as $com): ?>
+    <div class="card shadow col-md-6">
+
+         <div style="font-size:25px" class="card-header text-center fw-bolder">
+                <?=$com['nom']?>
+         </div>
+        <div class="card-body mb-2">
+                <span style="font-size:20px" class="text-primary fw-bolder mb-2" >email: </span><?=$com['email'];?> 
+                <p style="font-size:20px" class="text-primary pt-2">Description :</p>
+                  <?=$com['messages']?>
+        </div>
+     </div>
+ </div>
+ </div>
+ <?php endforeach; ?>

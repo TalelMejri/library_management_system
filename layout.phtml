@@ -238,11 +238,11 @@
               </div>
               <div class="mb-3">
             
-                  <input type="email" name="email" placeholder="Entrer your email address" <?= array_key_exists('email',$errors) ? 'is-invalid' :'';?> class="shadow form-control shadow" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="email" name="email" placeholder="Entrer your email address" class="shadow form-control shadow" id="exampleInputEmail1" aria-describedby="emailHelp"  <?= array_key_exists('email',$errors) ? 'is-invalid' :'';?>>
                   <small class="text-danger"><?= array_key_exists('email',$errors) ? $errors['email'] :''; ?></small>
               </div>
               <div class="mb-3">
-              <textarea placeholder="Go ahead , we are listening" class="shadow rounded" style="outline:none;border:none;padding:10px" <?= array_key_exists('message',$errors) ? 'is-invalid' :'';?> name="messages" cols="20"  rows="10"></textarea>
+              <textarea placeholder="Go ahead , we are listening" class="shadow rounded" style="outline:none;border:none;padding:10px" name="messages" cols="20"  rows="10" <?= array_key_exists('message',$errors) ? 'is-invalid' :'';?> ></textarea>
               <small class="text-danger"><?= array_key_exists('message',$errors) ? $errors['message'] :''; ?></small>  
             </div>
                 <button style="width:100%" name="submit" type="submit" class="mb-4 btn btn-outline-primary">Send</button>
@@ -344,7 +344,7 @@
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="profil_admin.php" class="link-dark rounded">Overview <i class="fa-solid fa-chart-line px-2"></i></a></li>
-            <li><a href="#" class="link-dark rounded">Comments <i class="fa-solid fa-comment px-2"></i></a></li>
+            <li><a href="allcomment.php" class="link-dark rounded">Comments <i class="fa-solid fa-comment px-2"></i></a></li>
           </ul>
         </div>
       </li>
