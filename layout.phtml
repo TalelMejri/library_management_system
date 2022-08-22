@@ -69,44 +69,6 @@
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
 
-.sidebar{
-  min-width:17rem;
-  width:17rem;
-  height:100vh;
-  position: fixed;
-  box-shadow:3px 3px 10px rgba(0,0,0,0.1);
-}
-
-.page-content{
-  width:calc(100%-17rem);
-  margin-left:17rem;
-  transition:all 0.4s;
-}
-
-#sidebar.active{
-  margin-left:-17rem;
-}
-
-#content.active{
-  width:100%;
-  margin:0;
-}
-@media(max-width:768px){
-  #sidebar{
-    margin-left:-17rem;
-  }
-  #sidebar.active{
-    margin-left:0;
-  }
-  #content{
-    width:100%;
-    margin:0;
-  }
-  #content.active{
-    margin-left:17rem;
-    width:calc(100%-17rem);
-  }
-}
 
 
 
@@ -353,7 +315,8 @@
 <?php endif;
     ?>
 <?php if(isset($_SESSION['name']) && !$show): ?>
-     <div class="sidebar" id="sidebar">
+
+     <div class="sidebar fixed-top" id="sidebar">
         <div class="py-4 mx-3">
            <div class="mosule d-flex alig-items-center">
                 <img src="./storage/personnel/dev.jpg" width="100" height="80" class="rounded-circle img-thumbnail shadow-sm" alt="">
@@ -377,7 +340,7 @@
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Overview <i class="fa-solid fa-chart-line px-2"></i></a></li>
+            <li><a href="profil_admin.php" class="link-dark rounded">Overview <i class="fa-solid fa-chart-line px-2"></i></a></li>
             <li><a href="#" class="link-dark rounded">Comments <i class="fa-solid fa-comment px-2"></i></a></li>
           </ul>
         </div>
@@ -389,7 +352,7 @@
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Add Book <i class="fa-solid fa-plus px-2"></i></a></li>
+            <li><a href="addbook.php" class="link-dark rounded">Add Book <i class="fa-solid fa-plus px-2"></i></a></li>
             <li><a href="#" class="link-dark rounded">Consulte Book <i class="fa-solid fa-clipboard-list px-2"></i></i></a></li>
           </ul>
         </div>
@@ -415,11 +378,24 @@
           <a class="text-decoration-none text-dark font-weight-bold" href="log_out.php">Log Out <i class="fa-solid fa-right-from-bracket px-2"></i></a>
       </div>
     </div>
+
+</div>
+
     <div class="page-content" id="content">
-        <button id="btn1"><i class="fa-solid fa-list p-2"></i></button>
+         <div class="bg-secondary p-2">
+            <button class="btn btn-outline-dark mx-1"  id="btn1"><i class="fa-solid fa-list"></i></button>
+            <a class="float-end" href="edit_admin.php">
+                <span class="fa-stack fa-1x ">
+                       <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                       <i class="fas fa-user-gear fa-stack-1x text-white"></i>
+                </span>
+            </a>
+        </div>
         
-         <p style="position:absolute;transform:translate('-50%','-50%');top:50%;left:50%">a9wa chlendi ;)</p>
-      </div>
+        <?php include $template.".phtml"; ?>
+        <!-- <p >a9wa chlendi ;)</p>-->
+
+    </div>
     <?php endif;?>
      <!--for login and sign up-->
      <?php if($show): ?>
@@ -433,6 +409,7 @@
       btn.addEventListener('click',function(){
       side_bar.classList.toggle('active');
       content.classList.toggle('active');
+     
 })
 </script>
 <script src="./js/script.js">
