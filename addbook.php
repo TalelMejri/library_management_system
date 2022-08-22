@@ -67,6 +67,7 @@ if(isset($_POST['submit'])){
     }
 }
     show_form:
+    $show=null;
     $template="addbook";
     $page_titel="add book";
     include "./layout.phtml";
