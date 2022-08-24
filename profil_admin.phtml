@@ -1,7 +1,8 @@
+
 <div class="content_overview">
 
   <div class="row px-4  pt-5">
-
+ <canvas style="position:absolute;width:70%" class="text-center" id="my-canvas"></canvas>
      <div class="col-md-4 mb-4 ">
         <div class="card border-left-red shadow h-100 py-2">
                   <div class="card-body">
@@ -82,7 +83,7 @@
        <p class="mt-2"> no comments</p>
     <?php else :?>
 
-        <div class="card-header text-center ">
+        <div class="card-header text-center">
             Last Commentaire
         </div>
          <div class="card-body text-center">
@@ -96,3 +97,10 @@
 
 
 </div>
+  <script src="./js/index.min.js"></script>
+   
+<script>
+   var confettiSettings = { target: 'my-canvas' };
+  var confetti = new ConfettiGenerator(confettiSettings);
+  confetti.render();
+  </script>
