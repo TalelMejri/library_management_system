@@ -13,8 +13,13 @@
 
 <div class="text-center" >
     <h1 class="text-center pt-3">List Of Books :</h1>
+    <form action="consultebook.php" method="post">
+          <button  class="<?= empty($books) ? 'd-none' :''?> btn btn-danger" name="delete">Delete All</button>
+    </form>
 <?php if(empty($books)): ?>
-        no books 
+       <div style="font-size:20px" class="py-5 mt-5">
+             No Books
+       </div>  
  <?php endif;?>
 <div class="row d-flex justify-content-center">
 <?php if(array_key_exists('type',$_GET)): ?>

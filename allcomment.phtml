@@ -9,6 +9,7 @@
     transform: scale(150px);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
  }
+ 
 </style>
  
  <h1 class="text-center pt-3">List Of comments :</h1>
@@ -37,7 +38,8 @@
    <div class="col-lg-4 py-4 mx-5">
    <div class="card  reglage_card">
          <div style="font-size:25px" class="card-header text-center fw-bolder">
-                <?=$com['nom']?>
+                <?=$com['nom']?> 
+                <span ><i class="fa-solid fa-xmark float-end text-danger"></i></span>
          </div>
         <div class="card-body mb-2">
                 <span style="font-size:20px" class="text-primary fw-bolder mb-2" >email: </span><?=$com['email'];?> 

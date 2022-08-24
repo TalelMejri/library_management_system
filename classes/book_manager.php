@@ -51,6 +51,11 @@
             $query=$this->pdo->launch_query($sql,['name'=>$name]);
             return $query->fetch();
          }
+
+         public function deleteallbook(){
+            $sql="DELETE from book";
+            $this->pdo->launch_query($sql);
+        }
     }
 
 ?>
