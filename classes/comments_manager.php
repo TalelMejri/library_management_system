@@ -37,6 +37,11 @@
            return $query->fetch();
         }
 
+        public function deletcommentsbyid(int $id){
+            $sql="DELETE  from commentaire where id=:id";
+            $this->pdo->launch_query($sql,['id'=>$id]);
+        }
+
     }
 
 

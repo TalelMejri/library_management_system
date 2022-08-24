@@ -7,6 +7,10 @@
     include "./classes/comments_manager.php";
     $trouve=0;
     $allcomments=new comment();
+    if(array_key_exists('id',$_GET)){
+        $allcomments->deletcommentsbyid($_GET['id']);
+        echo "<script>alert('delete done ')</script>";
+    }
     if(isset($_POST['save'])){
         $trouve=1;
         $search=$_POST['search'];

@@ -14,21 +14,25 @@
  
  <h1 class="text-center pt-3">List Of comments :</h1>
   <div class="d-flex justify-content-center mt-4">
-     <form action="allcomment.php" method="post">
+     <form class="<?=empty($comments) ? 'd-none' :''?>" action="allcomment.php" method="post">
          <input name="search" type="search" required  class="text-center form-control" placeholder="search comments">
          <br>
          <button name="save" class="btn btn-outline-warning">search</button>
       </div>
    </form>
 <div class="row d-flex justify-content-center p-5">
+    <?php if(empty($comments)):?>
+         no comments
+      <?php else:?>
    <?php if($trouve==1): ?>
        <div class="card  reglage_card">
          <div style="font-size:25px" class="card-header text-center fw-bolder">
-                <?=$comments['nom']?>
+          <a href="allcomment.php?id=<?=$comments['id']?>"> <span><i name="close" class="fa-solid fa-xmark float-end text-danger"></i></span></a>      
+           <?=$comments['nom']?>
          </div>
         <div class="card-body mb-2">
-                <span style="font-size:20px" class="text-primary fw-bolder mb-2" >email: </span><?=$comments['email'];?> 
-                <p style="font-size:20px" class="text-primary pt-2">Description :</p>
+                 <span style="font-size:20px" class="text-primary fw-bolder mb-2" >email: </span><?=$comments['email'];?> 
+                 <p style="font-size:20px" class="text-primary pt-2">Description :</p>
                   <?=$comments['messages']?>
         </div>
      </div>
@@ -38,8 +42,8 @@
    <div class="col-lg-4 py-4 mx-5">
    <div class="card  reglage_card">
          <div style="font-size:25px" class="card-header text-center fw-bolder">
-                <?=$com['nom']?> 
-                <span ><i class="fa-solid fa-xmark float-end text-danger"></i></span>
+         <?=$com['nom']?> 
+             <a href="allcomment.php?id=<?=$com['id']?>"> <span><i name="close" class="fa-solid fa-xmark float-end text-danger"></i></span></a> 
          </div>
         <div class="card-body mb-2">
                 <span style="font-size:20px" class="text-primary fw-bolder mb-2" >email: </span><?=$com['email'];?> 
@@ -50,5 +54,6 @@
 </div>
 <?php endforeach;?>
 <?php endif ;?>
+<?php endif;?>
 </div>
 </div>
