@@ -7,7 +7,7 @@
         include "./classes/File.php";
         include "./classes/book_manager.php";
         $book=new book();
-if(isset($_POST['update'])){
+    if(isset($_POST['update'])){
      
      extract($_POST);
      $file=new File('./storage/book/',$_FILES['avatar']);
