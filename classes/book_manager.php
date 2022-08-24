@@ -71,7 +71,7 @@
                'desc'=>$desc,
                'nbr'=>$nbr,
                'avatar'=>$avatar,
-               'id'=>array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['id']
+               'id'=>$_GET['id']
             ]);
          }
     }

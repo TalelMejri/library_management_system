@@ -6,52 +6,19 @@
     }
         include "./classes/File.php";
         include "./classes/book_manager.php";
-         $book=new book();
+        $book=new book();
 if(isset($_POST['update'])){
-    extract($_POST);
-    $file=new File('./storage/book/',$_FILES['avatar']);
-    if(empty($name_book)){
-        $errors[0]="name book required";
-        goto show_form;
-    }
-
-    if(empty($author)){
-        $errors[0]="author required";
-        goto show_form;
-    }
-
-    if(empty($description)){
-        $errors[0]="description required";
-        goto show_form;
-    }
-
-    if(empty($nbr)){
-        $errors[0]="nombre required";
-        goto show_form;
-    }
-    if($file->upload()==false){
-        $errors[0]="upload failed !!!";
-        goto show_form;
-    }
-
-    if($file->isimage()==false){
-        $errors[0]="upload image !!!";
-        goto show_form;
-    }
-
-    if(!$file->size_file()){
-        $errors[0]="upload image smaller than 1Mb !!!";
-        goto show_form;
-    }
+     
+     extract($_POST);
+     $file=new File('./storage/book/',$_FILES['avatar']);
      $avatar="./storage/book/".$file->getfilename();
-    if(empty($errors)){
-        $new=$book->updatebook($name_book,$author,$description,$nbr,$avatar,$idbook);
+     if(empty($errors)){
+         $new=$book->updatebook($name_book,$author,$description,$nbr,$avatar,$idbook);
         header("location:consultebook.php");
         exit;
     }
-
 }
-    $books=$book->getbookbyid($_GET['id']);
+    $books=$book->getbookbyid(array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['id']);
     show_form:
     $show=null;
     $template="updatebook";
