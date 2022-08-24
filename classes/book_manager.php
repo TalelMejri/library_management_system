@@ -45,6 +45,12 @@
             $sql="DELETE from book where idbook=:id";
             $this->pdo->launch_query($sql,['id'=>$id]);
          }
+
+         public function getbookbyname(String $name){
+            $sql="SELECT * from book where 'name_book'=:name";
+            $query=$this->pdo->launch_query($sql,['name'=>$name]);
+            return $query->fetch();
+         }
     }
 
 ?>
