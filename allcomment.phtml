@@ -12,7 +12,27 @@
 </style>
  
  <h1 class="text-center pt-3">List Of comments :</h1>
+  <div class="d-flex justify-content-center mt-4">
+     <form action="allcomment.php" method="post">
+         <input name="search" type="search" required  class="text-center form-control" placeholder="search comments">
+         <br>
+         <button name="save" class="btn btn-outline-warning">search</button>
+      </div>
+   </form>
 <div class="row d-flex justify-content-center p-5">
+   <?php if($trouve==1): ?>
+       <div class="card  reglage_card">
+         <div style="font-size:25px" class="card-header text-center fw-bolder">
+                <?=$comments['nom']?>
+         </div>
+        <div class="card-body mb-2">
+                <span style="font-size:20px" class="text-primary fw-bolder mb-2" >email: </span><?=$comments['email'];?> 
+                <p style="font-size:20px" class="text-primary pt-2">Description :</p>
+                  <?=$comments['messages']?>
+        </div>
+     </div>
+</div>
+<?php else :?>
  <?php foreach($comments as $com) :?>  
    <div class="col-lg-4 py-4 mx-5">
    <div class="card  reglage_card">
@@ -27,5 +47,6 @@
      </div>
 </div>
 <?php endforeach;?>
+<?php endif ;?>
 </div>
 </div>

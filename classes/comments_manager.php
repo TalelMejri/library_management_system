@@ -31,6 +31,12 @@
          return $query->fetchAll();
         }
 
+        public function getcommnetbyname(String $name){
+           $sql="SELECT * from commentaire where nom=:name";
+           $query=$this->pdo->launch_query($sql,['name'=>$name]);
+           return $query->fetch();
+        }
+
     }
 
 
