@@ -27,6 +27,12 @@
             return $query->fetchAll();
          }
 
+         public function getbookbyid(int $id){
+            $sql="SELECT * from book where idbook=:id";
+            $query=$this->pdo->launch_query($sql,['id'=>$id]);
+            return $query->fetch();
+         }
+
          public function count_books():String{
             $sql="SELECT count(*) FROM book";
             $query=$this->pdo->launch_query($sql);

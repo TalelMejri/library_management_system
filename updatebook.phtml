@@ -1,0 +1,37 @@
+<div  class="d-flex justify-content-center align-items-center py-2">
+<form  action="<?=$_SERVER['PHP_SELF']?>" method="POST" class="rounded shadow p-5 m-1"  enctype="multipart/form-data">
+      <h4 class="text-center mb-4">Update Book :</h4>
+    <?php if(!empty($errors)): ?>
+    <div class="alert alert-danger" role="alert">
+      <?=$errors[0]?>
+    </div>
+    <?php endif;?>
+    <div class="row">
+    <div class="mb-3 col-md-6">
+        <input type="hidden" name="idbook" value="<?=$books['idbook']?>">
+       <label for="Name book" class="form-label">Name book</label>
+       <input type="text"  name="name_book" class="form-control" id="Name book" value="<?=$books['name_book']?>">
+   </div>
+   <div class="mb-3 col-md-6">
+      <label for="author" class="form-label">author</label>
+       <input type="text"  name="author" class="form-control" id="author" value="<?=$books['author_book']?>">
+   </div>
+   </div>
+   <div class="mb-3">
+      <label for="description" class="form-label px-2">description</label>
+      <textarea name="description" cols="30" rows="10" value="<?=$books['description_book']?>"></textarea>
+   </div>
+   <div class="row">
+   <div class="mb-3 col-md-6">
+      <label for="nombre" class="form-label">nombre book</label>
+      <input type="number"  name="nbr" class="form-control" id="nombre" value="<?=$books['nbr_book']?>">
+   </div>
+   <div class="mb-3 col-md-6">
+      <label for="avatar" class="form-label">avatar</label>
+      <input type="file"  name="avatar" class="form-control" id="avatar" value="<?=$books['avatar']?>">
+   </div>
+   </div>
+
+    <button name="update" class="btn btn-outline-warning w-100 mt-2">update</button>
+</form>
+</div>
