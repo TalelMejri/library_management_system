@@ -19,7 +19,7 @@
    </div>
    <div class="mb-3">
       <label for="description" class="form-label px-2">description</label>
-      <textarea name="description" cols="30" rows="10" value="<?=$books['description_book']?>"></textarea>
+      <textarea name="description" cols="30" rows="10"><?=$books['description_book']?></textarea>
    </div>
    <div class="row">
    <div class="mb-3 col-md-6">
@@ -27,8 +27,15 @@
       <input type="number"  name="nbr" class="form-control" id="nombre" value="<?=$books['nbr_book']?>">
    </div>
    <div class="mb-3 col-md-6">
-      <label for="avatar" class="form-label">avatar</label>
-      <input type="file"  name="avatar" class="form-control" id="avatar" value="<?=$books['avatar']?>">
+      <div class="row">
+         <div class="col-md-4">
+      <label for="avatar" class="form-label">avatar :</label>
+      <img class="rounded-pill" width="80px" src="<?=$books['avatar']?>" alt="">
+      </div>
+      <div class="col-md-8">
+      <input type="file"   name="avatar" class="form-control mt-5" id="avatar" >
+      </div>
+   </div>
    </div>
    </div>
 
