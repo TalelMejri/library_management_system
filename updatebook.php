@@ -4,13 +4,12 @@
         header("location:login.php");
         exit;
     }
-include "./classes/File.php";
-include "./classes/book_manager.php";
-
+        include "./classes/File.php";
+        include "./classes/book_manager.php";
+         $book=new book();
 if(isset($_POST['update'])){
     extract($_POST);
-      $file=new File('./storage/book/',$_FILES['avatar']);
-
+    $file=new File('./storage/book/',$_FILES['avatar']);
     if(empty($name_book)){
         $errors[0]="name book required";
         goto show_form;
@@ -44,8 +43,14 @@ if(isset($_POST['update'])){
         $errors[0]="upload image smaller than 1Mb !!!";
         goto show_form;
     }
+     $avatar="./storage/book/".$file->getfilename();
+    if(empty($errors)){
+        $new=$book->updatebook($name_book,$author,$description,$nbr,$avatar,$idbook);
+        header("location:consultebook.php");
+        exit;
+    }
+
 }
-    $book=new book();
     $books=$book->getbookbyid($_GET['id']);
     show_form:
     $show=null;

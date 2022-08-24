@@ -62,6 +62,18 @@
             $sql="DELETE from book";
             $this->pdo->launch_query($sql);
         }
+
+        public function updatebook(String $nom,String $author,String $desc,int $nbr,string $avatar){
+            $sql="UPDATE `book` SET `name_book`=:nom,`author_book`=:author,description_book`=:desc,`nbr_book`=:nbr,`avatar`=:avatar WHERE idbook=:id";
+            $this->pdo->launch_query($sql,[
+               'nom'=>$nom,
+               'author'=>$author,
+               'desc'=>$desc,
+               'nbr'=>$nbr,
+               'avatar'=>$avatar,
+               'id'=>array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['id']
+            ]);
+         }
     }
 
 ?>
