@@ -28,7 +28,7 @@
             if($verifier==false){
                header("location:login.php?msg=password or email is incorrect&type=danger");
             }else{
-                header("location:profil_admin.php");
+                header("location:../profil_admin.php");
                 exit;
             }
         }
