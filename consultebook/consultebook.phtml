@@ -13,7 +13,7 @@
 
 <div class="text-center" >
     <h1 class="text-center pt-3">List Of Books :</h1>
-    <form action="consultebook.php" method="post">
+    <form action="<?$SERVER['PHP_SELF']?>" method="post">
           <button  class="<?= empty($books) ? 'd-none' :''?> btn btn-danger" name="delete">Delete All</button>
     </form>
 <?php if(empty($books)): ?>
@@ -39,7 +39,7 @@
              </div>
              <div class="row mx-4 mb-2">
               <button class="col-md-4 mx-4 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
-              <button class="col-md-4 mx-2  btn btn-outline-warning" >    <a class="text-decoration-none text-dark" href="updatebook.php?id=<?=$book['idbook'];?>"> Update </a></button>
+              <button class="col-md-4 mx-2  btn btn-outline-warning" >    <a class="text-decoration-none text-dark" href="../updatebook?id=<?=$book['idbook'];?>"> Update </a></button>
             </div>
         </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel<?=$book['idbook'];?>" aria-hidden="true">
@@ -54,7 +54,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a href="delete.php?id=<?=$book['idbook']?>"> <button type="button" class="btn btn-danger">Delete</button></a>
+        <a href="../deleteBook.php?id=<?=$book['idbook']?>"> <button type="button" class="btn btn-danger">Delete</button></a>
       </div>
     </div>
   </div>

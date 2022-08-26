@@ -33,5 +33,5 @@
     $show=null;
     $template="updatebook";
     $page_titel="Update book";
-    include "../index.php";
+    include "../layout.phtml";
 ?>
