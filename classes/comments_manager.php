@@ -32,9 +32,10 @@
         }
 
         public function getcommnetbyname(String $name){
-           $sql="SELECT * from commentaire where nom=:name";
+           $name = "%".$name."%";
+           $sql="SELECT * from commentaire where nom like :name";
            $query=$this->pdo->launch_query($sql,['name'=>$name]);
-           return $query->fetch();
+           return $query->fetchAll();
         }
 
         public function deletcommentsbyid(int $id){

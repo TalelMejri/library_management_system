@@ -1,9 +1,9 @@
 <?php 
     
-    include "./classes/admin_user.php";
+    include "../classes/admin_user.php";
     session_start();
     if(isset($_POST['submit'])){
-        include "./utilities.php";
+        include "../utilities.php";
 
         extract($_POST);
 
@@ -37,5 +37,5 @@
     $show=true;
     $page_titel="login";
     $template="login";
-    include "./layout.phtml";
+    include "../layout.phtml";
 ?>

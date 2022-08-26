@@ -26,17 +26,21 @@
          no comments
       <?php else:?>
    <?php if($trouve==1): ?>
+ <?php foreach($comments as $com) :?>  
+      
        <div class="card  reglage_card">
          <div style="font-size:25px" class="card-header text-center fw-bolder">
-          <a href="allcomment.php?id=<?=$comments['id']?>"> <span><i name="close" class="fa-solid fa-xmark float-end text-danger"></i></span></a>      
-           <?=$comments['nom']?>
+          <a href="allcomment.php?id=<?=$com['id']?>"> <span><i name="close" class="fa-solid fa-xmark float-end text-danger"></i></span></a>      
+           <?=$com['nom']?>
          </div>
         <div class="card-body mb-2">
-                 <span style="font-size:20px" class="text-primary fw-bolder mb-2" >email: </span><?=$comments['email'];?> 
+                 <span style="font-size:20px" class="text-primary fw-bolder mb-2" >email: </span><?=$com['email'];?> 
                  <p style="font-size:20px" class="text-primary pt-2">Description :</p>
-                  <?=$comments['messages']?>
+                  <?=$com['messages']?>
         </div>
      </div>
+<?php endforeach;?>
+
 </div>
 <?php else :?>
  <?php foreach($comments as $com) :?>  
