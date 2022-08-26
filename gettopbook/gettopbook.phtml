@@ -1,0 +1,22 @@
+<div class="row">
+    <?php foreach($books as $book) :?>  
+   <div class="col-lg-4 py-4 mx-5">
+        <div class="card mx-1 reglage_card">
+            <img src="<?= $book['avatar'] ?>" height="200px" class="card-img-top " alt="photo book">
+             <div class="card-body">
+              <div class="row">
+                 <h5 class="card-title col-md-6">name   :<?=$book['name_book'];?></h5>
+                 <h5 class="card-title col-md-6">author :<?=$book['author_book'];?></h5>
+                 </div>
+          <div class="row">
+              <div class="col-md-6">  <p class="card-text"> Nombre dispo : <?=$book['nbr_book'];?></p></div>
+              <div class="col-md-6">  Status :<span style="color:<?= $book['status']=='enable'? 'green' :''?>" ><?= $book['status'] ;?></span></div>
+            </div>
+                 decription : <p class="card-text"><?=$book['description_book'];?></p>
+                 <?php for($i=0;$i<$book['rate'];$i++):?>
+                     <i class="fa-solid fa-star text-warning"></i>
+                  <?php endfor;?>
+             </div>
+                 </div>
+                 </div>
+                 <?php endforeach;?>

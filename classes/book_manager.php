@@ -73,6 +73,12 @@
                'id'=> $id
             ]);
          }
+
+         public function gettopratebook(){
+            $sql="SELECT * from book  order by rate DESC limit 3";
+            $query=$this->pdo->launch_query($sql);
+            return $query->fetchAll();
+         }
     }
 
 ?>,
