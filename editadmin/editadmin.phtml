@@ -1,5 +1,37 @@
-<?php 
- 
-  
- 
-?>
+
+ <h4 class="p-4 m-4">Public Profil</h4>
+ <div class=" d-flex mx-4 justify-content-center">
+    <form class="shadow p-5 m-2 rounded" action="index.php" method="POST"  enctype="multipart/form-data">
+     <?php if(!empty($errors)): ?>
+        <div class="alert alert-danger" role="alert">
+          <?=$errors[0];?>
+        </div>
+ <?php endif;?>
+    <div class="row gap-5 justify-content-center">
+             <div class="col-md-6">
+                <label>Name</label>
+                <input name="name" type="text" class="form-control mb-2" value="<?=$_SESSION['name']?>">
+
+                <label>Email</label>
+                <input name="email" type="email" class="form-control mb-2" value="<?=$_SESSION['email']?>">
+
+                <label>Password</label>
+                <input name="password" type="password" class="form-control mb-2" value="<?=$_SESSION['password']?>">
+
+                <label>Confirm</label>
+                <input name="confirm" type="password" class="form-control mb-2" value="<?=$_SESSION['password']?>">
+             </div>
+             <div class="col-md-5 mx-2 mb-2">
+                <div class="d-flex flex-column">
+                <label class="mb-3">Profil picture</label>
+                <img src="<?=$_SESSION['avatar_admin']?>" width="50%" class="mb-2 rounded-circle img-thumbnail shadow-sm" alt="">
+                <input type="file" name="avatar" >
+                </div>
+             </div>
+        </div>
+        <div class="text-center py-3">
+         <button name="submit" type="submit" class="btn btn-success mt-4">Update profil</button>
+        </div>
+    </form>
+    </div>
+ </div>

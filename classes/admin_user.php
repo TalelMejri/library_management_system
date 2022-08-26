@@ -25,6 +25,16 @@
             }
         }
 
+        public function  edit_admin(String $name,String $email,String $password,String $avatar){
+            $sql="UPDATE `admin` SET id=:id_admin,name=:name_admin,email=:email_admin,password=:pass,avatar_admin=:avatar";
+            $this->pdo->launch_query($sql,[
+                'id_admin'=>$id,
+                'name_admin'=>$name,
+                'email_admin'=>$email,
+                'pass'=>$password,
+                'avatar'=>$avatar]);
+        }
+
         
     }
 
