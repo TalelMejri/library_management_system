@@ -21,5 +21,5 @@
     }
      shoform:
      $show=null;
-     include "layout.phtml";
+     include "./index.php";
 ?>

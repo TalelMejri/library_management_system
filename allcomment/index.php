@@ -1,10 +1,10 @@
 <?php 
     session_start();
     if(!isset($_SESSION['name'])){
-        header("location:login.php");
+        header("location:../login");
         exit;
     }
-    include "./classes/comments_manager.php";
+    include "../classes/comments_manager.php";
     $trouve=0;
     $allcomments=new comment();
     if(array_key_exists('id',$_GET)){
@@ -25,6 +25,6 @@
     $show=null;
     $page_titel="comments";
     $template="allcomment";
-    include "layout.phtml";
+    include "../layout.phtml";
 
 ?>

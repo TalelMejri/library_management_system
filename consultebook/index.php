@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include "./classes/book_manager.php";
+    include "../classes/book_manager.php";
      $book=new book();
      if(isset($_POST['delete'])){
           
@@ -11,5 +11,5 @@
      $template="consultebook";
      $show=null;
      $page_titel="all book";
-     include "./layout.phtml";
+     include "../layout.phtml";
 ?>

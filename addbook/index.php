@@ -1,12 +1,12 @@
 <?php 
     session_start();
     if(!isset($_SESSION['name'])){
-        header("location:login.php");
+        header("location:../login");
         exit;
     }
 
-include "./classes/File.php";
-include "./classes/book_manager.php";
+include "../classes/File.php";
+include "../classes/book_manager.php";
 
 $errors=[];
 
@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     print_r($_FILES);
     echo '</pre>';
     exit;*/
-    $file=new File('./storage/book/',$_FILES['avatar']);
+    $file=new File('../storage/book/',$_FILES['avatar']);
 
     if(empty($name_book)){
         $errors[0]="name book required";
@@ -58,11 +58,11 @@ if(isset($_POST['submit'])){
         goto show_form;
     }
 
-    $avatar="./storage/book/".$file->getfilename();
+    $avatar="../storage/book/".$file->getfilename();
     if(empty($errors)){
         $user=new book();
         $verifie_add=$user->add_book($name_book,$author,$description,$nbr,$avatar);
-        header("location:profil_admin.php");
+        header("location:../profiladmin");
         exit;
     }
 }
@@ -70,5 +70,5 @@ if(isset($_POST['submit'])){
     $show=null;
     $template="addbook";
     $page_titel="add book";
-    include "./layout.phtml";
+    include "../layout.phtml";
 ?>
