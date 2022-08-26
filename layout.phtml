@@ -19,6 +19,9 @@
     box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
 }
+#pupular_books{
+    height:100%;
+}
 /** home page*/
 .dropdown-toggle {
     outline: 0;
@@ -90,7 +93,7 @@ header{
 }
 
 header{
-    background-image: url(../images/back_library.jpg);
+    background-image: url(./images/back_library.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -440,14 +443,14 @@ textarea {
     <article class="popular py-4" id="pupular_books">
     <div class="container py-5">
                 <div class="text-center py-5">
-                    <h2 class="section-heading text-uppercase">Top Popular Books</h2>
+                    <h2 class="section-heading text-uppercase">Top 3 Popular Books</h2>
                     <div class="divider-custom">
                    	   <div class="divider-custom-line" ></div>
                     	 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     	 <div class="divider-custom-line"></div>
                	   </div>
                 </div>
-               
+                <?php require "./gettopbook/index.php" ?> 
      </div>       
     </article>
 
