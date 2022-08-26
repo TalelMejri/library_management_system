@@ -1,11 +1,11 @@
 <?php
     session_start();
     if(empty($_SESSION['name'])){
-        header("location:layout.phtml");
+        header("location:../layout.phtml");
         exit;
     }
-    include "./classes/book_manager.php";
-    include "./classes/comments_manager.php";
+    include "../classes/book_manager.php";
+    include "../classes/comments_manager.php";
     $a=new book();
     $number_all_book=$a->count_books();
     $enable='enable';
@@ -25,5 +25,5 @@
     $page_titel="Dashbord";
     $show=null;
     $template="profil_admin";
-    include "./layout.phtml";
+    include "../layout.phtml";
 ?>
