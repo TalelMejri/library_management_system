@@ -9,8 +9,8 @@
         }
 
         public function login_admin(String $email,String $pass):bool{
-            $sql="SELECT * FROM admin where email=:email AND password=:pass";
-            $query=$this->pdo->launch_query($sql,['email'=>$email,'pass'=>$pass]);
+            $sql="SELECT * FROM admin where email=:email AND password=:pass AND role=:role";
+            $query=$this->pdo->launch_query($sql,['email'=>$email,'pass'=>$pass,'role'=>1]);
             $user=$query->fetch();
             if($user==false){
                 return false;
@@ -36,11 +36,11 @@
         }
 
         public function signup(String $name,String $email,int $cin,int $tlf,String $password,String $avatar){
-            $sql="INSERT INTO `admin`(`id`, `name`, `email`, `password`, `avatar_admin`, `tlf`, `cin`, `role`, `corbeille`)  VALUES (:name,:email,:pass,:avatar,:tlf,:cin,:role,:corbeille)";
+            $sql="INSERT INTO `admin`( `name`, `email`, `password`, `avatar_admin`, `tlf`, `cin`, `role`, `corbeille`)  VALUES (:name,:email,:pass,:avatar,:tlf,:cin,:role,:corbeille)";
             $this->pdo->launch_query($sql,[
                 'name'=>$name,
                 'email'=>$email,
-                'pass'=>$password,
+                'pass'=>password_hash($password,PASSWORD_DEFAULT),
                 'avatar'=>$avatar,
                 'role'=>0,
                 'cin'=>$cin,
@@ -48,6 +48,12 @@
                 'corbeille'=>0,
             ]);
             return $this->pdo->lastInsertId();
+        }
+
+        public function allcin(){
+            $sql="SELECT cin from admin";
+            $query=$this->pdo->launch_query($sql);
+            return $query->fetchAll();
         }
 
         
