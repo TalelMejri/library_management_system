@@ -35,6 +35,19 @@
                 'avatar'=>$avatar]);
         }
 
+        public function signup(String $name,String $email,int $cin,int $tlf,String $password,String $avatar){
+            $sql="INSERT INTO `admin`( `name`, `email`, `password`, `avatar_admin`, `role`, `corbeille`) VALUES (:name,:email,:pass,:avatar,:role,:corbeille)";
+            $this->pdo->launch_query($sql,[
+                'name'=>$name,
+                'email'=>$email,
+                'pass'=>$password,
+                'avatar'=>$avatar,
+                'role'=>0,
+                'corbeille'=>0,
+            ]);
+            return $this->pdo->lastInsertId();
+        }
+
         
     }
 
