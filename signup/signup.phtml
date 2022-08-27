@@ -18,7 +18,12 @@ img{
                         <div class="text-center">
                            <h1 class="h4 fw-bolder mb-3 py-3">Sign Up</h1>
                         </div>
-                    <form class="py-4" action="<?=$SERVER['PHP_SELF'];?>" method="POST"  enctype="multipart/form-data">
+                    <form class="py-4" action="index.php" method="POST"  enctype="multipart/form-data">
+                     <?php if(array_key_exists('type',$_GET)): ?>   
+                    <div class="alert alert-<?=$_GET['type']?>" role="alert">
+                         <?=$_GET['msg'];?>
+                      </div>
+                    <?php endif; ?>
                        <div class="row mb-4 ">
                           <div class="col-lg-6">
                             <label>Name</label>
