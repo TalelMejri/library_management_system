@@ -44,7 +44,6 @@
             $verifier=$admin->signup($name,$email,$cin,$tlf,$password,$avatar);
                 header("location:../login");
                 exit;
-            
         }
     }
     $show=true;

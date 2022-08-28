@@ -56,6 +56,12 @@
             return $query->fetchAll();
         }
 
+        public function getalluser(){
+            $sql="SELECT * from admin where role=:rolee";
+            $query=$this->pdo->launch_query($sql,['rolee'=>0]);
+            return $query->fetchAll();
+        }
+
         
     }
 
