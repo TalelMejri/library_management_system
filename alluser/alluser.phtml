@@ -29,28 +29,31 @@
       <td>
         <a class="btn btn-outline-primary" href="../detailsuser?id=<?=$value['id'];?>"><i class="fa-solid fa-circle-info"></i></a>
         <a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$value['id'];?>" href="#"><i class="fa-solid fa-trash"></i></a>
+        
+        <div class="modal fade" id="exampleModal<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 Are You Sure To Delete <?=$value['name'];?>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 <a class="btn btn-outline-danger" href="../deleteuser.php?id=<?=$value['id'];?>">Delete</a> 
+               </div>
+             </div>
+           </div>
+         </div>
+         
       </td>
     </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
 
-<div class="modal fade" id="exampleModal<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are You Sure To Delete <?=$value['name'];?>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a class="btn btn-outline-danger" href="../deleteuser.php?id=<?=$value['id'];?>">Delete</a> 
-      </div>
-    </div>
-  </div>
-</div>
+
 </div>
 <?php endif;?>
