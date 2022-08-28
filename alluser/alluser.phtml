@@ -2,6 +2,11 @@
  <?php if(empty($alluser)): ?>
        <div class="h3 text-center fw-bolder"> no user yet !!</div>
     <?php else :?>
+      <?php if(array_key_exists('type',$_GET)): ?>
+        <div class="alert alert-<?=$_GET['type']?>" role="alert">
+             <?=$_GET['msg'] ?>
+        </div>
+    <?php endif;?>
 <div class="contianer d-flex justify-content-center py-2 mt-3">
     
 <table class="table shadow rounded mt-5 w-50 p-5 table-striped">
@@ -42,7 +47,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a class="btn btn-outline-danger" href="deleteuser?id=<?=$value['id'];?>">Delete</a> 
+        <a class="btn btn-outline-danger" href="../deleteuser.php?id=<?=$value['id'];?>">Delete</a> 
       </div>
     </div>
   </div>

@@ -57,9 +57,14 @@
         }
 
         public function getalluser(){
-            $sql="SELECT * from admin where role=:rolee";
-            $query=$this->pdo->launch_query($sql,['rolee'=>0]);
+            $sql="SELECT * from admin where role=:rolee AND corbeille=:corb";
+            $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>0]);
             return $query->fetchAll();
+        }
+
+        public function deleteuser(int $id){
+            $sql="UPDATE admin SET corbeille=:corb where id=:iduser";
+            $this->pdo->launch_query($sql,['corb'=>1,'iduser'=>$id]);
         }
 
         
