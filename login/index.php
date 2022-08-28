@@ -24,11 +24,15 @@
         }
         else {
             $user=new user();
-            $verifier=$user->login_admin($email,$password);
-            if($verifier==false){
+            $verifier_admin=$user->login_admin($email,$password);
+            $verifier_user=$user->login_user($email,$password);
+            if($verifier_admin==false ||  $verifier_user==false){
                header("location:index.php?msg=password or email is incorrect&type=danger");
-            }else{
+            }else if($verifier_admin){
                 header("location:../profiladmin");
+                exit;
+            }else if($verifier_user){
+                header("location:../profiluser");
                 exit;
             }
         }

@@ -11,16 +11,35 @@
         public function login_admin(String $email,String $pass):bool{
             $sql="SELECT * FROM admin where email=:email AND password=:pass AND role=:role";
             $query=$this->pdo->launch_query($sql,['email'=>$email,'pass'=>$pass,'role'=>1]);
+            $amdin=$query->fetch();
+            if($amdin==false){
+                return false;
+            }else{
+                $_SESSION['id']=$amdin['id'];
+                $_SESSION['name']=$amdin['name'];
+                $_SESSION['email']=$amdin['email'];
+                $_SESSION['password']=$amdin['password'];
+                $_SESSION['role']=$amdin['role'];
+                $_SESSION['avatar_admin']=$amdin['avatar_admin'];
+                return true;
+            }
+        }
+
+        public function login_user(String $email,String $pass):bool{
+            $sql="SELECT * FROM admin where email=:email AND password=:pass AND role=:rolee";
+            $query=$this->pdo->launch_query($sql,['email'=>$email,'pass'=>$pass,'rolee'=>0]);
             $user=$query->fetch();
             if($user==false){
                 return false;
             }else{
-                $_SESSION['id']=$user['id'];
-                $_SESSION['name']=$user['name'];
-                $_SESSION['email']=$user['email'];
-                $_SESSION['password']=$user['password'];
-                $_SESSION['role']=$user['role'];
-                $_SESSION['avatar_admin']=$user['avatar_admin'];
+               /* $_SESSION['userid']=$user['id'];
+                $_SESSION['username']=$user['name'];
+                $_SESSION['useremail']=$user['email'];
+                $_SESSION['userpassword']=$user['password'];
+                $_SESSION['userrole']=$user['role'];
+                $_SESSION['usertlf']=$user['tlf'];
+                $_SESSION['usercin']=$user['cin'];
+                $_SESSION['useravatar']=$user['avatar_admin'];*/
                 return true;
             }
         }
