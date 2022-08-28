@@ -62,10 +62,27 @@
             return $query->fetchAll();
         }
 
+        public function getalluserdeleted(){
+            $sql="SELECT * from admin where role=:rolee AND corbeille=:corb";
+            $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>1]);
+            return $query->fetchAll();
+        }
+
         public function deleteuser(int $id){
             $sql="UPDATE admin SET corbeille=:corb where id=:iduser";
             $this->pdo->launch_query($sql,['corb'=>1,'iduser'=>$id]);
         }
+
+        public function deleteuserforever(int $id){
+            $sql="DELETE from admin where id=:iduser";
+            $this->pdo->launch_query($sql,['iduser'=>$id]);
+        }
+
+        public function backuser(int $id){
+            $sql="UPDATE admin SET corbeille=:corb where id=:iduser";
+            $this->pdo->launch_query($sql,['corb'=>0,'iduser'=>$id]);
+        }
+        
 
         public function getuserbyid(int $id){
             $sql="SELECT * from admin where id=:iduser";

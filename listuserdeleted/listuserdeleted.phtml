@@ -1,0 +1,78 @@
+<h1 class="h2 text-center py-5">List Of user Blocked </h1>
+<?php if(array_key_exists('type',$_GET)): ?>
+        <div class="alert alert-<?=$_GET['type']?>" role="alert">
+             <?=$_GET['msg'] ?>
+        </div>
+    <?php endif;?>
+ <?php if(empty($alluser)): ?>
+       <div class="h3 text-center fw-bolder"> no user blocked !!</div>
+    <?php else :?>
+<div class="contianer d-flex justify-content-center py-2 mt-3">
+    
+<table class="table shadow rounded mt-5 w-50 p-5 table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Cin</th>
+      <th scope="col">tlf</th>
+      <th scope="col">operation</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach($alluser as $value): ?>
+    <tr>
+      <td><?=$value['name'];?></td>
+      <td><?=$value['email'];?></td>
+      <td><?=$value['cin'];?></td>
+      <td><?=$value['tlf'];?></td>
+      <td>
+        <a class="btn btn-outline-primary" href="../detailsuser?id=<?=$value['id'];?>"><i class="fa-solid fa-circle-info"></i></a>
+        <a class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$value['id'];?>" href="#"><i class="fa-solid fa-arrow-rotate-right"></i></a>
+        <a class="btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target="#exampleModale<?=$value['id'];?>" href="#"><i class="fa-solid fa-ban"></i></a>
+      
+         
+      </td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+
+  
+<div class="modal fade" id="exampleModale<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Delete For ever</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 Are You Sure To Delete <?=$value['name'];?>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 <a class="btn btn-outline-danger" href="../deleteuserforever.php?id=<?=$value['id'];?>">Delete</a> 
+               </div>
+             </div>
+           </div>
+         </div>
+
+        <div class="modal fade" id="exampleModal<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Back User</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 Are You Sure To Delete <?=$value['name'];?>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 <a class="btn btn-outline-danger" href="../backuser.php?id=<?=$value['id'];?>">Confirm</a> 
+               </div>
+             </div>
+           </div>
+         </div>
+</div>
+<?php endif;?>
