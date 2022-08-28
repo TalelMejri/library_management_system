@@ -67,6 +67,12 @@
             $this->pdo->launch_query($sql,['corb'=>1,'iduser'=>$id]);
         }
 
+        public function getuserbyid(int $id){
+            $sql="SELECT * from admin where id=:iduser";
+            $query=$this->pdo->launch_query($sql,['iduser'=>$id]);
+            return $query->fetch();
+        }
+
         
     }
 
