@@ -9,7 +9,7 @@
         $trouve=false;
         $AllCin=$admin->allcin();
       
-        $file=new File("../storage/avatars",$_FILES['avatar']);
+        $file=new File("../storage/avatars/",$_FILES['avatar']);
         if(empty($name)){
             header("location:index.php?msg=name required&type=danger");
         }
