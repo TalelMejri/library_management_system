@@ -1,5 +1,10 @@
-<div class="contianer d-flex justify-content-center py-4 mt-5">
-<table class="table shadow mt-5 w-50 p-5 table-striped">
+<h1 class="h2 text-center py-5">List Of user </h1>
+ <?php if(empty($alluser)): ?>
+       <div class="h3 text-center fw-bolder"> no user yet !!</div>
+    <?php else :?>
+<div class="contianer d-flex justify-content-center py-2 mt-3">
+    
+<table class="table shadow rounded mt-5 w-50 p-5 table-striped">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -43,3 +48,4 @@
   </div>
 </div>
 </div>
+<?php endif;?>
