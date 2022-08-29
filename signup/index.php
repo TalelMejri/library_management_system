@@ -45,12 +45,11 @@
             header("location:index.php?msg=image not uploaded&type=danger");
         }else{
             $avatar="../storage/avatars/".$file->getfilename();
-            $token =rand(10, 9999);
+            $token =md5($cin).rand(10, 9999);
             $verifier=$admin->signup($name,$email,$cin,$tlf,$password,$avatar,$token);
-            $link = "<a href='".$_SERVER['HTTP_HOST']."../verify/index.php?key=" . $email . "&token=" .$token."'>Click and Verify Email</a>";
-            sendmail("library", $email, "Lien de Verification", "Cliquez sur ce lien pour vérifier l'e-mail '.$link.'");
+            $link = "<a href='".$_SERVER['HTTP_HOST']."/".explode('/',$_SERVER['PHP_SELF'])[1]."/verify/index.php?key=" . $email . "&token=" .$token."'>Click and Verify Email</a>";
+             sendmail("library", $email, "Lien de Verification", "Cliquez sur ce lien pour vérifier l'e-mail '.$link.'");
             header("location:../login");
-            exit;
         }
     }
     $show=true;
