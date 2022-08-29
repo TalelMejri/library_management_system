@@ -5,7 +5,7 @@ include "../classes/admin_user.php";
 $email = $_GET["key"];
 $token = $_GET["token"];
 $admin=new user();
-if(!$email||!$token){
+if(!$email || !$token){
     echo "Email or token missing";
     exit;
 }else{

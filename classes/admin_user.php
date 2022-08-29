@@ -39,7 +39,7 @@
             ]);
             $user=$query->fetch();
             if($user==false){
-                return 1;
+                return 0;
             }
             else if (!password_verify($password,$user["password"])){
                 return 0;
