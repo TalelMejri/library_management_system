@@ -11,6 +11,7 @@
         $trouve=false;
         $file=new File("../storage/avatars/",$_FILES['avatar']);
         $verifierEmail=$admin->checkEmail($email);
+        $verifierCin=$admin->checkCin($cin);
        
         if(empty($name)){
             header("location:index.php?msg=name required&type=danger");
@@ -25,9 +26,8 @@
         }
         else if(strlen($cin)<8){
             header("location:index.php?msg=cin should be 8 chiffres&type=danger");
-        }else if($trouve==true)
-        {
-            header("location:index.php?msg=Cin Existe&type=danger");
+        }else if($verifierCin){
+            header("location:index.php?msg=cin Existe&type=danger");
         }
         else if(empty($tlf)){
             header("location:index.php?msg=tlf required&type=danger");

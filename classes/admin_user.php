@@ -147,6 +147,17 @@
             }
         }
 
+        public function checkCin(String $cin){
+            $sql="SELECT * from admin where cin=:cin";
+            $query=$this->pdo->launch_query($sql,['cin'=>$cin]);
+             $verifier= $query->fetch();
+            if($verifier==true){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
         
     }
 
