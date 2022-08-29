@@ -62,8 +62,9 @@
             $sql="DELETE from book";
             $this->pdo->launch_query($sql);
         }
-        public function updatebook(int $id,String $nom,String $author,String $desc,int $nbr,string $avatar){
-            $sql="UPDATE book SET `name_book`=:nom,`author_book`=:author,`description_book`=:desc,`nbr_book`=:nbr,`avatar`=:avatar WHERE idbook=:id";
+        public function updatebook(int $id,String $nom,String $author,String $desc,int $nbr,string $avatar,bool $avatarupload){
+         if($avatarupload){ 
+           $sql="UPDATE book SET `name_book`=:nom,`author_book`=:author,`description_book`=:desc,`nbr_book`=:nbr,`avatar`=:avatar WHERE idbook=:id";
             $this->pdo->launch_query($sql,[
                'nom'=>$nom,
                'author'=>$author,
@@ -72,6 +73,16 @@
                'avatar'=>$avatar,
                'id'=> $id
             ]);
+         }else{
+            $sql="UPDATE book SET `name_book`=:nom,`author_book`=:author,`description_book`=:desc,`nbr_book`=:nbr WHERE idbook=:id";
+            $this->pdo->launch_query($sql,[
+               'nom'=>$nom,
+               'author'=>$author,
+               'desc'=>$desc,
+               'nbr'=>$nbr,
+               'id'=> $id
+            ]);
+         }
          }
 
          public function gettopratebook(){

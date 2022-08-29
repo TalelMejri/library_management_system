@@ -9,49 +9,74 @@
         }
 
         public function login_admin(String $email,String $pass):bool{
-            $sql="SELECT * FROM admin where email=:email AND password=:pass AND role=:role";
-            $query=$this->pdo->launch_query($sql,['email'=>$email,'pass'=>$pass,'role'=>1]);
-            $amdin=$query->fetch();
-            if($amdin==false){
+            $sql="SELECT * FROM admin where email=:email AND role=:role";
+            $query=$this->pdo->launch_query($sql,[
+                'email'=>$email,
+                'role'=>1
+            ]);
+                $admin=$query->fetch();
+            if($admin==false){
                 return false;
-            }else{
-                $_SESSION['id']=$amdin['id'];
-                $_SESSION['name']=$amdin['name'];
-                $_SESSION['email']=$amdin['email'];
-                $_SESSION['password']=$amdin['password'];
-                $_SESSION['role']=$amdin['role'];
-                $_SESSION['avatar_admin']=$amdin['avatar_admin'];
+            }else if (!password_verify($pass,$admin["password"])){
+                return false;
+            }
+            else{
+                $_SESSION['id']=$admin['id'];
+                $_SESSION['name']=$admin['name'];
+                $_SESSION['email']=$admin['email'];
+                $_SESSION['password']=$admin['password'];
+                $_SESSION['role']=$admin['role'];
+                $_SESSION['avatar_admin']=$admin['avatar_admin'];
                 return true;
             }
         }
 
-        public function login_user(String $email,String $pass):bool{
-            $sql="SELECT * FROM admin where email=:email AND password=:pass AND role=:rolee";
-            $query=$this->pdo->launch_query($sql,['email'=>$email,'pass'=>$pass,'rolee'=>0]);
+        public function login_user(String $email,String $password){
+            $sql="SELECT * FROM `admin` where  role=:role AND email=:email";
+            $query=$this->pdo->launch_query($sql,[
+                'email'=>$email,
+                'role'=>0
+            ]);
             $user=$query->fetch();
             if($user==false){
                 return false;
-            }else{
-               /* $_SESSION['userid']=$user['id'];
+            }
+            else if (!password_verify($password,$user["password"])){
+                return false;
+            }
+            else{
+                $_SESSION['userid']=$user['id'];
                 $_SESSION['username']=$user['name'];
                 $_SESSION['useremail']=$user['email'];
                 $_SESSION['userpassword']=$user['password'];
                 $_SESSION['userrole']=$user['role'];
                 $_SESSION['usertlf']=$user['tlf'];
                 $_SESSION['usercin']=$user['cin'];
-                $_SESSION['useravatar']=$user['avatar_admin'];*/
+                $_SESSION['useravatar']=$user['avatar_admin'];
                 return true;
             }
         }
 
-        public function  edit_admin(String $name,String $email,String $password,String $avatar){
-            $sql="UPDATE `admin` SET id=:id_admin,name=:name_admin,email=:email_admin,password=:pass,avatar_admin=:avatar";
+        public function  edit_admin(String $name,String $email,String $password,String $avatar,int $id){
+            $sql="UPDATE `admin` SET name=:name_admin,email=:email_admin,password=:pass,avatar_admin=:avatar where id=:id_admin";
             $this->pdo->launch_query($sql,[
                 'id_admin'=>$id,
                 'name_admin'=>$name,
                 'email_admin'=>$email,
                 'pass'=>$password,
-                'avatar'=>$avatar]);
+                'avatar'=>$avatar
+            ]);
+            $sql="SELECT * FROM admin where id=:id";
+            $query=$this->pdo->launch_query($sql,[
+                'id'=>$id,
+            ]);
+            $admin=$query->fetch();
+            $_SESSION['id']=$admin['id'];
+            $_SESSION['name']=$admin['name'];
+            $_SESSION['email']=$admin['email'];
+            $_SESSION['password']=$admin['password'];
+            $_SESSION['role']=$admin['role'];
+            $_SESSION['avatar_admin']=$admin['avatar_admin'];
         }
 
         public function signup(String $name,String $email,int $cin,int $tlf,String $password,String $avatar){
