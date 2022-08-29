@@ -7,14 +7,16 @@
     if(isset($_POST['signup'])){
         extract($_POST);
         $trouve=false;
-        $AllCin=$admin->allcin();
-      
         $file=new File("../storage/avatars/",$_FILES['avatar']);
+        $verifierEmail=$admin->checkEmail($email);
+       
         if(empty($name)){
             header("location:index.php?msg=name required&type=danger");
         }
         else if(empty($email)){
             header("location:index.php?msg=email required&type=danger");
+        }else if($verifierEmail){
+            header("location:index.php?msg=Email existe&type=danger");
         }
         else if(empty($cin)){
             header("location:index.php?msg=cin required&type=danger");

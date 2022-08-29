@@ -18,6 +18,7 @@ img{
                         <div class="text-center">
                            <h1 class="h4 fw-bolder mb-3 py-3">Sign Up</h1>
                         </div>
+                        <!--novalidate=""-->
                     <form class="py-4" action="index.php" method="POST"  enctype="multipart/form-data">
                      <?php if(array_key_exists('type',$_GET)): ?>   
                     <div class="alert alert-<?=$_GET['type']?>" role="alert">
@@ -27,7 +28,7 @@ img{
                        <div class="row mb-4 ">
                           <div class="col-lg-6">
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control ">
+                            <input type="text" name="name" class="form-control " required>
                           </div>
                           <div class="col-lg-6">
                             <label>Email</label>
@@ -35,28 +36,38 @@ img{
                           </div>
                         </div>
                         <div class="row mb-4">
-                          <div class="col-lg-6">
+                          <div class="col-lg-6 form-group">
                             <label>Cin</label>
                             <input type="Text" name="cin" class="form-control ">
+                            <div class="invalid-feedback">
+									            	What's your name?
+									          </div>
                           </div>
                           <div class="col-lg-6">
                             <label>N° tlf</label>
-                            <input type="text" name="tlf" class="form-control ">
+                            <input type="text" name="tlf" class="form-control" pattern=[0-9]{8}>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-6">
                             <label>Password</label>
-                            <input type="password" name="password" class="form-control ">
+                            <input type="password" name="password" class="form-control " required data-eye>
                           </div>
                           <div class="col-lg-6">
                             <label>Avatar</label>
                             <input type="file" name="avatar" class="form-control ">
                           </div>
                         </div>
-                        <div class="text-center mt-5">
+                        <div class="form-group py-4">
+									      	<input type="checkbox" name="agree" id="agree" class="custom-control-input" required>
+										      <label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
+								       </div>
+                        <div class="text-center mt-2">
                                 <button name="signup" class="btn btn-outline-success">Sign Up</button>
                         </div>
+                        <div class="mt-4 text-muted text-center">
+									         Already have an account ? <a href="../login">Login</a>
+								        </div>
                     </form>
                 </div>
                 <div class="col-lg-6 d-lg-block d-none text-center">

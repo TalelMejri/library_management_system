@@ -134,6 +134,17 @@
             return $query->fetch();
         }
 
+        public function checkEmail(String $email){
+            $sql="SELECT * from admin where email=:email";
+            $query=$this->pdo->launch_query($sql,['email'=>$email]);
+             $verifier= $query->fetch();
+            if($verifier==true){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
         
     }
 
