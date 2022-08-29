@@ -26,9 +26,14 @@
             $user=new user();
             $verifier_admin=$user->login_admin($email,$password);
             $verifier_user=$user->login_user($email,$password);
-            if($verifier_admin==false &&  $verifier_user==false){
+            if($verifier_admin==false &&  $verifier_user==0){
                header("location:index.php?msg=password or email is incorrect&type=danger");
-            }else if($verifier_user==true){
+            }
+            else if($verifier_user==2){
+                header("location:index.php?msg=account is not verified&type=danger");
+                exit;
+             }
+            else if($verifier_user==1){
                 header("location:../profiluser");
                 exit;
             }else if($verifier_admin==true){
