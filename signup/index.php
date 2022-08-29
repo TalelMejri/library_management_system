@@ -2,6 +2,8 @@
     session_start();
     include "../classes/admin_user.php";
     include "../classes/File.php";
+    include "../send.php";
+    use PHPMailer\PHPMailer\PHPMailer;
     $admin=new user();
    
     if(isset($_POST['signup'])){
@@ -43,9 +45,12 @@
             header("location:index.php?msg=image not uploaded&type=danger");
         }else{
             $avatar="../storage/avatars/".$file->getfilename();
-            $verifier=$admin->signup($name,$email,$cin,$tlf,$password,$avatar);
-                header("location:../login");
-                exit;
+            $token =rand(10, 9999);
+            $verifier=$admin->signup($name,$email,$cin,$tlf,$password,$avatar,$token);
+            $link = "<a href='".$_SERVER['HTTP_HOST']."../verify/index.php?key=" . $email . "&token=" .$token."'>Click and Verify Email</a>";
+            sendmail("library", $email, "Lien de Verification", "Cliquez sur ce lien pour vérifier l'e-mail '.$link.'");
+            header("location:../login");
+            exit;
         }
     }
     $show=true;

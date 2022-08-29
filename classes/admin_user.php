@@ -79,8 +79,8 @@
             $_SESSION['avatar_admin']=$admin['avatar_admin'];
         }
 
-        public function signup(String $name,String $email,int $cin,int $tlf,String $password,String $avatar){
-            $sql="INSERT INTO `admin`( `name`, `email`, `password`, `avatar_admin`, `tlf`, `cin`, `role`, `corbeille`)  VALUES (:name,:email,:pass,:avatar,:tlf,:cin,:role,:corbeille)";
+        public function signup(String $name,String $email,int $cin,int $tlf,String $password,String $avatar,int $token){
+            $sql="INSERT INTO `admin`( `name`, `email`, `password`, `avatar_admin`, `tlf`, `cin`, `role`, `corbeille`, `status`, `token`)  VALUES (:name,:email,:pass,:avatar,:tlf,:cin,:role,:corbeille,:statu,:token)";
             $this->pdo->launch_query($sql,[
                 'name'=>$name,
                 'email'=>$email,
@@ -90,6 +90,8 @@
                 'cin'=>$cin,
                 'tlf'=>$tlf,
                 'corbeille'=>0,
+                'statu'=>0,
+                'token'=>$token
             ]);
             return $this->pdo->lastInsertId();
         }
