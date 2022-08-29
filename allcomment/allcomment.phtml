@@ -28,9 +28,9 @@
    <?php if($trouve==1): ?>
  <?php foreach($comments as $com) :?>  
       
-       <div class="card  reglage_card">
+       <div class="card reglage_card">
          <div style="font-size:25px" class="card-header text-center fw-bolder">
-          <a href="allcomment.php?id=<?=$com['id']?>"> <span><i name="close" class="fa-solid fa-xmark float-end text-danger"></i></span></a>      
+          <a href="index.php?id=<?=$com['id']?>"><span><i name="close" class="fa-solid fa-xmark float-end text-danger"></i></span></a>      
            <?=$com['nom']?>
          </div>
         <div class="card-body mb-2">
@@ -48,7 +48,7 @@
    <div class="card  reglage_card">
          <div style="font-size:25px" class="card-header text-center fw-bolder">
          <?=$com['nom']?> 
-             <a href="allcomment.php?id=<?=$com['id']?>"> <span><i name="close" class="fa-solid fa-xmark float-end text-danger"></i></span></a> 
+             <a href="index.php?id=<?=$com['id']?>"> <span><i name="close" class="fa-solid fa-xmark float-end text-danger"></i></span></a> 
          </div>
         <div class="card-body mb-2">
                 <span style="font-size:20px" class="text-primary fw-bolder mb-2" >email: </span><?=$com['email'];?> 
