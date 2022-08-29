@@ -17,15 +17,19 @@
     $errors=[];  
     if(isset($_POST['update'])){
      extract($_POST);
-     $file=new File('../storage/book/',$_FILES['avatar']);
-     $file->upload();
-     $avatar="../storage/book/".$file->getfilename();
-     if(empty($errors)){
-        $idbook = array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['idbook'];
-        $new=$book->updatebook($idbook,$name_book,$author,$description,$nbr,$avatar);
-        header("location:../consultebook");
-        exit;
-    }
+     $avatarUploaded = false;
+     $avatar = "";
+     if(strlen($_FILES['avatar']["name"])){
+         $file=new File('../storage/book/',$_FILES['avatar']);
+         $file->upload();
+         $avatar="../storage/book/".$file->getfilename();
+        $avatarUploaded = true;
+     }
+         $idbook = array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['idbook'];
+            $new=$book->updatebook($idbook,$name_book,$author,$description,$nbr,$avatar,$avatarUploaded);
+            header("location:../consultebook");
+            exit;
+     
 }
 
     $books=$book->getbookbyid(array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['idbook']);
