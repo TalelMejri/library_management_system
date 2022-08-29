@@ -39,10 +39,13 @@
             ]);
             $user=$query->fetch();
             if($user==false){
-                return false;
+                return 1;
             }
             else if (!password_verify($password,$user["password"])){
-                return false;
+                return 0;
+            }
+            else if ($user["verified"]==0){
+                return 2;
             }
             else{
                 $_SESSION['userid']=$user['id'];
@@ -53,7 +56,7 @@
                 $_SESSION['usertlf']=$user['tlf'];
                 $_SESSION['usercin']=$user['cin'];
                 $_SESSION['useravatar']=$user['avatar_admin'];
-                return true;
+                return 1;
             }
         }
 
@@ -79,7 +82,7 @@
             $_SESSION['avatar_admin']=$admin['avatar_admin'];
         }
 
-        public function signup(String $name,String $email,int $cin,int $tlf,String $password,String $avatar,int $token){
+        public function signup(String $name,String $email,int $cin,int $tlf,String $password,String $avatar,string $token){
             $sql="INSERT INTO `admin`( `name`, `email`, `password`, `avatar_admin`, `tlf`, `cin`, `role`, `corbeille`, `status`, `token`)  VALUES (:name,:email,:pass,:avatar,:tlf,:cin,:role,:corbeille,:statu,:token)";
             $this->pdo->launch_query($sql,[
                 'name'=>$name,
@@ -157,6 +160,39 @@
                 return false;
             }
         }
+
+        public function validateEmail(String $email,String $token):int{
+            $sql="SELECT * from admin where email=:email";
+            $query=$this->pdo->launch_query($sql,['email'=>$email]);
+            $user=$query->fetch();
+            try{
+                if($user){
+                    if($user['verified']==1){
+                        // user is already verified
+                        return 2;
+                    }else{
+                        if($user['token']!=$token){
+                            // Token doesn't match email adress
+                            return 4;
+                        }
+                        $sql = "UPDATE admin SET `verified`=1, token=null WHERE id = :id";
+                        $this->pdo->launch_query($sql,['id'=>$user['id']]);
+                        // Good to go
+                        return 1;
+                    }
+                }else{
+                    // first error  :: user doesn't exist 
+                    return 0;
+                }
+            }
+            catch(Exception $e)
+            {
+                // Something went wrong
+                return 3;
+            }
+        }
+
+
 
         
     }
