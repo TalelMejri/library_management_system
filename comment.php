@@ -1,5 +1,7 @@
 <?php
     include "./classes/comments_manager.php";
+    include "./send.php";
+    use PHPMailer\PHPMailer\PHPMailer;
     $errors=[];
     if(isset($_POST['submit'])){
         extract($_POST);
@@ -15,8 +17,10 @@
             $errors['message']="message required";
             goto shoform;
         }else{
-                $query=new comment();
-                $value=$query->addmessage($name,$email,$messages);
+            $query=new comment();
+            $value=$query->addmessage($name,$email,$messages);
+            sendmail("Library", $email, "We've recieved your message", "Thank you for sending us a message one of our agents will get back to you soon ");
+            sendmail("Library", "dont.reply.ht@gmail.com", "New message from ".$name, $messages);
         }
     }
      shoform:
