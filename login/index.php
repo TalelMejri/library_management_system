@@ -26,13 +26,13 @@
             $user=new user();
             $verifier_admin=$user->login_admin($email,$password);
             $verifier_user=$user->login_user($email,$password);
-            if($verifier_admin==false ||  $verifier_user==false){
+            if($verifier_admin==false &&  $verifier_user==false){
                header("location:index.php?msg=password or email is incorrect&type=danger");
-            }else if($verifier_admin){
-                header("location:../profiladmin");
-                exit;
-            }else if($verifier_user){
+            }else if($verifier_user==true){
                 header("location:../profiluser");
+                exit;
+            }else if($verifier_admin==true){
+                header("location:../profiladmin");
                 exit;
             }
         }
