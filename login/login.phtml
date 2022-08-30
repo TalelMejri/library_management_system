@@ -36,6 +36,12 @@ img{>
                                  <?= $_GET['verfiy'] ?>
                                </div>
                           <?php endif;?>
+                          <?php if(array_key_exists('mesage_renvoyer',$_GET)): ?>
+                              <div class="alert alert-<?=$_GET['typ']?>" role="alert">
+                                 <h3><?= $_GET['mesage_renvoyer'] ?></h3>
+                                 <h5><?= $_GET['mesage_renvoyer1'] ?></h5>
+                               </div>
+                          <?php endif;?>
                       <div class="mb-4">
                           <input  type="text" placeholder="Entrer Email Address..." name="email" class="form-control rounded-pill p-4" id="exampleInputEmail1">
                       </div>

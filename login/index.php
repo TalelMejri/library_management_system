@@ -30,7 +30,8 @@
                header("location:index.php?msg=password or email is incorrect&type=danger");
             }
             else if($verifier_user==2){
-                header("location:index.php?msg=account is not verified&type=danger");
+                $link="<a href='../renvoyerEmail'>cliquer Here for renvoyer</a>";
+                header("location:index.php?msg=account is not verified " .$link." &type=danger");
                 exit;
              }
             else if($verifier_user==1){
