@@ -144,7 +144,7 @@
             $query=$this->pdo->launch_query($sql,['email'=>$email]);
              $verifier= $query->fetch();
             if($verifier==true){
-                return true;
+                return $verifier;
             }else{
                 return false;
             }
