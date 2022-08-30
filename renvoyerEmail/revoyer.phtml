@@ -5,12 +5,6 @@
 </head>
 <div class="py-5 mt-5 d-flex justify-content-center">
 <form class="shadow-lg p-5 rounded " action="index.php" method="POST">
-     <?php
-        if(array_key_exists('msg2',$_GET)):
-     ?>
-        <h3><?=$_GET['msg'];?></h3>
-        <h5><?=$_GET['msg2'];?></h5>
-     <?php endif;?>
      <div class="h4 text-center mb-5  display-5">Renvoyer email</div>
     <input class="form-control mb-2  " type="email" name="email" placeholder="Entrer Votre email" required>
     <div class="text-center  ">
