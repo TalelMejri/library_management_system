@@ -191,6 +191,11 @@
                 return 3;
             }
         }
+
+        public function addtoken(int $token,int $id){
+            $sql="UPDATE  admin SET  password_token=:token where id=:id ";
+            $this->pdo->launch_query($sql,['token'=>$token,'id'=>$id]);
+        } 
   
     }
 
