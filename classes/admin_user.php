@@ -196,6 +196,10 @@
             $sql="UPDATE  admin SET  password_token=:token where id=:id ";
             $this->pdo->launch_query($sql,['token'=>$token,'id'=>$id]);
         } 
+        public function changerpassword(String $token,String $password ){
+            $sql="UPDATE admin SET password=:pass,password_token=null where password_token=:token";
+            $this->pdo->launch_query($sql,['pass'=>password_hash($password,PASSWORD_DEFAULT),'token'=>$token]);
+        }
   
     }
 
