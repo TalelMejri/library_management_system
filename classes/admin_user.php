@@ -150,6 +150,17 @@
             }
         }
 
+        public function checkToken(String $token){
+            $sql="SELECT * from admin where password_token=:tok";
+            $query=$this->pdo->launch_query($sql,['tok'=>$token]);
+             $verifier= $query->fetch();
+            if($verifier==true){
+                return $verifier;
+            }else{
+                return false;
+            }
+        }
+
         public function checkCin(String $cin){
             $sql="SELECT * from admin where cin=:cin";
             $query=$this->pdo->launch_query($sql,['cin'=>$cin]);
@@ -196,8 +207,9 @@
             $sql="UPDATE  admin SET  password_token=:token where id=:id ";
             $this->pdo->launch_query($sql,['token'=>$token,'id'=>$id]);
         } 
-        public function changerpassword(String $token,String $password ){
-            $sql="UPDATE admin SET password=:pass,password_token=null where password_token=:token";
+        
+        public function changerpassword(String $token,String $password){
+            $sql="UPDATE admin SET password=:pass where password_token=:token";
             $this->pdo->launch_query($sql,['pass'=>password_hash($password,PASSWORD_DEFAULT),'token'=>$token]);
         }
   

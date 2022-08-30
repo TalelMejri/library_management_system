@@ -26,7 +26,7 @@
     $token=$_GET['token'];
     extract($_POST);
     if($code==$token){
-        header("location:../changerpassword?token_check=".$token."");
+        header("location:../changerpassword?token_check=".$_GET['token']."");
         exit;
     }else{
         $suivant=1;
