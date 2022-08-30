@@ -165,7 +165,7 @@
             $sql="SELECT * from admin where email=:email";
             $query=$this->pdo->launch_query($sql,['email'=>$email]);
             $user=$query->fetch();
-            try{
+             try{
                 if($user){
                     if($user['verified']==1){
                         // user is already verified
@@ -191,10 +191,7 @@
                 return 3;
             }
         }
-
-
-
-        
+  
     }
 
 

@@ -14,13 +14,13 @@ function sendmail($name,$email,$subject,$message){
     $mail->isSMTP();                            //envoyer utilisant SMTP
     $mail->Host="smtp.gmail.com";                //initialization de serveur SMTP
     $mail->SMTPAuth=true;                       //activation SMTP authentification
-    $mail->Username="librarymejri@gmail.com";  //ADRESSE SMTP
-    $mail->Password="airdxstolhkmwqio";           //Mot de passe SMTP
+    $mail->Username="testlibrary05@gmail.com";  //ADRESSE SMTP
+    $mail->Password="ctafgykbzriltxvu";           //Mot de passe SMTP
     $mail->Port=465;                            //Port TCP
     $mail->SMTPSecure="ssl";
     /* Contenu De mail de ADMIN*/
     $mail->isHTML(true);                                        //Format de mail html
-    $mail->setFrom("librarymejri@gmail.com",$name);
+    $mail->setFrom("testlibrary05@gmail.com",$name);
     $mail->addAddress("$email");               //Adresse reception
     $mail->Subject=("$subject");                       //Le sujet de l'email
     $mail->Body=$message;                                       //Le contenu de mail

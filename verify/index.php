@@ -27,6 +27,8 @@ if(!$email || !$token){
         echo "Token doesn't match email adress";
         exit;
     }
-
 }
+
+
+
 
