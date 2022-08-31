@@ -8,6 +8,13 @@
  if(isset($_POST['submit'])){
     extract($_POST);
     $user=$admin->checkEmail($email);
+    // verification if user exist
+    if (!$user){
+        echo " user doesn't exist";
+        exit;
+    }
+    // generate new token
+
     $token=$user['token'];
     $link="<a href='".$_SERVER['HTTP_HOST']."/".explode('/',$_SERVER['PHP_SELF'])[1]."/verify/index.php?key=".$email."&token=".$token."'>Cliquer pour renvoyer token</a>";
     $verfier=sendmail("library",$email,"Renvyoer verification","cliquer ici pour verification encore'.$link.'");
