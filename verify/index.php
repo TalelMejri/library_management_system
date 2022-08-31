@@ -29,7 +29,10 @@ if(!$email || !$token){
         goto show;
     }
     show:
-    include 'verify.phtml';
+    $template ="verify";
+    $page_titel = "Verification";
+    $show = false;
+    include "../auth_layout.phtml";
 }
 
 

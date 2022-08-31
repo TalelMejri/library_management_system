@@ -21,5 +21,8 @@
     header("location:../login?mesage_renvoyer=Email de verification renvoyé&mesage_renvoyer1=Veuillez vérifier votre e-mail pour le confirmer&typ=success");
     exit;
 }
- include "./revoyer.phtml";
+ $template ="revoyer";
+ $page_titel = "Renvoyer Email password";
+ $show = false;
+ include "../auth_layout.phtml";
 ?>
