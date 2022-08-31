@@ -75,7 +75,7 @@ header{
 }
 
 header{
-    background-image: url(../images/back_library.jpg);
+    background-image: url(./images/back_library.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
