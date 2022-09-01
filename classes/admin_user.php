@@ -207,6 +207,11 @@
             $sql="UPDATE  admin SET  password_token=:token where id=:id ";
             $this->pdo->launch_query($sql,['token'=>$token,'id'=>$id]);
         } 
+
+        public function addtokenEmail(String $token,int $id){
+            $sql="UPDATE  admin SET  token=:token where id=:id ";
+            $this->pdo->launch_query($sql,['token'=>$token,'id'=>$id]);
+        } 
         
         public function changerpassword(int $id,String $password){
             $sql="UPDATE admin SET password=:pass where id=:id";
