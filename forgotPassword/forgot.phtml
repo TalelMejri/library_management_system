@@ -3,6 +3,11 @@
 <div class="py-5 mt-5 d-flex justify-content-center ">
 <form class="shadow-lg p-5 rounded " action="index.php" method="POST">
     <div class="h4 text-center mb-5  text-primary display-5">Reset Password</div>
+    <?php if(!empty($error)): ?>
+        <div class="alert alert-danger" role="alert">
+             <?= $error[0];?>
+        </div>
+        <?php endif; ?>
      <input class="form-control mb-2" type="email" name="email" placeholder="Entrer Votre email" required>
      <div class="text-center">
         <button name="submit" class="btn btn-outline-success">Suivant</button>

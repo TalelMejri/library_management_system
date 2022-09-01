@@ -17,15 +17,18 @@
         header("location:../changerpassword");
         exit;
     }else{
-        echo "<script>alert('il faut verified');</script>";
+        $error[0]="il faut verified";
+        goto show;
         }
     }else{
         // user doesn't exist
-        echo "<script>alert('User Doesn't exit');</script>";
+        $error[0]="User Doesn't exit";
+      
+     
     }
  }
 
-
+show:
  $template ="forgot";
  $page_titel = "Forgot password";
  $show = false;
