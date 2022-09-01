@@ -37,6 +37,10 @@ if(isset($_POST['submit'])){
         $errors[0]="nombre required";
         goto show_form;
     }
+    if(empty($date)){
+        $errors[0]="date required";
+        goto show_form;
+    }
 
     /*if(empty($_FILES['avatar'])){
         $errors[0]="avatar required";
@@ -61,7 +65,7 @@ if(isset($_POST['submit'])){
     $avatar="../storage/book/".$file->getfilename();
     if(empty($errors)){
         $user=new book();
-        $verifie_add=$user->add_book($name_book,$author,$description,$nbr,$avatar);
+        $verifie_add=$user->add_book($name_book,$author,$description,$nbr,$date,$avatar);
         header("location:../profiladmin");
         exit;
     }
