@@ -49,7 +49,7 @@
             $verifier=$admin->signup($name,$email,$cin,$tlf,$password,$avatar,$token);
             $link = "<a href='".$_SERVER['HTTP_HOST']."/".explode('/',$_SERVER['PHP_SELF'])[1]."/verify/index.php?key=" . $email . "&token=" .$token."'>Click and Verify Email</a>";
             sendmail("library", $email, "Lien de Verification", "Cliquez sur ce lien pour vérifier l'e-mail '.$link.'");
-            header("location:../login");
+            header("location:../affichage_confirmation_email");
         }
     }
     $show=true;
