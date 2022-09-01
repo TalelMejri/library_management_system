@@ -319,8 +319,8 @@
     <?php endif;?>
 
     <?php if(isset($_SESSION['username']) && !$show && !isset($_SESSION['name'])):?>
-      <div>
-        <nav  class="bg-secondary text-uppercase">
+      <div >
+        <nav  class="bg-secondary text-uppercase fixed-top">
             <div class="container">
                     <button class="btn btn-outline-dark position-absolute mt-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                           <i class="fa-solid fa-list"></i>
@@ -360,7 +360,7 @@
   </button>
   <div class="collapse show" id="home-collapse">
     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-      <li><a href="../allcomment"  class="link-dark rounded">Profile<i class="fa-solid fa-comment px-2"></i></a></li>
+      <li><a href="../profiluser"  class="link-dark rounded">Profile<i class="fa-solid fa-comment px-2"></i></a></li>
       <li><a href="../allcomment"  class="link-dark rounded">Chat with admin<i class="fa-solid fa-comment px-2"></i></a></li>
       <li><a href="../allcomment"  class="link-dark rounded">Chat with All users<i class="fa-solid fa-comment px-2"></i></a></li>
     </ul>
@@ -422,7 +422,7 @@
   </div>
     </div>
           <div class="contenu d-flex justify-content-center py-5">
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, facere!
+             
               <?php include $template.".phtml";?>
           </div>
      <?php endif;?>
