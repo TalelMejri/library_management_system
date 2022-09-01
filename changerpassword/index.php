@@ -13,8 +13,7 @@
        if ($verify){
               $suivant=0; 
        }else{
-           echo "Please check the code or the email";
-           exit;
+          echo "<script>alert('Please check the code or the email');</script>";
        }
     }
 

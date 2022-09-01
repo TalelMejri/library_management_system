@@ -17,12 +17,11 @@
         header("location:../changerpassword");
         exit;
     }else{
-            echo "il faut verified";
+        echo "<script>alert('il faut verified');</script>";
         }
     }else{
         // user doesn't exist
-        echo "test";
-        exit;
+        echo "<script>alert('User Doesn't exit');</script>";
     }
  }
 
