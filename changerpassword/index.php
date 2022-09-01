@@ -3,7 +3,7 @@
  include "../classes/admin_user.php";
  $admin=new user();
  $suivant=1;
-
+ $error=[];
  if(isset($_POST['confirmer'])){  
        $suivant=0; 
        extract($_POST);
@@ -14,17 +14,23 @@
               $suivant=0; 
        }else{
           echo "<script>alert('Please check the code or the email');</script>";
+          $suivant=1;
        }
     }
 
     if(isset($_POST['update'])){
            $suivant=0;
            extract($_POST);
+           if(!empty($password) && !empty($confirme) && ($password==$confirme)){
            $admin->changerpassword($id,$password);
            header("location:../login");
            exit;
+       }else{
+              $error[0]="check passowrd or confirme password";
+              goto show;
        }
-      
+       }
+show:
 $template ="changerpassword";
 $page_titel = "Change password";
 $show = false;

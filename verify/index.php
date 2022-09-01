@@ -7,8 +7,8 @@ $token = $_GET["token"];
 $admin=new user();
 $errors=[];
 if(!$email || !$token){
-    echo "Email or token missing";
-    exit;
+    $errors[0]="Email or token missing";
+    goto show;
 }else{
     $result = $admin->validateEmail($email,$token);
     if(!$result){
