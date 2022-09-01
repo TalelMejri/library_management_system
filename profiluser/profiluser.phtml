@@ -26,9 +26,11 @@
             </form>
          </div>
          <div class="col-lg-4 text-center">
-         
-                <i style="cursor:pointer" class="fa-solid fa-heart text-secondary"></i>
-             <!--   <i style="cursor:pointer" class="fa-solid fa-heart text-danger"></i>-->
+         <form action="../favoritebook.php" method="POST">
+               <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
+               <?php $heart=$admin->getalluser_favorite($_SESSION['userid'],$book['idbook']); ?>
+               <button type="submit" class="btn btn-light" name="favorite"><i class="<?= $heart['favorite'] ?'text-danger' : 'text-secondary'?> fa-solid fa-heart "></i></button>  
+            </form>
          </div>
          <div class="col-lg-4 text-center">
                 <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?>
