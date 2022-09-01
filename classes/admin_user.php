@@ -232,8 +232,27 @@
             }
         }
 
+        public function AddfavoriteBook(int $id,int $idbook){
+            $sql="SELECT * from books_favorite where iduser=:id AND idbook=:idbook";
+            $query= $this->pdo->launch_query($sql,['id'=>$id,'idbook'=>$idbook]);
+            $user=$query->fetch();
+            if(!$user){
+                $sql="INSERT INTO books_favorite (idbook,iduser,favorite) VALUES (:idbook,:iduser,:favorite)";
+                $this->pdo->launch_query($sql,['idbook'=>$idbook,'iduser'=>$id,'favorite'=>true]);
+            }else{
+                $sql="UPDATE books_favorite SET favorite=:favorite_new where idbook=:idbook AND iduser=:id";
+                $this->pdo->launch_query($sql,['favorite_new'=>!$user['favorite'],'idbook'=>$idbook,'id'=>$id]);
+            }
+        }
+
         public function getalluser_liked(int $id,int $idbook){
             $sql="SELECT liked from user_liked where id_user=:id AND id_book=:idbook";
+            $query= $this->pdo->launch_query($sql,['id'=>$id,'idbook'=>$idbook]);
+            return $query->fetch();
+        }
+
+        public function getalluser_favorite(int $id,int $idbook){
+            $sql="SELECT favorite from books_favorite where iduser=:id AND idbook=:idbook";
             $query= $this->pdo->launch_query($sql,['id'=>$id,'idbook'=>$idbook]);
             return $query->fetch();
         }
