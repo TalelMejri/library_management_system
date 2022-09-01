@@ -8,15 +8,16 @@
             $this->pdo=new database();
          }
 
-         public function add_book(String $name,String $author,String $desc,int $nbr,String $avatar,int $status =0){
-            $sql="INSERT INTO `book`(`name_book`, `author_book`, `description_book`, `nbr_book`, `status`, `avatar`) VALUES (:nameofbook,:author,:descr,:nbr,:statu,:avatar)";
+         public function add_book(String $name,String $author,String $desc,int $nbr,String $date,String $avatar,int $status =0){
+            $sql="INSERT INTO `book`(`name_book`, `author_book`, `description_book`, `nbr_book`, `status`, `avatar`,`date_book`) VALUES (:nameofbook,:author,:descr,:nbr,:statu,:avatar,:date)";
             $this->pdo->launch_query($sql,[
                  'nameofbook'=>$name,
                  'author'=>$author,
                  'descr'=>$desc,
                  'nbr'=>$nbr,
                  'statu'=>'enable',
-                 'avatar'=>$avatar
+                 'avatar'=>$avatar,
+                 'date'=>$date
          ]);
           return $this->pdo->lastInsertId();
          }
@@ -87,6 +88,12 @@
 
          public function gettopratebook(){
             $sql="SELECT * from book  order by rate DESC limit 3";
+            $query=$this->pdo->launch_query($sql);
+            return $query->fetchAll();
+         }
+
+         public function getnewbok(){
+            $sql="SELECT * from book  order by date_book DESC limit 3";
             $query=$this->pdo->launch_query($sql);
             return $query->fetchAll();
          }

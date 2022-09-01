@@ -217,6 +217,26 @@
             $sql="UPDATE admin SET password=:pass where id=:id";
             $this->pdo->launch_query($sql,['pass'=>password_hash($password,PASSWORD_DEFAULT),'id'=>$id]);
         }
+
+
+        public function AddLikedBook(int $id,int $idbook){
+            $sql="SELECT * from user_liked where id_user=:id AND id_book=:idbook";
+            $query= $this->pdo->launch_query($sql,['id'=>$id,'idbook'=>$idbook]);
+            $user=$query->fetch();
+            if(!$user){
+                $sql="INSERT INTO user_liked (id_book,id_user,liked) VALUES (:idbook,:iduser,:liked)";
+                $this->pdo->launch_query($sql,['idbook'=>$idbook,'iduser'=>$id,'liked'=>true]);
+            }else{
+                $sql="UPDATE user_liked SET liked=:liked_new where id_book=:idbook AND id_user=:id";
+                $this->pdo->launch_query($sql,['liked_new'=>!$user['liked'],'idbook'=>$idbook,'id'=>$id]);
+            }
+        }
+
+        public function getalluser_liked(int $id,int $idbook){
+            $sql="SELECT liked from user_liked where id_user=:id AND id_book=:idbook";
+            $query= $this->pdo->launch_query($sql,['id'=>$id,'idbook'=>$idbook]);
+            return $query->fetch();
+        }
   
     }
 
