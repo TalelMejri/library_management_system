@@ -237,6 +237,14 @@
             $query= $this->pdo->launch_query($sql,['id'=>$id,'idbook'=>$idbook]);
             return $query->fetch();
         }
+        
+        public function sommeliked(int $id){
+            $sql="SELECT sum(liked) from user_liked where id_book=:id";
+            $query=$this->pdo->launch_query($sql,['id'=>$id]);
+            $value=$query->fetch();
+            return $value['sum(liked)'];
+        }
+
   
     }
 
