@@ -20,7 +20,9 @@
          <div class="col-lg-4">
             <form action="../likedbook.php" method="POST">
                <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
-               <button type="submit" class="btn btn-light" name="like"><i class="<?=$book['all_liked'] ?'fa-solid' : 'fa-regular'?> fa-thumbs-up px-1"></i><?=$book['all_liked']?></button>  
+               <?php $verified=$admin->getalluser_liked($_SESSION['userid'],$book['idbook']); ?>
+               <?php $nombre=$admin->sommeliked($book['idbook']);?>
+               <button type="submit" class="btn btn-light" name="like"><i class="<?= $verified['liked'] ?'fa-solid' : 'fa-regular'?> fa-thumbs-up px-1"></i><?=$nombre?></button>  
             </form>
          </div>
          <div class="col-lg-4 text-center">
