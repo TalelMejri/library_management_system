@@ -34,6 +34,10 @@
                 header("location:index.php?msg=account is not verified " .$link." &type=danger");
                 exit;
              }
+             else if($verifier_user==3){
+                header("location:index.php?msg=Your Account is blocked&type=danger");
+                exit;
+             }
             else if($verifier_user==1){
                 header("location:../profiluser");
                 exit;

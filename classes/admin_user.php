@@ -47,6 +47,9 @@
             else if ($user["verified"]==0){
                 return 2;
             }
+            else if ($user["corbeille"]==1){
+                return 3;
+            }
             else{
                 $_SESSION['userid']=$user['id'];
                 $_SESSION['username']=$user['name'];
