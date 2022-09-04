@@ -8,8 +8,8 @@
             $this->pdo=new database();
          }
 
-         public function add_book(String $name,String $author,String $desc,int $nbr,String $date,String $avatar,int $status =0){
-            $sql="INSERT INTO `book`(`name_book`, `author_book`, `description_book`, `nbr_book`, `status`, `avatar`,`date_book`) VALUES (:nameofbook,:author,:descr,:nbr,:statu,:avatar,:date)";
+         public function add_book(String $name,String $author,String $desc,int $nbr,String $date,String $avatar,String $genre){
+            $sql="INSERT INTO `book`(`name_book`, `author_book`, `description_book`, `nbr_book`, `status`, `avatar`,`genre`,`date_book`) VALUES (:nameofbook,:author,:descr,:nbr,:statu,:avatar,:genre,:date)";
             $this->pdo->launch_query($sql,[
                  'nameofbook'=>$name,
                  'author'=>$author,
@@ -17,7 +17,8 @@
                  'nbr'=>$nbr,
                  'statu'=>'enable',
                  'avatar'=>$avatar,
-                 'date'=>$date
+                 'date'=>$date,
+                 'genre'=>$genre
          ]);
           return $this->pdo->lastInsertId();
          }

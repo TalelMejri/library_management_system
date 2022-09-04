@@ -40,11 +40,11 @@
               <div class="col-md-6">  <p class="card-text"> Nombre dispo : <?=$book['nbr_book'];?></p></div>
               <div class="col-md-6">  Status :<span style="color:<?= $book['status']=='enable'? 'green' :''?>" ><?= $book['status'] ;?></span></div>
           </div>
-                 decription : <p class="card-text"><?=$book['description_book'];?></p>
-                 <?php for($i=0;$i<$book['rate'];$i++):?>
-                     <i class="fa-solid fa-star text-warning"></i>
-                  <?php endfor;?>
-             </div>
+            <div class="row">
+              <div class="col-md-6">  <p class="card-text">  decription : <p class="card-text"><?=$book['description_book'];?></p></p></div>
+              <div class="col-md-6">  genre :<span ><?= $book['genre'] ;?></span></div>
+          </div>
+        </div>
              <div class="row justify-content-center gap-2 mb-2">
               <button class="col-md-3 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
               <button class="col-md-3   btn btn-outline-warning"><a class="text-decoration-none text-dark" href="../updatebook?id=<?=$book['idbook'];?>"> Update </a></button>
