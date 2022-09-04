@@ -8,6 +8,12 @@ if(isset($_POST['like'])){
     $admin->AddLikedBook($_SESSION['userid'],$idbook);
    
 }
+if(isset($_POST['liked'])){
+    header("location:./allbook_foruser");
+    exit;
+}
+else{
 header("location:./profiluser");
 exit;
+}
 ?>

@@ -104,6 +104,11 @@
             $query=$this->pdo->launch_query($sql,['id'=>$iduser,'favorite'=>1]);
             return $query->fetchAll();
          }
+         public function getbookbygenre(string $genre){
+            $sql="SELECT * from book where genre=:genre";
+            $query=$this->pdo->launch_query($sql,['genre'=>$genre]);
+            return $query->fetchAll();
+         }
     }
 
 ?>,

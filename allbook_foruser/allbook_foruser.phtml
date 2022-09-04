@@ -1,9 +1,26 @@
+<div class="py-5 mt-5">
 
-
-<h2 class="py-5 mt-2 text-center ">New book</h2>
-<div class="d-flex justify-content-center">
+    <div  class="mx-5">
+        <p class="mx-5 px-2" style="border-left:red 2px solid;font-size:25px">Books</p>
+    </div>
+    <div class="row mx-5">
+        <div class="col-md-6 text-center mb-4">
+            <form action="index.php" method="POST">
+                <button class="btn btn-danger mb-2" name="all">all</button>
+                <button class="btn btn-info  mb-2" name="action">action</button>
+                <button class="btn btn-success  mb-2" name="adventure">adventure</button>
+                <button class="btn btn-primary  mb-2" name="science">science</button>
+            </form>
+        </div>
+        <div class="col-md-6 text-center">
+             <form action="index.php" method="POST">
+                    <input style="border:none;border-bottom:1px solid red;padding-left:15px;outline:none" placeholder="Search Your Book"  type="search">
+            </form> 
+        </div>        
+    </div>
+    <div class="d-flex justify-content-center">
 <div class="row d-flex justify-content-center  gap-5 ">
-   <?php foreach($books as $book): ?>
+   <?php foreach($book_click as $book): ?>
 <div class="card mt-1" style="width: 18rem;">
   <img src="<?=$book['avatar']?>" class="card-img-top" alt="...">
   <div class="card-body">
@@ -20,6 +37,7 @@
          <div class="col-lg-4">
             <form action="../likedbook.php" method="POST">
                <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
+               <input  type="hidden" name="liked" value=<?=$book['idbook']?>>
                <?php $verified=$admin->getalluser_liked($_SESSION['userid'],$book['idbook']); ?>
                <?php $nombre=$admin->sommeliked($book['idbook']);?>
                <button type="submit" class="btn btn-light" name="like"><i class="<?= $verified['liked'] ?'fa-solid' : 'fa-regular'?> fa-thumbs-up px-1"></i><?=$nombre?></button>  
@@ -28,6 +46,7 @@
          <div class="col-lg-4 text-center">
          <form action="../favoritebook.php" method="POST">
                <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
+               <input  type="hidden" name="liked" value=<?=$book['idbook']?>>
                <?php $heart=$admin->getalluser_favorite($_SESSION['userid'],$book['idbook']); ?>
                <button type="submit" class="btn btn-light" name="favorite"><i class="<?= $heart['favorite'] ?'text-danger' : 'text-secondary'?> fa-solid fa-heart "></i></button>  
             </form>
