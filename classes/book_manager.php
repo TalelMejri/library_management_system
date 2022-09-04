@@ -109,6 +109,13 @@
             $query=$this->pdo->launch_query($sql,['genre'=>$genre]);
             return $query->fetchAll();
          }
+
+         public function searchforbook(string $name_book){
+            $name="%".$name_book."%";
+            $sql="SELECT * from book where name_book like :name";
+            $query=$this->pdo->launch_query($sql,['name'=>$name]);
+            return $query->fetchAll();
+         }
     }
 
 ?>,

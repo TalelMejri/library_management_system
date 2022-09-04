@@ -14,11 +14,13 @@
         </div>
         <div class="col-md-6 text-center">
              <form action="index.php" method="POST">
-                    <input style="border:none;border-bottom:1px solid red;padding-left:15px;outline:none" placeholder="Search Your Book"  type="search">
-            </form> 
+                    <input name="search" style="border:none;border-bottom:1px solid red;padding-left:15px;outline:none" placeholder="Search Your Book"  type="search">
+                    <button class="btn btn-warning" name="btn_search">Search</button>
+                </form> 
         </div>        
     </div>
-    <div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center">
+    <?php if($trouve=0):?>
 <div class="row d-flex justify-content-center  gap-5 ">
    <?php foreach($book_click as $book): ?>
 <div class="card mt-1" style="width: 18rem;">
@@ -59,5 +61,47 @@
   </div>
 </div>
 <?php endforeach;?>
+<?php else:?>
+    <div class="row d-flex justify-content-center  gap-5 ">
+   <?php foreach($book_click as $book): ?>
+<div class="card mt-1" style="width: 18rem;">
+  <img src="<?=$book['avatar']?>" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">
+        <div class="row text-center mb-4" >
+         <div class="col-lg-6">
+               <?=$book['name_book']?>
+         </div>
+         <div class="col-lg-6 text-center">
+                <?=$book['author_book']?>
+         </div>
+        </div>
+        <div class="row">
+         <div class="col-lg-4">
+            <form action="../likedbook.php" method="POST">
+               <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
+               <input  type="hidden" name="liked" value=<?=$book['idbook']?>>
+               <?php $verified=$admin->getalluser_liked($_SESSION['userid'],$book['idbook']); ?>
+               <?php $nombre=$admin->sommeliked($book['idbook']);?>
+               <button type="submit" class="btn btn-light" name="like"><i class="<?= $verified['liked'] ?'fa-solid' : 'fa-regular'?> fa-thumbs-up px-1"></i><?=$nombre?></button>  
+            </form>
+         </div>
+         <div class="col-lg-4 text-center">
+         <form action="../favoritebook.php" method="POST">
+               <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
+               <input  type="hidden" name="liked" value=<?=$book['idbook']?>>
+               <?php $heart=$admin->getalluser_favorite($_SESSION['userid'],$book['idbook']); ?>
+               <button type="submit" class="btn btn-light" name="favorite"><i class="<?= $heart['favorite'] ?'text-danger' : 'text-secondary'?> fa-solid fa-heart "></i></button>  
+            </form>
+         </div>
+         <div class="col-lg-4 text-center">
+                <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?>
+         </div>
+        </div>
+    </p>
+  </div>
+</div>
+<?php endforeach;?>
+<?php endif;?>
 </div>
 </div>
