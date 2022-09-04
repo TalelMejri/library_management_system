@@ -1,0 +1,52 @@
+
+
+<div class="m-4 ">
+<div class="py-4">
+    <h1 class="text-center">Favorite Book</h1>
+    <?php if(empty($books_favorite)): ?>
+            <p class="h4 text-muted display-2 mt-5 py-5 text-center">nothing </p>
+    <?php else:?>
+        <div class="row gap-5 d-flex justify-content-center py-3">
+         <?php foreach($books_favorite as $book) :?>
+            <div class="card mb-3" style="max-width:400px;">
+                <div class="row g-0">
+                     <div class="col-md-4">
+                          <img src="<?=$book['avatar']?>" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8  text-dark font-weight-bold">
+                     <div class="card-body">
+                         <h5 class="card-title"><?=$book['name_book']?>
+                                <p class="float-end"><?=$book['status']?></p>                        
+                         </h5>
+                          <p class="card-text"><?=$book['author_book'];?></p>
+                          <p class="card-text py-2"><small class="text-muted">
+                         <span class="text-center ">
+                             <form action="../favoritebook.php" method="POST">
+                                     <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
+                                     <input  type="hidden" name="name_book" value=<?=$book['name_book']?>>
+                                     <?php $heart=$admin->getalluser_favorite($_SESSION['userid'],$book['idbook']); ?>
+                                  <button type="submit" class="btn btn-light" name="favorite"><i class="<?= $heart['favorite'] ?'text-danger' : 'text-secondary'?> fa-solid fa-heart "></i></button>  
+                             </form>
+                      </span>
+                          <span class=" text-center float-end">
+                                 <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?>
+                         </span>
+                    </small>
+                </p>
+                 
+                    </div>
+                </div>
+             </div>
+        </div>
+        <?php endforeach;?>
+        </div>
+        </div>
+    <?php endif;?>
+</div>
+</div>
+
+
+
+
+
+
