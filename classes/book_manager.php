@@ -97,6 +97,12 @@
             $query=$this->pdo->launch_query($sql);
             return $query->fetchAll();
          }
+
+         public function getbooksfavorite(int $iduser){
+            $sql="SELECT * from book b,books_favorite f where b.idbook=f.idbook and f.iduser=:id and f.favorite=:favorite";
+            $query=$this->pdo->launch_query($sql,['id'=>$iduser,'favorite'=>1]);
+            return $query->fetchAll();
+         }
     }
 
 ?>,
