@@ -1,5 +1,44 @@
-<div class="py-5 mt-5">
-
+<div class="mt-5 text-center ">
+       <button class="btn btn-outline-primary<?=$exist_user_commnade==true ? '' : 'disabled'?>" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="text-dark fa-solid fa-cart-shopping"></i></button>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your Carte</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <?php foreach($exist_user_commnade as $commande ): ?>
+                <div class="card">
+                    <div class="card-header text-center">
+                        <p>Votre id commande :<?=$commande['idcommande'];?></p>
+                    </div>
+                    <div class="card-body py-3">
+                       <form action="index.php" method="Post"> 
+                            <p class="h4 text-center">Votre type de livraison *</p>
+                        <div class="text-center d-flex justify-content-center mb-3">
+                            <input type="hidden" name="idcommande" value=<?=$commande['idcommande'];?>>
+                            <div class="px-4"><input  class="from-control" type="radio" name="choisir">livraison</div>
+                            <div class="px-4"><input  class="from-control" type="radio" name="choisir">sans livraison</div>
+                        </div>
+                        <div class="text-center">
+                            <button name="valider" class="btn btn-primary">Valider</button>
+                        </div>
+                        </form>
+                    </div>
+                   
+                </div>   
+            <hr>
+          <?php endforeach;?>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="py-4 mt-5">
     <div  class="mx-5">
         <p class="mx-5 px-2" style="border-left:red 2px solid;font-size:25px">Books</p>
     </div>
@@ -58,6 +97,7 @@
          </div>
         </div>
     </p>
+    
   </div>
 </div>
 <?php endforeach;?>
@@ -65,7 +105,7 @@
     <div class="row d-flex justify-content-center  gap-5 ">
    <?php foreach($book_click as $book): ?>
 <div class="card mt-1" style="width: 18rem;">
-  <img src="<?=$book['avatar']?>" class="card-img-top" alt="...">
+  <img style="<?=$book['nbr_book']==0 ? 'filter:grayscale(1500)' :''?>" src="<?=$book['avatar']?>" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">
         <div class="row text-center mb-4" >
@@ -99,6 +139,35 @@
          </div>
         </div>
     </p>
+    <div class="row py-2">
+        <div class="col-md-6 text-center py-2">
+           <p><?=$book['Prix']?> Dt</p> 
+        </div>
+        <div class="col-md-6 text-center">
+            <form action="index.php" method="POST">
+                     <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
+                     <button name="addcarte" class="btn btn-outline-dark text-warning <?= $book['nbr_book'] <= 0 ?  'disabled' : ''?>">
+                       Add Cart<span class="badge"> <i class="text-warning fa-solid fa-cart-plus"></i></span>
+                    </button>
+                 
+                  <!-- <div class="row py-2"> 
+                      <p>Choisir *:</p>
+                        <div class="col-lg-12">
+                           <input  type="radio" name="choisir"> livraison
+                       </div>
+                        <div  class="col-lg-12">
+                          <input type="radio" name="choisir">sans livraison
+                       </div>
+                    </div>-->
+                 
+             </form>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+     <div class="col-md-12 text-center">
+       <p class="<?=$book['nbr_book'] <= 0 ? 'text-danger' :'text-success'?>"> <?=$book['nbr_book'] <= 0 ? 'Out STock' : $book['nbr_book'] ?></p>
+     </div>
   </div>
 </div>
 <?php endforeach;?>
