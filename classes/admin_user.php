@@ -1,7 +1,5 @@
 
  <?php 
-    include "db_connected.php";
-
     class user {
         private $pdo;
         public function __construct(){
