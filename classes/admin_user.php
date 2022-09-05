@@ -266,6 +266,13 @@
             $value=$query->fetch();
             return $value['sum(liked)'];
         }
+        public function chercher_user_commande(int $id){
+            $sql="SELECT * from comande where iduser=:id";
+            $query=$this->pdo->launch_query($sql,['id'=>$id]);
+            return $query->fetchAll();
+        }
+
+     
 
   
     }
