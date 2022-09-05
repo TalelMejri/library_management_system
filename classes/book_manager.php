@@ -117,6 +117,24 @@
             $query=$this->pdo->launch_query($sql,['name'=>$name]);
             return $query->fetchAll();
          }
+
+         public function decrease_nbr_book(int $id,int $iduser){
+            $sql="SELECT * from book where idbook=:id";
+            $query=$this->pdo->launch_query($sql,['id'=>$id]);
+            $book_add= $query->fetch();
+            $quatity=0;
+            //$nbr=(int)$book_add['nbr_book'];
+            if($book_add['nbr_book']>0){
+               $quatity=+1;
+               $sql="UPDATE book SET nbr_book=:nbr where idbook=:id";
+               $this->pdo->launch_query($sql,['nbr'=>$book_add['nbr_book']-1,'id'=>$id]);
+               $sql="INSERT INTO `comande`( `iduser`, `aveclivraison`, `valider`) VALUES (:iduser,:livraison,:valider)";
+               $this->pdo->launch_query($sql,['iduser'=>$iduser,'livraison'=>null,'valider'=>0]);
+               $_SESSION['idbook']=$id;
+               $_SESSION['idcommande']=$this->pdo->lastInsertId();
+               $_SESSION['quantity']=$quatity;
+            }
+         }
     }
 
 ?>,
