@@ -1,18 +1,26 @@
 <?php 
 
  session_start();
- include "../classes/admin_user.php";
- include "../classes/book_manager.php";
+ 
+ require_once("../classes/classes.php");
+ // carte = [1,2,3] :[] 
+ $carte = new carte();
  $admin=new user();
  $book=new book();
- $exist_user_commnade=$admin->chercher_user_commande($_SESSION['userid']);
  $trouve=0;
  $book_click=$book->get_all();
-
  if(isset($_POST['addcarte'])){
-    extract($_POST);
-    $decrease_nbr_book=$book->decrease_nbr_book($idbook,$_SESSION['userid']);
+   $carte->add($_POST['idbook']);
  }
+ if(isset($_POST['save'])){
+   $carte->save();
+}
+   if(isset($_GET['reset'])){
+      $carte->clear();
+   }
+   if(isset($_POST['delete'])){
+      $carte->remove($_POST['delete']);
+   }
  if(isset($_POST['btn_search'])){
     $trouve=1;
     $search=$_POST['search'];

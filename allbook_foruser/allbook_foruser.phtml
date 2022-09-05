@@ -1,5 +1,5 @@
 <div class="mt-5 text-center ">
-       <button class="btn btn-outline-primary<?=$exist_user_commnade==true ? '' : 'disabled'?>" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="text-dark fa-solid fa-cart-shopping"></i></button>
+       <button class="btn btn-outline-primary<?=!empty($carte) ? '' : 'disabled'?>" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="text-dark fa-solid fa-cart-shopping"></i></button>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -9,30 +9,31 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <?php foreach($exist_user_commnade as $commande ): ?>
+          <?php foreach($carte->get() as $item ): ?>
                 <div class="card">
                     <div class="card-header text-center">
-                        <p>Votre id commande :<?=$commande['idcommande'];?></p>
                     </div>
                     <div class="card-body py-3">
                        <form action="index.php" method="Post"> 
-                            <p class="h4 text-center">Votre type de livraison *</p>
+                            <p class="h4 text-center"><?=$item?></p>
                         <div class="text-center d-flex justify-content-center mb-3">
-                            <input type="hidden" name="idcommande" value=<?=$commande['idcommande'];?>>
-                            <div class="px-4"><input  class="from-control" type="radio" name="choisir">livraison</div>
-                            <div class="px-4"><input  class="from-control" type="radio" name="choisir">sans livraison</div>
+                            <button type="submit" name="delete" value="<?=$item?>" class="btn btn-outline-danger">Delete</button>
+                            <!-- <div class="px-4"><input  class="from-control" type="radio" name="choisir">livraison</div> -->
+                            <!-- <div class="px-4"><input  class="from-control" type="radio" name="choisir">sans livraison</div> -->
                         </div>
-                        <div class="text-center">
-                            <button name="valider" class="btn btn-primary">Valider</button>
-                        </div>
-                        </form>
+                       
+                      </form>
                     </div>
-                   
-                </div>   
-            <hr>
-          <?php endforeach;?>
-      </div>
-      <div class="modal-footer text-center">
+                    
+                  </div>   
+                  <hr>
+                  <?php endforeach;?>
+                </div>
+                <div class="modal-footer text-center">
+                  <form action="index.php" method="Post">
+                    <button type="submit" name="save" class="btn btn-outline-success">save</button>
+                  </form>
+        <a class="btn btn-outline-primary" href="?reset"> reset </a>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
