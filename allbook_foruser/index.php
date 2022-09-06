@@ -12,6 +12,7 @@
 
  if(isset($_POST['addcarte'])){
    extract($_POST);
+  
    $nbr=(int)$quantity == 0 ? 1 : (int)$quantity;
    $carte->add_carte($idbook,$nbr);
  }
@@ -26,7 +27,13 @@
  }
 
  if(isset($_POST['save'])){
-   $carte->save();
+   extract($_POST);
+   if($choisir=='livraison'){
+      $choix=1;
+   }else{
+      $choix=0;
+   }
+   $carte->save($choix);
  }
  if(isset($_POST['btn_search'])){
     $trouve=1;
