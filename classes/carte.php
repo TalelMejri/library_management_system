@@ -6,11 +6,11 @@
             return isset($_SESSION['carte']) ? $_SESSION['carte']:[];
         }
 
-        public function  add_carte(int $idbook){
+        public function  add_carte(int $idbook,int $quantity){
             if(!isset($_SESSION['carte'])){
                 $_SESSION['carte']=array();
             }
-            array_push($_SESSION['carte'],$idbook);
+            array_push($_SESSION['carte'],[$idbook,$quantity]);
         }
 
         public function length_tab(){
@@ -25,12 +25,20 @@
             unset($_SESSION['carte']);
         }
 
-        public function remove(int $id_book){
-            if(isset($_SESSION['carte'])){
-                $index=array_search($id_book,$_SESSION['carte']);
-                if($index!==false){
-                    unset($_SESSION['carte'][$index]);
+
+    public function remove(int $id_book){
+       if(isset($_SESSION['carte'])){
+        $index=-1; 
+        for($i=0;$i<=$this->length_tab();$i++){
+            if(isset($_SESSION['carte'][$i])){
+                if($_SESSION['carte'][$i][0]==$id_book){
+                    $index=$i;
                 }
+             }
+         }
+         if($index!=-1){
+            unset($_SESSION['carte'][$index]);
+         }
             }
         }
 
@@ -41,8 +49,8 @@
             $this->pdo->launch_query($sql,['id'=>$iduser]);
             $id_commande=$this->pdo->lastInsertId();
             foreach($carte as $items){
-                $sql="INSERT INTO line_commande (idcommande,idbook) VALUES (:idcommande,:idbook)";
-                $this->pdo->launch_query($sql,['idcommande'=>$id_commande,'idbook'=>$items]);
+                $sql="INSERT INTO line_commande (idcommande,idbook,quantity) VALUES (:idcommande,:idbook,:quantity)";
+                $this->pdo->launch_query($sql,['idcommande'=>$id_commande,'idbook'=>$items[0],'quantity'=>$items[1]]);
             }
             $this->clear_carte();
         }

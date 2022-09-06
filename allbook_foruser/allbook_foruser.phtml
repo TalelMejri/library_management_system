@@ -14,19 +14,24 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <?php foreach($carte->get_all_commande() as $items): ?>
+          <?php foreach($carte->get_all_commande() as $items):?>
+                  
                 <div class="card">
                     <div class="card-header text-center">
                     </div>
                     <div class="card-body py-3">
                        <form action="index.php" method="Post"> 
-                            <p class="h4 text-center"><?=$items?></p>
+                            <p class="h4 text-center"><?=$items[0]?></p>
                         <div class="text-center d-flex justify-content-center mb-3">
-
-                            <!-- <div class="px-4"><input  class="from-control" type="radio" name="choisir">livraison</div> -->
-                            <!-- <div class="px-4"><input  class="from-control" type="radio" name="choisir">sans livraison</div> -->
+                        <p class="h4 text-center">Nombre Books <?=$items[1]?></p>
                         </div>
-                        <button name="delete" class="btn btn-danger" value=<?=$items?>>Delete</button>
+                        <div class="text-center d-flex justify-content-center mb-3">
+                             <div class="px-4"><input  class="from-control" type="radio" name="choisir" checked>livraison</div>
+                             <div class="px-4"><input  class="from-control" type="radio" name="choisir">sans livraison</div>
+                      </div>
+                        <div class="d-flex justify-content-center">
+                          <button name="delete" class="btn btn-danger" value=<?=$items[0]?>>Delete</button>
+                        </div>
                       </form>
                     </div>
                     <div>
@@ -155,8 +160,7 @@
             <form action="index.php" method="POST">
                      <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
                      <input class="form-control mb-3" type="number" name="quantity" placeholder="Nbr book">
-                     <button name="addcarte" class="btn btn-outline-dark text-warning<?= $book['nbr_book'] <= 0 ?  'disabled' : ''?>">
-                        
+                     <button name="addcarte" class="btn btn-outline-dark text-warning<?= $book['nbr_book'] <= 0 ?  'disabled' : ''?>"> 
                      Add Cart<span class="badge"> <i class="text-warning fa-solid fa-cart-plus"></i></span>
                     </button>
                  

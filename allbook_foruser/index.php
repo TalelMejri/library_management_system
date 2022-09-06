@@ -12,7 +12,8 @@
 
  if(isset($_POST['addcarte'])){
    extract($_POST);
-   $carte->add_carte($idbook);
+   $nbr=(int)$quantity == 0 ? 1 : (int)$quantity;
+   $carte->add_carte($idbook,$nbr);
  }
 
  if(isset($_GET['reset'])){
