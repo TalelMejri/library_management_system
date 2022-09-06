@@ -1,5 +1,5 @@
 <div class="mt-5 text-center ">
-       <button class="btn btn-outline-primary<?=!empty($carte) ? '' : 'disabled'?>" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="text-dark fa-solid fa-cart-shopping"></i></button>
+       <button class="btn btn-outline-primary<?=empty($carte) ? 'disabled' : ''?>" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="text-dark fa-solid fa-cart-shopping"></i></button>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -9,31 +9,33 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <?php foreach($carte->get() as $item ): ?>
+          <?php foreach($carte->get_all_commande() as $items): ?>
                 <div class="card">
                     <div class="card-header text-center">
                     </div>
                     <div class="card-body py-3">
                        <form action="index.php" method="Post"> 
-                            <p class="h4 text-center"><?=$item?></p>
+                            <p class="h4 text-center"><?=$items?></p>
                         <div class="text-center d-flex justify-content-center mb-3">
-                            <button type="submit" name="delete" value="<?=$item?>" class="btn btn-outline-danger">Delete</button>
+
                             <!-- <div class="px-4"><input  class="from-control" type="radio" name="choisir">livraison</div> -->
                             <!-- <div class="px-4"><input  class="from-control" type="radio" name="choisir">sans livraison</div> -->
                         </div>
-                       
+                        <button name="delete" class="btn btn-danger" value=<?=$items?>>Delete</button>
                       </form>
                     </div>
-                    
+                    <div>
+                     
+                    </div>
                   </div>   
                   <hr>
                   <?php endforeach;?>
                 </div>
                 <div class="modal-footer text-center">
-                  <form action="index.php" method="Post">
-                    <button type="submit" name="save" class="btn btn-outline-success">save</button>
-                  </form>
-        <a class="btn btn-outline-primary" href="?reset"> reset </a>
+              <form action="index.php" method="POST">
+                 <button name="save" class="btn btn-outline-success" >Save</button>
+              </form>    
+         <a name="reset" href="?reset" class="btn btn-outline-danger">reset</a>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
@@ -147,6 +149,7 @@
         <div class="col-md-6 text-center">
             <form action="index.php" method="POST">
                      <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
+                     <input class="form-control mb-3" type="number" name="quantity" placeholder="Nbr book">
                      <button name="addcarte" class="btn btn-outline-dark text-warning <?= $book['nbr_book'] <= 0 ?  'disabled' : ''?>">
                        Add Cart<span class="badge"> <i class="text-warning fa-solid fa-cart-plus"></i></span>
                     </button>

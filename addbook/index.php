@@ -5,8 +5,7 @@
         exit;
     }
 
-include "../classes/File.php";
-include "../classes/book_manager.php";
+    require_once("../classes/classes.php");
 
 $errors=[];
 

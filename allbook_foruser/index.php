@@ -9,18 +9,24 @@
  $book=new book();
  $trouve=0;
  $book_click=$book->get_all();
+
  if(isset($_POST['addcarte'])){
-   $carte->add($_POST['idbook']);
+   extract($_POST);
+   $carte->add_carte($idbook);
  }
+
+ if(isset($_GET['reset'])){
+   $carte->clear_carte();
+ }
+
+ if(isset($_POST['delete'])){
+   extract($_POST);
+   $carte->remove($delete);
+ }
+
  if(isset($_POST['save'])){
    $carte->save();
-}
-   if(isset($_GET['reset'])){
-      $carte->clear();
-   }
-   if(isset($_POST['delete'])){
-      $carte->remove($_POST['delete']);
-   }
+ }
  if(isset($_POST['btn_search'])){
     $trouve=1;
     $search=$_POST['search'];
