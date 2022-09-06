@@ -13,6 +13,10 @@
             array_push($_SESSION['carte'],$idbook);
         }
 
+        public function length_tab(){
+            return isset($_SESSION['carte']) ? count($_SESSION['carte']) : 0;
+        }
+
         public function get_all_commande(){
             return isset($_SESSION['carte'])? $_SESSION['carte']:[];
         }

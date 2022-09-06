@@ -1,5 +1,10 @@
 <div class="mt-5 text-center ">
-       <button class="btn btn-outline-primary<?=empty($carte) ? 'disabled' : ''?>" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="text-dark fa-solid fa-cart-shopping"></i></button>
+       <button class="btn btn-outline-primary position-relative<?=empty($carte) ? 'disabled' : ''?>" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="text-dark fa-solid fa-cart-shopping"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+             <?=$carte->length_tab()?>
+         </span>
+        </button>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -150,8 +155,9 @@
             <form action="index.php" method="POST">
                      <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
                      <input class="form-control mb-3" type="number" name="quantity" placeholder="Nbr book">
-                     <button name="addcarte" class="btn btn-outline-dark text-warning <?= $book['nbr_book'] <= 0 ?  'disabled' : ''?>">
-                       Add Cart<span class="badge"> <i class="text-warning fa-solid fa-cart-plus"></i></span>
+                     <button name="addcarte" class="btn btn-outline-dark text-warning<?= $book['nbr_book'] <= 0 ?  'disabled' : ''?>">
+                        
+                     Add Cart<span class="badge"> <i class="text-warning fa-solid fa-cart-plus"></i></span>
                     </button>
                  
                   <!-- <div class="row py-2"> 
