@@ -42,11 +42,11 @@
             }
         }
 
-        public function save(){
+        public function save(int $choix=0){
             $iduser=$_SESSION['userid'];
             $carte=$this->get_all_commande();
-            $sql="INSERT INTO comande (iduser) VALUES (:id)";
-            $this->pdo->launch_query($sql,['id'=>$iduser]);
+            $sql="INSERT INTO comande (iduser,aveclivraison) VALUES (:id,:liv)";
+            $this->pdo->launch_query($sql,['id'=>$iduser,'liv'=>$choix]);
             $id_commande=$this->pdo->lastInsertId();
             foreach($carte as $items){
                 $sql="INSERT INTO line_commande (idcommande,idbook,quantity) VALUES (:idcommande,:idbook,:quantity)";
