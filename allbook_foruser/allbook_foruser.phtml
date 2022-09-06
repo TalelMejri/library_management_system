@@ -25,27 +25,30 @@
                         <div class="text-center d-flex justify-content-center mb-3">
                         <p class="h4 text-center">Nombre Books <?=$items[1]?></p>
                         </div>
-                        <div class="text-center d-flex justify-content-center mb-3">
-                             <div class="px-4"><input  class="from-control" type="radio" name="choisir" checked>livraison</div>
-                             <div class="px-4"><input  class="from-control" type="radio" name="choisir">sans livraison</div>
-                      </div>
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center mb-3">
                           <button name="delete" class="btn btn-danger" value=<?=$items[0]?>>Delete</button>
                         </div>
                       </form>
                     </div>
-                    <div>
-                     
+                    <div> 
                     </div>
+                  
+                   
                   </div>   
                   <hr>
                   <?php endforeach;?>
                 </div>
                 <div class="modal-footer text-center">
-              <form action="index.php" method="POST">
-                 <button name="save" class="btn btn-outline-success" >Save</button>
+                <form action="index.php" method="POST">
+                  <?php if($carte->length_tab()>0): ?>
+                             <div class="text-center d-flex justify-content-center mb-3">
+                                      <div class="px-4"><input  class="from-control" type="radio" value="livraison" name="choisir" >livraison</div>
+                                      <div class="px-4"><input  class="from-control" type="radio" value="sans livraison" name="choisir">sans livraison</div>
+                             </div>
+                  <?php endif; ?>
+                 <button name="save" class="btn btn-outline-success <?=$carte->length_tab()==0? 'disabled' :''?>" >Save</button>
               </form>    
-         <a name="reset" href="?reset" class="btn btn-outline-danger">reset</a>
+         <a name="reset" href="?reset" class="btn btn-outline-danger <?=$carte->length_tab()==0? 'disabled' :''?>">reset</a>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
