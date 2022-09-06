@@ -4,7 +4,7 @@
         header("location:../login");
         exit;
     }
-    include "../classes/comments_manager.php";
+    require_once("../classes/classes.php");
     $trouve=0;
     $allcomments=new comment();
     if(array_key_exists('id',$_GET)){

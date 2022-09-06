@@ -1,6 +1,6 @@
 <?php 
  
- include "../classes/admin_user.php";
+ require_once("../classes/classes.php");
  use PHPMailer\PHPMailer\PHPMailer;
  include "../send.php";
 

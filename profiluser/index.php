@@ -4,8 +4,7 @@
       header("location:../layout.phtml");
       exit;
   }
-  include "../classes/admin_user.php";
-  include "../classes/book_manager.php";
+  require_once("../classes/classes.php");
   $admin=new user();
   $book=new book();
   $books=$book->getnewbok();

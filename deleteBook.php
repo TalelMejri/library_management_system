@@ -4,7 +4,7 @@
         header("location:../login");
         exit;
     }
-    include "./classes/book_manager.php";
+    require_once("./classes/classes.php");
     $delete_book=new book();
     $delete_book->delete_book($_GET['id']);
     header("location:./consultebook?msg=delete succefuly&type=success");

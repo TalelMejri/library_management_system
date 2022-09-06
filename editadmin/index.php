@@ -1,8 +1,7 @@
 <?php 
     session_start();
 
-    include "../classes/admin_user.php";
-    include "../classes/File.php";
+    require_once("../classes/classes.php");
      $errors=[];
     if(isset($_POST['submit'])){
         extract($_POST);

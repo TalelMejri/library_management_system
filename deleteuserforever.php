@@ -1,7 +1,7 @@
 <?php 
  
    session_start();
-   include "./classes/admin_user.php";
+   require_once("./classes/classes.php");
    $user=new user();
    $user->deleteuserforever($_GET['id']);
 

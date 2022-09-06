@@ -1,7 +1,6 @@
 <?php
     session_start();
-    include "../classes/admin_user.php";
-    include "../classes/File.php";
+    require_once("../classes/classes.php");
     include "../send.php";
     use PHPMailer\PHPMailer\PHPMailer;
     $admin=new user();

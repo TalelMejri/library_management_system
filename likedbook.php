@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include "./classes/admin_user.php";
+require_once("./classes/classes.php");
 $admin=new user();
 if(isset($_POST['like'])){
     extract($_POST);

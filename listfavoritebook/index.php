@@ -1,8 +1,7 @@
 <?php
 
     session_start();
-    include "../classes/admin_user.php";
-    include "../classes/book_manager.php";
+    require_once("../classes/classes.php");
     $admin=new user();
     $book=new book();
     $books_favorite=$book->getbooksfavorite($_SESSION['userid']);

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include "../classes/book_manager.php";
+    require_once("../classes/classes.php");
      $book=new book();
      if(isset($_POST['delete'])){
           

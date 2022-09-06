@@ -1,5 +1,5 @@
 <?php
-    include "./classes/comments_manager.php";
+   require_once("./classes/classes.php");
     include "./send.php";
     use PHPMailer\PHPMailer\PHPMailer;
     $errors=[];

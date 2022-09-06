@@ -1,6 +1,6 @@
 <?php 
     
-    include "../classes/admin_user.php";
+    require_once("../classes/classes.php");
     session_start();
     if(isset($_POST['submit'])){
         include "../utilities.php";
