@@ -1,4 +1,59 @@
+<div class="row mx-4 py-4">
 <?php foreach($commandes as $commande): ?>
-    
+
+    <?php if($commande['valider']==0): ?>  
+    <div class="col-md-3 mb-3">
+        <div style="background:whitesmoke" class="card">
+             <div class="row p-2">
+                    <div class="col-md-6 text-center">
+                        <img  class="rounded-circle img-thumbnail shadow-sm" width='80px' src="<?=$commande['avatar_admin']?>" alt="">
+                        <p class="mt-1 fw-bolder"><?=$commande['name']?></p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img  class="rounded-circle img-thumbnail shadow-sm"  width='80px' src="<?=$commande['avatar']?>" alt="">
+                        <p class="mt-1 fw-bolder"><?=$commande['name_book']?></p>
+                    </div>
+             </div>
+             <table class="table">
+                <thead class="bg-white">
+                  <td>livraison</td>
+                  <td>quantity</td>
+                  <td>Prix</td>
+                </thead>
+                <tr>
+                    <td><?=$commande['aveclivraison']?></td>
+                    <td><?=$commande['quantity']?></td>
+                    <td><?=$commande['Prix']?></td>
+                </tr>
+             </table>
+             <form action="index.php" method="POST">
+             <div class="row text-center mb-2">
+                 <input type="hidden" name="idbook" value=<?=$commande['idbook']?>>
+                 <input type="hidden" name="quantity" value=<?=$commande['quantity']?>>
+                 <input type="hidden" name="iduser" value=<?=$commande['id']?>>
+                 <input type="hidden" name="idcommande" value=<?=$commande['idcommande']?>>
+                <div class="col-md-6">
+                     <button name="valider" class="btn btn-outline-success">Accepter</button>
+                </div>
+                <div class="col-md-6">
+                    <button name="rejeter" class="btn btn-outline-danger">Rejeter</button>
+                </div>
+             </div>
+             </form>
+        </div>
+    </div>
+
+    <?php else :?>
+       
+     <div class="row">
+         <table>
+            <tr>name</tr>
+            <tr>
+                <td><?=$commande['idbook']?></td>
+            </tr>
+         </table>
+     </div>
+    <?php endif; ?>
 
 <?php endforeach; ?>
+</div>
