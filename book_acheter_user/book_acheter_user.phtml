@@ -1,17 +1,19 @@
-<table class="table">
-    <tr>
-        <td>avatar</td>
-        <td>nom book</td>
-        <td>author</td>
-        <td>Prix</td>
-        <td>quantity</td>
-        <td>livraison</td>
-        <td>valider</td>
-    </tr>
+
+<div class="container-fluid py-3">
+<table class="table table-striped">
+<thead>
+        <td  scope="col">avatar</td>
+        <td  scope="col">nom book</td>
+        <td  scope="col">author</td>
+        <td  scope="col">Prix</td>
+        <td  scope="col">quantity</td>
+        <td  scope="col">livraison</td>
+        <td  scope="col">valider</td>
+</thead>
     <?php foreach($commande as $items): ?>
     <tr>
      <td>
-      <img width='50px' src="<?=$items['avatar']?>" alt="">
+      <img width='50px' src="<?=$items['avatar']?>" alt=<?=$items['name_book'];?>>
     </td>
     <td>
         <?=$items['name_book'];?>
@@ -35,3 +37,4 @@
     </tr>
     <?php endforeach;?>   
 </table>
+</div>
