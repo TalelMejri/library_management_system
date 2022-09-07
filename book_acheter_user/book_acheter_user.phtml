@@ -29,9 +29,9 @@
         <?=$items['aveclivraison']==1 ? 'avec livraison' : 'sans livraison'?>
     </td>
     <td>
-        <?=$items['valider']==0 ? '<div class="spinner-border text-dark" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                    </div>' : 'non'?>
+        
+        <?=$items['valider']==0 ? 'not yet <div class=" spinner-border text-dark" role="status">
+                                    </div>' : '<i class="text-success mx-4 fa-solid fa-check"></i>'?>
     </td>
     </tr>
     <?php endforeach;?>   
