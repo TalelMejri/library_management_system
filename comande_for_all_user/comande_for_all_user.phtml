@@ -1,8 +1,10 @@
 <div class="row mx-4 py-4">
 <?php foreach($commandes as $commande): ?>
-
+   
+   
     <?php if($commande['valider']==0): ?>  
     <div class="col-md-3 mb-3">
+    
         <div style="background:whitesmoke" class="card">
              <div class="row p-2">
                     <div class="col-md-6 text-center">
@@ -44,15 +46,24 @@
     </div>
 
     <?php else :?>
-       
-     <div class="row">
-         <table>
-            <tr>name</tr>
-            <tr>
-                <td><?=$commande['idbook']?></td>
-            </tr>
-         </table>
-     </div>
+       <div>
+        <table class="table">
+        <tr>
+            <td>Name user</td>
+            <td>Name Book</td>
+            <td>Quantity</td>
+            <td>livraison</td>
+            <td>Date validation</td>
+        </tr>
+        <tr>
+            <td><?=$commande['name']?></td>
+            <td><?=$commande['name_book']?></td>
+            <td><?=$commande['quantity']?></td>
+            <td><?=$commande['aveclivraison']?></td>
+            <td><?= date("d/m/Y")?></td>
+        </tr>
+        </table>
+       </div>
     <?php endif; ?>
 
 <?php endforeach; ?>

@@ -162,7 +162,7 @@
         <div class="col-md-6 text-center">
             <form action="index.php" method="POST">
                      <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
-                     <input class="form-control mb-3" type="number" name="quantity" placeholder="Nbr book">
+                     <input class="form-control mb-3" type="number" name="quantity" placeholder="Nbr book" min="0" max=<?=$book['nbr_book']?>>
                      <button name="addcarte" class="btn btn-outline-dark text-warning<?= $book['nbr_book'] <= 0 ?  'disabled' : ''?>"> 
                      Add Cart<span class="badge"> <i class="text-warning fa-solid fa-cart-plus"></i></span>
                     </button>
