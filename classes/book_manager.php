@@ -120,7 +120,11 @@
              $query=$this->pdo->launch_query($sql,['id'=>$id]);
              return $query->fetchAll();
          }
-
+        public function allcommandeinadmin(){
+            $sql="SELECT * from book b,comande c,line_commande l,admin a where b.idbook=l.idbook and c.idcommande=l.idcommande and c.iduser=a.id";
+            $query=$this->pdo->launch_query($sql);
+            return $query->fetchAll();
+        }
        /*  public function decrease_nbr_book(int $id,int $iduser){
             $sql="SELECT * from book where idbook=:id";
             $query=$this->pdo->launch_query($sql,['id'=>$id]);
