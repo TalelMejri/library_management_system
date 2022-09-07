@@ -115,6 +115,11 @@
             $query=$this->pdo->launch_query($sql,['name'=>$name]);
             return $query->fetchAll();
          }
+         public function getcommande_user(int $id){
+             $sql="SELECT * from book b,comande c,line_commande l  where b.idbook=l.idbook and c.idcommande=l.idcommande and c.iduser=:id";
+             $query=$this->pdo->launch_query($sql,['id'=>$id]);
+             return $query->fetchAll();
+         }
 
        /*  public function decrease_nbr_book(int $id,int $iduser){
             $sql="SELECT * from book where idbook=:id";
