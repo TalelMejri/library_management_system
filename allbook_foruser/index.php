@@ -10,6 +10,14 @@
  $trouve=0;
  $book_click=$book->get_all();
 
+
+
+  if(isset($_POST['rate'])){
+      extract($_POST);
+      $book->addrate($_SESSION['userid'],$idbook,(int)$nombre); 
+      $all=$book->getallreviews($idbook);
+  }
+
  if(isset($_POST['addcarte'])){
    extract($_POST);
   

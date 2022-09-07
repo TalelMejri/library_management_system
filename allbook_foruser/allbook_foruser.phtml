@@ -164,30 +164,70 @@
                      <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
                      <input class="form-control mb-3" type="number" name="quantity" placeholder="Nbr book" min="0" max=<?=$book['nbr_book']?>>
                      <button name="addcarte" class="btn btn-outline-dark text-warning<?= $book['nbr_book'] <= 0 ?  'disabled' : ''?>"> 
-                     Add Cart<span class="badge"> <i class="text-warning fa-solid fa-cart-plus"></i></span>
+                       Add Cart<span class="badge"> <i class="text-warning fa-solid fa-cart-plus"></i></span>
                     </button>
-                 
-                  <!-- <div class="row py-2"> 
-                      <p>Choisir *:</p>
-                        <div class="col-lg-12">
-                           <input  type="radio" name="choisir"> livraison
-                       </div>
-                        <div  class="col-lg-12">
-                          <input type="radio" name="choisir">sans livraison
-                       </div>
-                    </div>-->
-                 
+                    
              </form>
         </div>
     </div>
   </div>
-  <div class="row">
-     <div class="col-md-12 text-center">
-       <p class="<?=$book['nbr_book'] <= 0 ? 'text-danger' :'text-success'?>"> <?=$book['nbr_book'] <= 0 ? 'Out STock' : $book['nbr_book'] ?></p>
+  <form action="index.php" method="POST">
+  <div class="row mb-2">
+     <input type="hidden" name="idbook" value=<?=$book['idbook']?>>
+     <div class="col-md-6 text-center">
+         <p class="<?=$book['nbr_book'] <= 0 ? 'text-danger' :'text-success'?>"> <?=$book['nbr_book'] <= 0 ? 'Out STock' : $book['nbr_book'] ?></p>
      </div>
+     <div class="col-md-6 text-center">
+       <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModale<?=$book['idbook']?>">Add reviez</button>
+      </div>
   </div>
+  </form>
+<!-- Modal -->
+<div class="modal fade" id="exampleModale<?=$book['idbook']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><?=$book['name_book']?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <?php $item=new book();
+       if($item->verfier_rate_user($_SESSION['userid'],$book['idbook'])==false): ?>
+       <form action="index.php" method="Post"> 
+          <label class="text-center">Add Your Rate</label>
+          <input type="hidden" name="idbook" value=<?=$book['idbook']?>>
+          <input type="number" class="form-control mb-2" name="nombre" min="1" max="5">
+          <button name="rate"  class="btn btn-success">Save changes</button>
+        </form>
+        <?php endif; ?>
+        <h2>List Of all Reviews :</h2>
+          <?php foreach($all as $review): ?>
+              <div class="card p-2">
+                <div class="row">
+                  <div class="col-md-6">
+                     <img class="rounded-pill shadow-sm" width="80px" src="<?=$review['avatar_admin']?>" alt="">
+                  </div>
+                  <div class="col-md-6">
+                  <div class="card-text">Name :<?=$review['name']?></div>
+                  <div class="card-body">
+                    Rate :<?=$book['rate']?>
+                  </div>
+                  </div>
+                  </div>
+               </div>
+              
+          <?php endforeach; ?>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 <?php endforeach;?>
 <?php endif;?>
 </div>
 </div>
+
