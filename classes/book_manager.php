@@ -138,6 +138,12 @@
          $this->pdo->launch_query($sql,['nbr'=>$value['nbr_book']-$quantity,'idbook'=>$idbook]);
          }
         }
+
+        public function deletecommande(int $id){
+           $sql="DELETE from comande where idcommande=:id";
+           $this->pdo->launch_query($sql,['id'=>$id]);
+        }
+        
        /*  public function decrease_nbr_book(int $id,int $iduser){
             $sql="SELECT * from book where idbook=:id";
             $query=$this->pdo->launch_query($sql,['id'=>$id]);
