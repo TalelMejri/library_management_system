@@ -149,17 +149,10 @@
           $this->pdo->launch_query($sql,['iduser'=>$iduser,'idbook'=>$idbook,'nbr'=>$rate,'addrate'=>1]);
         }
 
-        public function verfier_rate_user(int $id,int $idbook){
-         $sql="SELECT * from rate where idbook=:idbook and iduser=:id and addrate=1";
-         $query=$this->pdo->launch_query($sql,['idbook'=>$idbook,'id'=>$id]);
-         return $query->fetch();
-        }
+      
+      
 
-        public function getallreviews(int $idbook){
-         $sql="SELECT * from rate r,admin a where r.iduser=a.id and idbook=:id";
-         $query=$this->pdo->launch_query($sql,['id'=>$idbook]);
-         return $query->fetchAll();
-        }
+        
         
        /*  public function decrease_nbr_book(int $id,int $iduser){
             $sql="SELECT * from book where idbook=:id";

@@ -54,7 +54,25 @@
             }
             $this->clear_carte();
         }
+        
+        public function getallreviews(int $idbook){
+            $sql="SELECT * from rate r,admin a where r.iduser=a.id and r.idbook=:id";
+            $query=$this->pdo->launch_query($sql,['id'=>$idbook]);
+            return $query->fetchAll();
+           }
+           
+           public function verfier_rate_user(int $id,int $idbook){
+            $sql="SELECT * from rate where idbook=:idbook and iduser=:id and addrate=1";
+            $query=$this->pdo->launch_query($sql,['idbook'=>$idbook,'id'=>$id]);
+            return $query->fetch();
+           }
 
+           public function sommerate(int $id){
+                $sql="SELECT Sum(rate) from rate where idbook=:id";
+                $query=$this->pdo->launch_query($sql,['id'=>$id]);
+                $value=$query->fetch();
+                return $value['Sum(rate)'];
+           }
 
 
     }
