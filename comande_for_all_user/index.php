@@ -12,6 +12,7 @@
 
   if(isset($_POST['rejeter'])){
     extract($_POST);
+    $book->deletecommande($idcommande);
   }
 
    $template="comande_for_all_user";
