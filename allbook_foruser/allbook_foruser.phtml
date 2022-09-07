@@ -191,17 +191,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <?php $item=new book();
-       if($item->verfier_rate_user($_SESSION['userid'],$book['idbook'])==false): ?>
-       <form action="index.php" method="Post"> 
+      <?php if($carte->verfier_rate_user($_SESSION['userid'],$idbook)==false){ ?>
+       <form action="index.php" method="POST"> 
           <label class="text-center">Add Your Rate</label>
           <input type="hidden" name="idbook" value=<?=$book['idbook']?>>
           <input type="number" class="form-control mb-2" name="nombre" min="1" max="5">
           <button name="rate"  class="btn btn-success">Save changes</button>
         </form>
-        <?php endif; ?>
+        <?php }?>
         <h2>List Of all Reviews :</h2>
-          <?php foreach($all as $review): ?>
+          <?php foreach($carte->getallreviews($book['idbook']) as $review): ?>
               <div class="card p-2">
                 <div class="row">
                   <div class="col-md-6">
@@ -210,12 +209,11 @@
                   <div class="col-md-6">
                   <div class="card-text">Name :<?=$review['name']?></div>
                   <div class="card-body">
-                    Rate :<?=$book['rate']?>
+                    Rate :<?=$review['rate']?>
                   </div>
                   </div>
                   </div>
                </div>
-              
           <?php endforeach; ?>
         </div>
       <div class="modal-footer">
