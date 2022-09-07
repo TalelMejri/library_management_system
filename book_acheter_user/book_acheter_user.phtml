@@ -1,0 +1,38 @@
+<table class="table">
+    <tr>
+        <td>avatar</td>
+        <td>nom book</td>
+        <td>author</td>
+        <td>Prix</td>
+        <td>quantity</td>
+        <td>livraison</td>
+        <td>valider</td>
+    </tr>
+    <?php foreach($commande as $items): ?>
+    <tr>
+     <td>
+      <img width='50px' src="<?=$items['avatar']?>" alt="">
+    </td>
+    <td>
+        <?=$items['name_book'];?>
+    </td>
+    <td>
+    <?=$items['author_book'];?>
+    </td>
+    <td>
+    <?=$items['Prix'];?>
+    </td>
+    <td>
+        <?=$items['quantity']?>
+    </td>
+    <td>
+        <?=$items['aveclivraison']==1 ? 'avec livraison' : 'sans livraison'?>
+    </td>
+    <td>
+        <?=$items['valider']==0 ? '<div class="spinner-border text-dark" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                    </div>' : 'non'?>
+    </td>
+    </tr>
+    <?php endforeach;?>   
+</table>
