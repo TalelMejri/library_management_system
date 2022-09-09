@@ -86,11 +86,7 @@
          }
          }
 
-         public function gettopratebook(){
-            $sql="SELECT * from book  order by rate DESC limit 3";
-            $query=$this->pdo->launch_query($sql);
-            return $query->fetchAll();
-         }
+       
 
          public function getnewbok(){
             $sql="SELECT * from book  order by date_book DESC limit 3";
@@ -148,6 +144,13 @@
           $sql="INSERT INTO rate (iduser,idbook,rate,addrate) VALUES (:iduser,:idbook,:nbr,:addrate)";
           $this->pdo->launch_query($sql,['iduser'=>$iduser,'idbook'=>$idbook,'nbr'=>$rate,'addrate'=>1]);
         }
+
+        public function gettopratebook(){
+         //$sql="SELECT * from rate r,book b where r.idbook=b.idbook order by avg(r.rate)";
+         $sql="SELECT * from rate r,book b where r.idbook=b.idbook order by avg(r.rate) DESC";
+         $query=$this->pdo->launch_query($sql);
+         return $query->fetchAll();
+      }
 
       
       

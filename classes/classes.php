@@ -4,5 +4,6 @@
 	include 'book_manager.php';
 	include 'carte.php';
 	include 'comments_manager.php';
+	include 'messages.php';
 	include 'File.php';
 ?>
