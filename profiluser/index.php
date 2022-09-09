@@ -7,6 +7,7 @@
   require_once("../classes/classes.php");
   $admin=new user();
   $book=new book();
+  $carte=new carte();
   $books=$book->getnewbok();
  
   $page_titel="Dashbord";

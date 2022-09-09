@@ -153,8 +153,11 @@
          </div>
          <div class="col-lg-4 text-center">
               <?php $somme=$carte->sommerate($book['idbook']); 
-                   $nbr=number_format($somme,2,',',''); ?>
-              <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?><?=$nbr?>
+                    $nbr=number_format($somme,2,',','');
+                    $seul=floatval($nbr);
+                    $final_nbr=ltrim($seul,"0");
+                  ?>
+              <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?><?=$somme==0 ? $final_nbr : $nbr;?>
          </div>
         </div>
     </p>
@@ -205,14 +208,16 @@
         <h2>List Of all Reviews :</h2>
           <?php foreach($carte->getallreviews($book['idbook']) as $review): ?>
               <div class="card p-2">
-                <div class="row">
-                  <div class="col-md-6">
+                <div class="row text-center">
+                  <div class="col-md-6 text-center">
                      <img class="rounded-pill shadow-sm" width="80px" src="<?=$review['avatar_admin']?>" alt="">
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-6 text-center">
                   <div class="card-text">Name :<?=$review['name']?></div>
-                  <div class="card-body">
-                    Rate :<?=$review['rate']?>
+                  <div class="card-body text-center">
+                   <?php for($i=1;$i<=$review['rate'];$i++):?>
+                    <i class="fa-solid fa-star text-warning"></i>
+                   <?php endfor; ?>
                   </div>
                   </div>
                   </div>
