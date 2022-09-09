@@ -152,8 +152,9 @@
             </form>
          </div>
          <div class="col-lg-4 text-center">
-              <?php $somme=$carte->sommerate($book['idbook']); ?>
-              <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?><?=$somme?>
+              <?php $somme=$carte->sommerate($book['idbook']); 
+                   $nbr=number_format($somme,2,',',''); ?>
+              <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?><?=$nbr?>
          </div>
         </div>
     </p>
