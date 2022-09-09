@@ -3,11 +3,20 @@
 session_start();
 require_once "../classes/classes.php";
 $admin=new user();
-$all_user=$admin->get_user_chat();
+$chat=new chat();
+$all_user=$admin->get_user_chat($_SESSION['userid']);
+
 if(isset($_GET['id'])){
  extract($_POST);
  $user_choice=$admin->getuserbyid($_GET['id']);
 }
+
+if(isset($_POST['send'])){
+    extract($_POST);
+    $user_choice=$admin->getuserbyid($id);
+    $chat->send_message($_SESSION['userid'],$id,$message);
+}
+
 $template="message";
 $page_titel="Chat";
 $show=null;
