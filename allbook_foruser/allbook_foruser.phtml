@@ -109,7 +109,7 @@
             </form>
          </div>
          <div class="col-lg-4 text-center">
-          <?php $somme=$carte->sommerate($book['idbook']);?>
+           
                 <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?>
          </div>
         </div>
@@ -152,7 +152,8 @@
             </form>
          </div>
          <div class="col-lg-4 text-center">
-                <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?>
+              <?php $somme=$carte->sommerate($book['idbook']); ?>
+              <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?><?=$somme?>
          </div>
         </div>
     </p>
@@ -192,7 +193,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <?php if($carte->verfier_rate_user($_SESSION['userid'],$idbook)==false): ?>
+      <?php if($carte->verfier_rate_user($_SESSION['userid'],$book['idbook'])==false): ?>
        <form action="index.php" method="POST"> 
           <label class="text-center">Add Your Rate</label>
           <input type="hidden" name="idbook" value=<?=$book['idbook']?>>
