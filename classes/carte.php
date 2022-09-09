@@ -68,10 +68,10 @@
            }
 
            public function sommerate(int $id){
-                $sql="SELECT Sum(rate) from rate where idbook=:id";
+                $sql="SELECT AVG(rate) from rate where idbook=:id";
                 $query=$this->pdo->launch_query($sql,['id'=>$id]);
                 $value=$query->fetch();
-                return $value['Sum(rate)'];
+                return $value['AVG(rate)'];
            }
 
 
