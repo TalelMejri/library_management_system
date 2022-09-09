@@ -1,16 +1,42 @@
+<style>
+#hover:hover{
+    background-color:whitesmoke;}
+</style>
 <div class="col-xl-10 py-5 container">
     <div class="row shadow-lg rounded">
-        <div class="col-md-10 py-5 text-center">
-                
+        <div class="col-md-9 py-5 d-flex justify-content-center">
+            <div class="card mx-5 w-50">
+                <div class="card-header">
+                  <img class="rounded-pill" width="50px" src="<?=$user_choice['avatar_admin']?>" alt="">
+                  <span class="mx-4"><?=$user_choice['name']?></span>
+                </div>
+                <div class="card-body">
+                    <div>
+                       
+                    </div>
+                    <div class="float-end">
+
+                    </div>
+                    <div class="sticky mt-5">
+                        <form action="index.php"  method="POST">
+                            <div class="mt-2">
+                            <textarea name="message" class="px-2 mt-5" cols="20" rows="2" placeholder="Entrer votre message"></textarea>
+                            </div>
+                        </form>
+                        </div>
+                </div>
+            </div>
         </div>
         <div style="border-left:1px solid #000 " class="col-md-2  py-2">
              <p class="fw-bolder text-primary text-center">All User</p>
-              <?php foreach( $all_user as $user):?>
+             <form action="index.php" method="POST">
+              <?php foreach($all_user as $user):?>
                   <?php if($user['role']==1):?>
                     <div>
+                        <a style="text-decoration:none;color:#000" name="id" href="?id=<?=$user['id']?>">
                         <p>Admin:</p>
                          <p class="text-danger">
-                            <div class="row">
+                            <div id="hover" style="cursor:pointer;" class="row">
                                 <div class="col-md-4">
                                     <img src="<?=$user['avatar_admin']?>" class="rounded-pill shadow-sm" width="50px" alt="">
                                 </div>
@@ -20,12 +46,13 @@
                             </div>
                          </p>
                          <hr>
+                         </a>
                     </div>
                     <p>User:</p>
                     <?php else :?>
                          <p class="text-danger">
-                            <div class="row">
-                                <div class="col-md-4">
+                            <div id="hover" style="cursor:pointer;" class="row hover-mask">
+                                <div class="col-md-4 mask">
                                     <img src="<?=$user['avatar_admin']?>" class="rounded-pill shadow-sm" width="50px" alt="">
                                 </div>
                                 <div class="col-md-1 mt-2">
@@ -34,7 +61,8 @@
                             </div>
                          </p>
                         <?php endif;?>
-              <?php endforeach; ?>
+              <?php endforeach;?>
+              </form>
         </div>
     </div>
 </div>
