@@ -1,7 +1,6 @@
 <?php
 
-require_once("../classes/classes.php");
- $admin=new user();
+ require_once("../classes/classes.php");
  $suivant=1;
  $error=[];
  if(isset($_POST['confirmer'])){  
@@ -29,12 +28,11 @@ require_once("../classes/classes.php");
               $error[0]="check passowrd or confirme password";
               goto show;
        }
-       }
+   }
 show:
 $template ="changerpassword";
 $page_titel = "Change password";
 $show = false;
 include "../auth_layout.phtml";
 //  include "./changerpassword.phtml";
-
 ?>

@@ -1,5 +1,10 @@
 
 <div class="container-fluid py-3">
+   <?php if(empty($commande)): ?> 
+       <div class="d-flex justify-content-center align-items-center mt-5 py-5">
+           <p class="h2 mt-4">No BOOK issue</p> 
+       </div>
+    <?php else: ?>
 <table class="table table-striped">
 <thead>
         <td  scope="col">avatar</td>
@@ -37,4 +42,6 @@
     </tr>
     <?php endforeach;?>   
 </table>
+
+<?php endif; ?>
 </div>
