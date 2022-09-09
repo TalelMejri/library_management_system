@@ -271,6 +271,11 @@
             return $query->fetchAll();
         }
 
+        public function get_user_chat(){
+            $sql="SELECT * from admin where corbeille=:corb";
+            $query=$this->pdo->launch_query($sql,['corb'=>0]);
+            return $query->fetchAll();
+        }
      
 
   

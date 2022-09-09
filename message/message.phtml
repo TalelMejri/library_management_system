@@ -1,0 +1,40 @@
+<div class="col-xl-10 py-5 container">
+    <div class="row shadow-lg rounded">
+        <div class="col-md-10 py-5 text-center">
+                
+        </div>
+        <div style="border-left:1px solid #000 " class="col-md-2  py-2">
+             <p class="fw-bolder text-primary text-center">All User</p>
+              <?php foreach( $all_user as $user):?>
+                  <?php if($user['role']==1):?>
+                    <div>
+                        <p>Admin:</p>
+                         <p class="text-danger">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="<?=$user['avatar_admin']?>" class="rounded-pill shadow-sm" width="50px" alt="">
+                                </div>
+                                <div class="col-md-1 mt-2">
+                                    <?=$user['name']?>
+                                </div>
+                            </div>
+                         </p>
+                         <hr>
+                    </div>
+                    <p>User:</p>
+                    <?php else :?>
+                         <p class="text-danger">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="<?=$user['avatar_admin']?>" class="rounded-pill shadow-sm" width="50px" alt="">
+                                </div>
+                                <div class="col-md-1 mt-2">
+                                    <?=$user['name']?>
+                                </div>
+                            </div>
+                         </p>
+                        <?php endif;?>
+              <?php endforeach; ?>
+        </div>
+    </div>
+</div>
