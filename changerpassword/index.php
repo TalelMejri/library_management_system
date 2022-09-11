@@ -2,6 +2,7 @@
 
  require_once("../classes/classes.php");
  $suivant=1;
+ $admin=new user();
  $error=[];
  if(isset($_POST['confirmer'])){  
        $suivant=0; 

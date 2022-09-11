@@ -19,8 +19,8 @@
         }else{
             $query=new comment();
             $value=$query->addmessage($name,$email,$messages);
-            sendmail("Library", $email, "We've recieved your message", "Thank you for sending us a message one of our agents will get back to you soon ");
-            sendmail("Library", "librarymejri@gmail.com", "New message from ".$name, $messages);
+            sendmail("Library",$email,"We've recieved your message", "Thank you for sending us a message one of our agents will get back to you soon ");
+            sendmail("Library", "testlibrary05@gmail.com", "New message from ".$name, $messages);
         }
     }
      shoform:
