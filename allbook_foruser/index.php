@@ -9,7 +9,10 @@
  $book=new book();
  $trouve=0;
  $book_click=$book->get_all();
-
+ if(!isset($_SESSION['userid'])){
+   header("location:../login");
+   exit;
+}
   if(isset($_POST['rate'])){
       extract($_POST);
       if($carte->verfier_rate_user($_SESSION['userid'],$idbook)==false){

@@ -1,6 +1,10 @@
 <?php 
  
   session_start();
+  if(!isset($_SESSION['userid'])){
+    header("location:../login");
+    exit;
+}
   include "../classes/classes.php";
   $book=new book();
   $commandes=$book->allcommandeinadmin();
