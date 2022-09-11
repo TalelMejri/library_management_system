@@ -15,8 +15,13 @@
                   <span class="mx-4 fw-bolder text-white"><?=$user_choice['name']?></span>
                 </div>
                 <div class="card-body">
-              <?php foreach( $chat->getmessageofuser($_SESSION['userid'],$user_choice['id']) as $message): ?>
-                 <?php if($message['idenvoi']==$_SESSION['userid']):?>
+                    <?php if(isset($_SESSION['userid'])){
+                             $check_admin_user=$_SESSION['userid'];
+                          }else if(isset($_SESSION['name'])){
+                            $check_admin_user=$_SESSION['id'];
+                          } ?>
+              <?php foreach( $chat->getmessageofuser($check_admin_user,$user_choice['id']) as $message): ?>
+                 <?php if($message['idenvoi']==$check_admin_user):?>
                     <div class="float-end bg-primary p-2 rounded text-white fw-bolder">
                          <?=$message['message']?>
                     </div>
