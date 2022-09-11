@@ -84,6 +84,11 @@
                                 </div>
                                 <div class="col-md-1 mt-2">
                                     <?=$user['name']?>
+                                    <?php if($a== $user['id']):?>
+                                          online
+                                        <?php else :?>
+                                            offline
+                                            <?php endif;?>
                                 </div>
                             </div>
                     </a>

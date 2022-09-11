@@ -3,6 +3,10 @@
 session_start();
 require_once("./classes/classes.php");
 $admin=new user();
+if(!isset($_SESSION['userid'])){
+    header("location:../login");
+    exit;
+}
 if(isset($_POST['favorite'])){
     extract($_POST);
     $admin->AddfavoriteBook($_SESSION['userid'],$idbook);

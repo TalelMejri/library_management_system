@@ -1,5 +1,9 @@
 <?php 
     session_start();
+    if(!isset($_SESSION['name'])){
+     header("location:../login");
+     exit;
+ }
     require_once("../classes/classes.php");
      $book=new book();
      if(isset($_POST['delete'])){

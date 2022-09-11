@@ -4,7 +4,17 @@ session_start();
 require_once "../classes/classes.php";
 $admin=new user();
 $chat=new chat();
+$a=false;
+if(!isset($_SESSION['userid'])){
+    header("location:../login");
+    exit;
+}
+
 $all_user=$admin->get_user_chat($_SESSION['userid']);
+
+if(isset($_SESSION['userid'])){
+
+}
 
 if(isset($_GET['id'])){
  extract($_POST);

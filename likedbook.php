@@ -2,6 +2,10 @@
 
 session_start();
 require_once("./classes/classes.php");
+if(!isset($_SESSION['userid'])){
+    header("location:../login");
+    exit;
+}
 $admin=new user();
 if(isset($_POST['like'])){
     extract($_POST);
