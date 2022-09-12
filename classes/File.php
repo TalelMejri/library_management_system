@@ -30,7 +30,7 @@
       }
 
       public function isimage():bool{
-        $array_type=['jpg','png','jpeg','gif'];
+        $array_type=['jpg','png','jpeg','gif','svg'];
         if(!in_array($this->file_type,$array_type)){
           return false;
         }
@@ -38,7 +38,7 @@
       }
 
       public function size_file():bool{
-        if($this->size_file>300000){
+        if($this->size_file>30000000){
           return false;
         }
         return true;
