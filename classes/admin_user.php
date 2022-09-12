@@ -33,7 +33,11 @@
                 return true;
             }
         }
-
+        /**
+         * login user
+         * @param String $email
+         * @param String $password
+         */
         public function login_user(String $email,String $password){
             $sql="SELECT * FROM `admin` where  role=:role AND email=:email";
             $query=$this->pdo->launch_query($sql,[
