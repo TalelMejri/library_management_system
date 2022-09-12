@@ -6,6 +6,11 @@
             $this->pdo=new database();
         }
 
+        /**
+         * login admin
+         * @param String $email
+         * @param String $pass
+         */
         public function login_admin(String $email,String $pass):bool{
             $sql="SELECT * FROM admin where email=:email AND role=:role";
             $query=$this->pdo->launch_query($sql,[
