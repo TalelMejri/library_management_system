@@ -13,7 +13,7 @@
 
 <div class="text-center" >
     <h1 class="text-center pt-3">List Of Books :</h1>
-    <form action="<?$SERVER['PHP_SELF']?>" method="post">
+    <form action="index.php" method="post">
           <button  class="<?= empty($books) ? 'd-none' :''?> btn btn-danger" name="delete">Delete All</button>
     </form>
 <?php if(empty($books)): ?>

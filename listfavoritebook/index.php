@@ -1,9 +1,10 @@
 <?php
+ session_start();
 if(!isset($_SESSION['userid'])){
     header("location:../login");
     exit;
 }
-    session_start();
+   
     require_once("../classes/classes.php");
     $admin=new user();
     $book=new book();

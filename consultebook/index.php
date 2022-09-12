@@ -7,7 +7,6 @@
     require_once("../classes/classes.php");
      $book=new book();
      if(isset($_POST['delete'])){
-          
           $book->deleteallbook();
           echo "<script>alert('delete done')</script>";
      }
