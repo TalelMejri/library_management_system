@@ -5,5 +5,6 @@
 	include 'carte.php';
 	include 'comments_manager.php';
 	include 'messages.php';
+	include 'notification.php';
 	include 'File.php';
 ?>
