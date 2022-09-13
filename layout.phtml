@@ -307,7 +307,10 @@
     </div>
 
 </div>
-
+    <?php
+         // require "../classes/classes.php";
+          $notif=new notification() ;
+      ?>
     <div class="page-content" id="content">
          <div class="bg-secondary p-3"> 
          <button class="btn btn-outline-dark mx-1"  id="btn1"><i class="fa-solid fa-list"></i></button>
@@ -316,7 +319,7 @@
             <button class="btn btn-outline-primary position-relative " onclick="toasty()">
               <i class="text-dark fa-solid fa-bell"></i>
                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  0
+                  <?=$notif->lenght_notif()?>
              </span>
         </button>
             </a>
@@ -331,16 +334,27 @@
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
   <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="true">
     <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-        <strong class="me-auto">Bootstrap</strong>
-         <small>11 mins ago</small>
+      
+        <strong class="me-auto">Notification</strong>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
     <div class="toast-body">
-        Hello, world! This is a toast message.
+   
+       <?php foreach($notif->get_notif() as $message):  ?>
+              <div class="card">
+                  <div class="card-header">
+                     <?=$message['messages']?>
+                    <span style="cursor:pointer" class="float-end ">
+                         <a class="text-decoration-none text-danger" href="../deletenorifiaction.php?id=<?=$message['id']?>">X</a>
+                     </span>
+                  </div>
+
+              </div>
+        <?php endforeach; ?>
     </div>
    </div>
 </div>
+
         <?php include $template.".phtml"; ?>
     </div>
     <?php endif;?>

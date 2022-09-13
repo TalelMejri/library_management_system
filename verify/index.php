@@ -5,6 +5,7 @@ require_once("../classes/classes.php");
 $email = $_GET["key"];
 $token = $_GET["token"];
 $admin=new user();
+$notif=new notification();
 $errors=[];
 if(!$email || !$token){
     $errors[0]="Email or token missing";
@@ -15,6 +16,7 @@ if(!$email || !$token){
         $errors[0]="User doesn't exist";
         goto show;
     }else if ($result == 1){
+        $notif->addnotifi("new user avec email ".$email);
         header("location:../login?verfiy=Your account has been verified avec succefully&color=success");
         exit;
     }

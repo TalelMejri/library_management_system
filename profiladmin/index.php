@@ -4,6 +4,7 @@
         header("location:../layout.phtml");
         exit;
     }
+
     require_once("../classes/classes.php");
     $a=new book();
     $number_all_book=$a->count_books();
