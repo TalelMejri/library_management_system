@@ -16,7 +16,7 @@
                     <div class="col-md-8  text-dark font-weight-bold">
                      <div class="card-body">
                          <h5 class="card-title"><?=$book['name_book']?>
-                                <p class="float-end"><?=$book['status']?></p>                        
+                                                    
                          </h5>
                           <p class="card-text"><?=$book['author_book'];?></p>
                           <p class="card-text py-2"><small class="text-muted">
@@ -29,7 +29,12 @@
                              </form>
                       </span>
                           <span class=" text-center float-end">
-                                 <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?>
+                          <?php $somme=$carte->sommerate($book['idbook']); 
+                                     $nbr=number_format($somme,2,',','');
+                                     $seul=floatval($nbr);
+                                     $final_nbr=ltrim($seul,"0");
+                             ?>
+                                <i class="fa-solid fa-star text-warning px-2"></i><?=$book['rate']?><?=$somme==0 ? $final_nbr : $nbr;?>
                          </span>
                     </small>
                 </p>

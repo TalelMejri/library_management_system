@@ -23,7 +23,7 @@
                 <tr>
                     <td><?=$commande['aveclivraison']?></td>
                     <td><?=$commande['quantity']?></td>
-                    <td><?=$commande['Prix']?></td>
+                    <td><?=$commande['Prix'] * $commande['quantity']?> Dt</td>
                 </tr>
              </table>
              <form action="index.php" method="POST">
