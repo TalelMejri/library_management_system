@@ -62,9 +62,15 @@
  else if(isset($_POST['adventure'])){
     $book_click=$book->getbookbygenre('adventure');
  }
- elseif(isset($_POST['science'])){
-    $book_click=$book->getbookbygenre('science');
+ elseif(isset($_POST['mystery'])){
+    $book_click=$book->getbookbygenre('mystery');
  }
+ else if(isset($_POST['horror'])){
+   $book_click=$book->getbookbygenre('horror');
+}
+else if(isset($_POST['story'])){
+   $book_click=$book->getbookbygenre('story');
+}
 
  $template="allbook_foruser";
  $page_titel="all BOOk";
