@@ -2,7 +2,6 @@
 <style>
 .reglage_card{
    transition-duration: 0.4s;
-   cursor:pointer;
  }
 
  .reglage_card:hover{
@@ -28,28 +27,52 @@
       </div>
     <?php endif;?>
  <?php foreach($books as $book) :?>  
-   <div class="col-lg-4 py-4 mx-5">
-        <div class="card mx-1 reglage_card">
-            <img src="<?= $book['avatar'] ?>" height="200px" class="card-img-top " alt="photo book">
-             <div class="card-body">
-              <div class="row">
-                 <h5 class="card-title col-md-6">name   :<?=$book['name_book'];?></h5>
-                 <h5 class="card-title col-md-6">author :<?=$book['author_book'];?></h5>
-                 </div>
-          <div class="row">
-              <div class="col-md-6">  <p class="card-text"> Nombre dispo : <?=$book['nbr_book'];?></p></div>
-              <div class="col-md-6">  Status :<span style="color:<?= $book['status']=='enable'? 'green' :''?>" ><?= $book['status'] ;?></span></div>
-          </div>
-            <div class="row">
-              <div class="col-md-6">  <p class="card-text">  decription : <p class="card-text"><?=$book['description_book'];?></p></p></div>
-              <div class="col-md-6">  genre :<span ><?= $book['genre'] ;?></span></div>
-          </div>
+<div class="col-lg-5 py-4 mx-3 m-3">
+<div class="card mb-3 reglage_card ">
+  <div class="row g-0">
+    <div class="col-md-5">
+      <img src="<?= $book['avatar'] ?>" width="100%"  class="img-fluid rounded-start" alt="photo book">
+    </div>
+    <div class="col-md-7" style="">
+        <div class="card-header bg-info fw-bolder text-white">
+           <?=$book['name_book']?>
         </div>
-             <div class="row justify-content-center gap-2 mb-2">
-              <button class="col-md-3 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
-              <button class="col-md-3   btn btn-outline-warning"><a class="text-decoration-none text-dark" href="../updatebook?id=<?=$book['idbook'];?>"> Update </a></button>
-            </div>
+        <div class="card-body">
+
+             <table class="table table-danger rounded ">
+                <thead>
+                  <tr>
+                    <td  class="fw-bolder">Author</td>
+                    <td class="text-center fw-bolder">Nbr Despo</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><?=$book['author_book']?></td>
+                    <td class="text-center"><?=$book['nbr_book']?></td>
+                  </tr>
+                </tbody>
+             </table>
+             
+             <div class="mt-2 mb-3">
+               <h5 class="fw-bolder">Description :</h5>
+                 <p class="text-muted"><?=$book['description_book']?></p> 
+             </div>
+
+             <div class="row py-3 mb-0">
+                  <div class="col-md-6 mb-2">
+                       <button class="btn btn-outline-danger text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash"></i></button>
+                  </div>
+                  <div class="col-md-6">
+                       <button class="btn btn-outline-warning"><a class="text-decoration-none  text-dark" href="../updatebook?id=<?=$book['idbook'];?>"> <i class="fa-solid fa-pen-to-square"></i> </a></button>
+                  </div>
+             </div>
         </div>
+  </div>
+ </div>
+</div>
+
+       
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel<?=$book['idbook'];?>" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
