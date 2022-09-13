@@ -13,7 +13,7 @@ if(!isset($_SESSION['userid'])){
 if(isset($_POST['favorite'])){
     extract($_POST);
     $admin->AddfavoriteBook($_SESSION['userid'],$idbook);
-    $message=$_SESSION['username']."Adore book ".$name;
+    $message=$_SESSION['username']." Adore book ".$name;
     if($verified==0){
         $notif->addnotifi($message);
     }
