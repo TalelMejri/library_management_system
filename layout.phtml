@@ -308,16 +308,39 @@
 
 </div>
 
-    <div class="page-content " id="content">
-         <div class="bg-secondary p-3">
-            <button class="btn btn-outline-dark mx-1"  id="btn1"><i class="fa-solid fa-list"></i></button>
-            <a class="float-end" href="../editadmin">
+    <div class="page-content" id="content">
+         <div class="bg-secondary p-3"> 
+         <button class="btn btn-outline-dark mx-1"  id="btn1"><i class="fa-solid fa-list"></i></button>
+           <div class="float-end">
+            <a class="mx-3" style="cursor:pointer;position:relative" > 
+            <button class="btn btn-outline-primary position-relative " onclick="toasty()">
+              <i class="text-dark fa-solid fa-bell"></i>
+               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  0
+             </span>
+        </button>
+            </a>
+            <a  href="../editadmin" class="px-2">
                 <span class="fa-stack fa-1x ">
                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
                        <i class="fas fa-user-gear fa-stack-1x text-white"></i>
                 </span>
             </a>
+            </div>
         </div> 
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+        <strong class="me-auto">Bootstrap</strong>
+         <small>11 mins ago</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    <div class="toast-body">
+        Hello, world! This is a toast message.
+    </div>
+   </div>
+</div>
         <?php include $template.".phtml"; ?>
     </div>
     <?php endif;?>
@@ -436,7 +459,16 @@
       <?php endif; ?>
 </body>
 <script>
-
+var option=
+   {
+    animation:true,
+    delay:2000
+   };
+   function toasty(){
+    var toastelement=document.querySelector('.toast');
+    var toastcreate=new bootstrap.Toast(toastelement,option);
+    toastcreate.show();
+   }
 let contenu=document.querySelector('.page-content');
 let btn_changer=document.querySelector('#changer');
 

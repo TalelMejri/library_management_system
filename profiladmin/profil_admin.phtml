@@ -1,13 +1,19 @@
+
+
 <canvas style="position:absolute;width:70%" class="text-center" id="my-canvas"></canvas>
 <div  class="content_overview">
 <div class="row px-4  py-5">
+
      <div class="col-md-4 mb-4 ">
         <div class="card border-left-red shadow h-100 py-2">
                   <div class="card-body">
                          <div class="row align-items-center">
                                <div class="col mr-2">
                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            nombre of all the books</div>
+                                           
+                                   nombre of all the books</div>
+                                 
+
                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$number_all_book?></div>
                                 </div>
                                  <div class="col-auto">
@@ -75,7 +81,9 @@
                 </div>
         </div>
     </div>
+    
  </div>
+ 
  <div class="card w-50 h-50 mt-5 text-center col-md-4">
 <?php if(empty($lastmessage)): ?>
        <p class="mt-2"> no comments</p>
@@ -94,9 +102,10 @@
 <?php endif;?>
 
 
-</div>
   <script src="../js/index.min.js"></script>
 <script>
+ 
+
    var confettiSettings = { target: 'my-canvas' };
    var confetti = new ConfettiGenerator(confettiSettings);
    confetti.render();
