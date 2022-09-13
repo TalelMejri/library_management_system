@@ -20,8 +20,9 @@
          <div class="col-lg-4">
             <form action="../likedbook.php" method="POST">
                <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
+               <input  type="hidden" name="name" value=<?=$book['name_book']?>>
                <?php $verified=$admin->getalluser_liked($_SESSION['userid'],$book['idbook']); ?>
-               <input  type="hidden" name="verified" value=<?=$verified['liked']?>>
+               <input  type="hidden" name="verified" value=<?=isset($verified['liked']) ? $verified['liked'] :0?>>
                <?php $nombre=$admin->sommeliked($book['idbook']);?>
                <button type="submit" class="btn btn-light" name="like"><i class="<?= $verified['liked'] ?'fa-solid' : 'fa-regular'?> fa-thumbs-up px-1"></i><?=$nombre?></button>  
             </form>
@@ -29,9 +30,9 @@
          <div class="col-lg-4 text-center">
          <form action="../favoritebook.php" method="POST">
                <input  type="hidden" name="idbook" value=<?=$book['idbook']?>>
-
+               <input  type="hidden" name="name" value=<?=$book['name_book']?>>
                <?php $heart=$admin->getalluser_favorite($_SESSION['userid'],$book['idbook']); ?>
-               <input  type="hidden" name="verified" value=<?=$heart['favorite']?>>
+               <input  type="hidden" name="verified" value=<?=isset($heart['favorite']) ? $heart['favorite'] :0?>>
                <button type="submit" class="btn btn-light" name="favorite"><i class="<?= $heart['favorite'] ?'text-danger' : 'text-secondary'?> fa-solid fa-heart "></i></button>  
             </form>
          </div>
