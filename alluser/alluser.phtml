@@ -1,3 +1,9 @@
+<style>
+.active{
+  background-color:blue;
+}
+</style>
+
 <h1 class="h2 text-center py-5">List Of user </h1>
  <?php if(empty($alluser)): ?>
        <div class="h3 text-center fw-bolder"> no user yet !!</div>
@@ -12,16 +18,13 @@
   <div class="col-md-4">
 <div class="float-end ">
      <form action="index.php" method="POST">
-       <label>Show</label>
-        <Select name="choix" onchange="this.form.submit()">
-            <option value="10" selected >10</option>
-            <option value="2"  >2</option>
-            <option value="15" >15</option>
-            <option value="20" >20</option>
-            <option value="25" >25</option>
-            <option value="30" >30</option>
-            <option value="35" >35</option>
-        </Select>
+        <label>Show</label>
+        <select name="record" onchange="this.form.submit()">
+            <option value="10">10</option>
+            <option value="5">5</option>
+            <option value="2">2</option>
+            <option value="100">100</option>
+        </select>
         users
      </form>
   </div>
@@ -81,13 +84,19 @@
 
 </div>
 </div>
-<nav class="d-flex justify-content-center" aria-label="...">
+<nav class="d-flex justify-content-center" >
   <ul class="pagination">
     <li class="page-item ">
     <a class="page-link" href="index.php?page=<?=($previous)?>">previous</a>
     </li>
-    <?php for($i=1;$i<$pages;$i++): ?>
-      <li class="page-item"><a class="page-link" href="index.php?page=<?=$i?>"><?=$i?></a></li>
+    <?php for($i=1;$i<=$pages;$i++): 
+         if($i==$page){
+            $active="active";
+         }else{
+          $active="";
+         }?>
+         
+      <li class="page-item <?=$active?>"><a class="page-link" href="index.php?page=<?=$i?>"><?=$i?></a></li>
     <?php endfor;?>
     <li class="page-item">
       <a class="page-link" href="index.php?page=<?=$next?>">Next</a>
@@ -95,3 +104,11 @@
   </ul>
 </nav>
 <?php endif;?>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#records").change(function(){
+       $('form').submit();
+		})
+	})
+</script>

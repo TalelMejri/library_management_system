@@ -5,13 +5,15 @@
         exit;
     }
 
+
     require_once("../classes/classes.php");
     $user=new user();
-    $pages=isset($_GET['page']) ? $_GET['page'] : 1;
-    $limit=isset($_POST['choix']) ? $_POST['choix'] : 10;
-    $next=$pages<$user->countuser()/$limit ? $pages+1 : 1;
-    $previous=$pages>1 ? $pages-1 : 1;
-    $alluser=$user->getalluser($limit);
+    $page=isset($_GET['page']) ? $_GET['page'] : 1;
+    $limit=isset($_POST['record']) ? $_POST['record'] : 2;
+    $next=$page < $user->countuser() /$limit ? $page+1 : 1;
+    $previous= $page > 1 ? $page-1 : 1;
+    $start=($page-1)* $limit;
+    $alluser=$user->getalluser($limit,$start);
     $pages=ceil($user->countuser()/$limit);
     
     $show=null;
