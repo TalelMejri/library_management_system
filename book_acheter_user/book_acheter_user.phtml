@@ -5,8 +5,8 @@
            <p class="h2 mt-4">No BOOK issue</p> 
        </div>
     <?php else: ?>
-<table class="table table-striped">
-<thead>
+<table class="table table-striped mt-4">
+<thead class="bg-info fw-bolder text-uppercase">
         <td  scope="col">avatar</td>
         <td  scope="col">nom book</td>
         <td  scope="col">author</td>
@@ -27,7 +27,7 @@
     <?=$items['author_book'];?>
     </td>
     <td>
-    <?=$items['Prix'];?>
+    <?=$items['Prix'] *$items['quantity'];?> Dt
     </td>
     <td>
         <?=$items['quantity']?>
