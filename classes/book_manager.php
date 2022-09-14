@@ -121,6 +121,7 @@
             $query=$this->pdo->launch_query($sql);
             return $query->fetchAll();
         }
+
         public  function updatevalider(int $idcommande,int $idbook,int $quantity)
         {
          $sql="UPDATE comande SET valider=1 where idcommande=:id";
@@ -130,8 +131,8 @@
          $query=$this->pdo->launch_query($sql,['idbook'=>$idbook]);
          $value=$query->fetch();
          if($value['nbr_book']>0){
-         $sql="UPDATE book SET nbr_book=:nbr where idbook=:idbook";
-         $this->pdo->launch_query($sql,['nbr'=>$value['nbr_book']-$quantity,'idbook'=>$idbook]);
+             $sql="UPDATE book SET nbr_book=:nbr where idbook=:idbook";
+             $this->pdo->launch_query($sql,['nbr'=>$value['nbr_book']-$quantity,'idbook'=>$idbook]);
          }
         }
 

@@ -115,10 +115,17 @@
             return $query->fetchAll();
         }
 
-        public function getalluser(){
-            $sql="SELECT * from admin where role=:rolee AND corbeille=:corb";
+        public function getalluser(int $limit=10){
+            $sql="SELECT * from admin where role=:rolee AND corbeille=:corb limit $limit";
             $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>0]);
             return $query->fetchAll();
+        }
+
+        public function countuser(){
+            $sql="SELECT count(*) from admin where role=:rolee AND corbeille=:corb";
+            $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>0]);
+            $value=$query->fetch();
+            return $value['count(*)'];
         }
 
         public function getalluserdeleted(){
