@@ -115,8 +115,8 @@
             return $query->fetchAll();
         }
 
-        public function getalluser(int $limit=10){
-            $sql="SELECT * from admin where role=:rolee AND corbeille=:corb limit $limit";
+        public function getalluser(int $limit,int $start){
+            $sql="SELECT * from admin where role=:rolee AND corbeille=:corb limit $start,$limit";
             $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>0]);
             return $query->fetchAll();
         }
