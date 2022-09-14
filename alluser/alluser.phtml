@@ -83,14 +83,14 @@
 </div>
 <nav class="d-flex justify-content-center" aria-label="...">
   <ul class="pagination">
-    <li class="page-item disabled">
-    <a class="page-link" href="index.php?previous=<?=($pages-1)>0 ? $page-1 : 1?>">previous</a>
+    <li class="page-item ">
+    <a class="page-link" href="index.php?page=<?=($previous)?>">previous</a>
     </li>
     <?php for($i=1;$i<$pages;$i++): ?>
       <li class="page-item"><a class="page-link" href="index.php?page=<?=$i?>"><?=$i?></a></li>
     <?php endfor;?>
     <li class="page-item">
-      <a class="page-link" href="index.php?next=<?=($pages+1)?>">Next</a>
+      <a class="page-link" href="index.php?page=<?=$next?>">Next</a>
     </li>
   </ul>
 </nav>

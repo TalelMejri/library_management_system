@@ -4,11 +4,13 @@
         header("location:../login");
         exit;
     }
-    
+
     require_once("../classes/classes.php");
     $user=new user();
     $pages=isset($_GET['page']) ? $_GET['page'] : 1;
-    $limit=isset($_POST['choix']) ? $_POST['choix'] :10;
+    $limit=isset($_POST['choix']) ? $_POST['choix'] : 10;
+    $next=$pages<$user->countuser()/$limit ? $pages+1 : 1;
+    $previous=$pages>1 ? $pages-1 : 1;
     $alluser=$user->getalluser($limit);
     $pages=ceil($user->countuser()/$limit);
     
