@@ -121,6 +121,13 @@
             return $query->fetchAll();
         }
 
+        public function getbyname(STRING $name){
+            $name_search="%".$name."%";
+            $sql="SELECT * FROM admin where role=:rolee AND corbeille=:corb AND name like :name";
+            $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>0,'name'=>$name_search]);
+            return $query->fetchAll();
+        }
+
         public function countuser(){
             $sql="SELECT count(*) from admin where role=:rolee AND corbeille=:corb";
             $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>0]);
