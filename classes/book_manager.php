@@ -42,7 +42,7 @@
          }*/
 
          public function nombre_books_enable(){
-           /* $sql="SELECT count(*) from book where status=:statu";
+           /*$sql="SELECT count(*) from book where status=:statu";
             $query=$this->pdo->launch_query($sql,['statu'=>$stat]);
             $value=$query->fetch();
             return $value['count(*)'];*/
