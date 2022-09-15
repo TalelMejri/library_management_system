@@ -16,6 +16,9 @@
           extract($_POST);
           $books=$book->searchforbook($search);
      }
+     if(isset($_GET['order_by_name'])){
+          $books=$book->orderbyname();
+     }
      $template="consultebook";
      $show=null;
      $page_titel="all book";

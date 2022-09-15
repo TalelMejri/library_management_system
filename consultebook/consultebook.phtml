@@ -21,11 +21,19 @@
        </div>  
  <?php endif;?>
  <form class="mt-4" action="index.php" method="POST">
-  <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
     <input name="search" type="search" style="width:20%" placeholder="Search by name book" class="form-control">
     <button name="btn_search" class="btn btn-success mx-2">search</button>
     </div>
  </form>
+ <div class="d-flex justify-content-center mt-4">
+     <a class="text-decoration-none" href="?order_by_name">
+          <button class="btn btn-outline-dark">
+              <i class="fa-solid fa-signature me-2"></i>
+               Show Order  By Name
+          </button>
+     </a>
+ </div>
 <div class="row d-flex justify-content-center">
 <?php if(array_key_exists('type',$_GET)): ?>
       <div style="width:90%" class="mt-4 text-center alert alert-<?=$_GET['type']?>" role="alert">

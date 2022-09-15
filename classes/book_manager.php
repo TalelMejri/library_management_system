@@ -120,7 +120,12 @@
             $query=$this->pdo->launch_query($sql,['genre'=>$genre]);
             return $query->fetchAll();
          }
-
+       
+         public function orderbyname(){
+            $sql="SELECT * FROM book   order by name_book DESC";
+            $query=$this->pdo->launch_query($sql);
+            return $query->fetchAll();
+         }
          public function searchforbook(string $name_book){
             $name="%".$name_book."%";
             $sql="SELECT * from book where name_book like :name";
