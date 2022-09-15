@@ -34,19 +34,34 @@
             return $query->fetch();
          }
 
-         public function count_books():String{
+         /*public function count_books():String{
             $sql="SELECT count(*) FROM book";
             $query=$this->pdo->launch_query($sql);
             $value=$query->fetch();
             return $value['count(*)'];
-         }
+         }*/
 
-         public function nombre_books_enabel_or_not(String $stat){
-            $sql="SELECT count(*) from book where status=:statu";
+         public function nombre_books_enable(){
+           /* $sql="SELECT count(*) from book where status=:statu";
             $query=$this->pdo->launch_query($sql,['statu'=>$stat]);
             $value=$query->fetch();
-            return $value['count(*)'];
+            return $value['count(*)'];*/
+            $sql="SELECT Sum(nbr_book) from book";
+            $query=$this->pdo->launch_query($sql);
+            $value=$query->fetch();
+            return $value['Sum(nbr_book)'];
          }
+
+         public function nombre_books_not_enable(){
+            /* $sql="SELECT count(*) from book where status=:statu";
+             $query=$this->pdo->launch_query($sql,['statu'=>$stat]);
+             $value=$query->fetch();
+             return $value['count(*)'];*/
+             $sql="SELECT Sum(quantity) from line_commande";
+             $query=$this->pdo->launch_query($sql);
+             $value=$query->fetch();
+             return $value['Sum(quantity)'];
+          }
 
          public function delete_book(int $id):void{
             $sql="DELETE from book where idbook=:id";
@@ -99,6 +114,7 @@
             $query=$this->pdo->launch_query($sql,['id'=>$iduser,'favorite'=>1]);
             return $query->fetchAll();
          }
+         
          public function getbookbygenre(string $genre){
             $sql="SELECT * from book where genre=:genre";
             $query=$this->pdo->launch_query($sql,['genre'=>$genre]);
