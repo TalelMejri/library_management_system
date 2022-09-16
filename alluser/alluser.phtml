@@ -84,10 +84,10 @@
 
 </div>
 </div>
-<nav class="d-flex justify-content-center" >
+<nav class="d-flex justify-content-center">
   <ul class="pagination">
-    <li class="page-item ">
-    <a class="page-link" href="index.php?page=<?=($previous)?>">previous</a>
+    <li class="page-item">
+    <a class="page-link" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=($previous)?>">previous</a>
     </li>
     <?php for($i=1;$i<=$pages;$i++): 
          if($i==$page){
@@ -96,10 +96,10 @@
           $active="";
          }?>
          
-      <li class="page-item <?=$active?>"><a class="page-link" href="index.php?page=<?=$i?>"><?=$i?></a></li>
+      <li class="page-item <?=$active?>"><a class="page-link" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=$i?>"><?=$i?></a></li>
     <?php endfor;?>
     <li class="page-item">
-      <a class="page-link" href="index.php?page=<?=$next?>">Next</a>
+      <a class="page-link" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=$next?>">Next</a>
     </li>
   </ul>
 </nav>
