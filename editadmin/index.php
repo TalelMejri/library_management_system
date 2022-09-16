@@ -8,7 +8,7 @@
      $errors=[];
     if(isset($_POST['submit'])){
         extract($_POST);
-        $file=new File('../storage/personnel/',$_FILES['avatar']);
+      
         if(empty($name)){
             $errors[0]="name vide";
             goto show;
@@ -29,17 +29,22 @@
             $errors[0]="confirm should egael password";
             goto show;
         }
-  
-        if($file->upload()==false){
-            $errors[0]= "upload failed";
-            goto show;
-        }
-   
-     
-    $avatar='../storage/personnel/'.$file->getfilename();
+
+        $avatarupload=false;
+        $avatar="";
+        if(strlen($_FILES['avatar']['names'])){
+            $file=new File('../storage/personnel/',$_FILES['avatar']);
+            $avatar='../storage/personnel/'.$file->getfilename();
+          if($file->upload()==false){
+              $errors[0]="upload failed";
+              goto show;
+          }
+          $avatarupload=true;
+      }
+
     if(empty($errors)){
         $admin=new user();
-        $valid=$admin->edit_admin($name,$email,$password,$avatar,$_SESSION['id']);
+        $valid=$admin->edit_admin($name,$email,$password,$avatar,$_SESSION['id'],$avatarupload);
         header("location:../profiladmin");
         exit;
     }
