@@ -1,4 +1,5 @@
 <?php 
+
     session_start();
     if(!isset($_SESSION['name'])){
         header("location:../login");
@@ -7,9 +8,9 @@
 
     require_once("../classes/classes.php");
     $user=new user();
-    $page=isset($_GET['page']) ? $_GET['page'] : 1;
-    $limit=isset($_GET['record']) ? $_GET['record'] : 4;
-    $next=$page < $user->countuser() /$limit ? $page+1 : 1;
+    $page=isset($_GET['page']) ? $_GET['page'] : 1 ;
+    $limit=isset($_GET['record']) ? $_GET['record'] : 4 ;
+    $next=$page < $user->countuser() /$limit ? $page+1 : 1 ;
     $previous= $page > 1 ? $page-1 : 1;
     $start=($page-1)* $limit;
 
