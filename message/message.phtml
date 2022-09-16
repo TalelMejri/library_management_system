@@ -1,6 +1,52 @@
 <style>
 #hover:hover{
-    background-color:whitesmoke;}
+    background-color:whitesmoke;
+}
+.card-header{
+    background:blue;
+}
+ .check{
+    float: right;
+}
+.check img{
+    width: 20px;
+}
+ .check span{
+    color: #000;
+    font-size: 12px;
+    font-weight: 700px;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+}
+.chat{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #f1f0e8;
+}
+ textarea{
+    display: block;
+    flex:1;
+    width: 100%;
+    border-radius: 60px;
+    margin: 5px;
+    height: 50px;
+    outline: none;
+    font-size: 19px;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right:90px ;
+    border: 2px solid #ccc;
+    color: #555;
+    resize: none;
+}
+.addreact:active{
+    background-color:red;
+}
 </style>
 <div class="col-xl-10 py-5 container">
     <div class="row shadow-lg rounded">
@@ -12,22 +58,36 @@
                     </div>
                     <?php else :?> 
                 <!--style="position:fixed;z-index:0;width:29%"-->
-            <div style="max-height:500px;overflow-y:auto;}" class="card mx-5 w-50">
-                <div  class=" card-header bg-secondary">
+            <div style="max-height:500px;overflow-y:auto;}" class="chat card mx-5 w-50">
+                <div  class="card-header">
+                    <div class="profil">
                   <img class="rounded-pill" width="50px" src="<?=$user_choice['avatar_admin']?>" alt="">
                   <span class="mx-4 fw-bolder text-white"><?=$user_choice['name']?></span>
+                  </div>
                 </div>
-                <div class="card-body">
+                <div  style="
+                             background-attachment: fixed;
+                             background-image: url(./bg.jpeg);
+                             overflow-y: scroll;
+                             padding-left: 20px;" 
+                    class="card-body chat-box"
+                >
                     <?php if(isset($_SESSION['userid'])){
                              $check_admin_user=$_SESSION['userid'];
                           }else if(isset($_SESSION['name'])){
                             $check_admin_user=$_SESSION['id'];
                           } ?>
               <?php foreach( $chat->getmessageofuser($check_admin_user,$user_choice['id']) as $message): ?>
-                 <?php if($message['idenvoi']==$check_admin_user):?>
+               
+                <?php if($message['idenvoi']==$check_admin_user):?>
+               
                     <div class="float-end bg-primary p-2 rounded text-white fw-bolder">
-                         <?=$message['message']?>
+                         <span class="text-center" style="word-break: break-all;"><?=$message['message']?></span>
+                         <div class="check mt-4">
+                               <span><?=$message['Date']?></span>      
+                       </div>
                     </div>
+                    <br>
                     <br>
                     <br>
                     <?php else:?>
@@ -37,28 +97,29 @@
                         </span> 
                        <span class="bg-info p-2 rounded text-white fw-bolder">
                            <?=$message['message']?>
+                           <div class="check">
+                               <span><?=$message['Date']?></span>      
+                       </div>
                       </span>
                     </div>
                     <br>
+                    
                     <?php endif;?>
+                   
                     <?php endforeach; ?>
-                    <div class="sticky mt-5">
+                   
+                </div>  
+                <div>
                         <form action="index.php"  method="POST">
                         <div class="mt-2">
-                            <div class="row">
-                                <div class="col-md-10">
-                                 <input type="hidden" name="id" value=<?=$user_choice['id']?>>
-                                 <textarea name="message" width="20%" class="px-2 mt-5" cols="10" rows="2" placeholder="Entrer votre message"></textarea>
-                                 </div> 
-                                 <div class="col-md-2 mt-5">
+                            <div class="footer">
+                                  <input type="hidden" name="id" value=<?=$user_choice['id']?>>
+                                  <textarea name="message" width="20%" class="px-2" cols="10" rows="2" placeholder="Entrer votre message"></textarea>
                                   <button name="send" class="btn btn-success">Send</button>
-                                 </div>
                             </div>
                         </div>
-                        </form>
-                    
-                        </div>
-                </div>  
+                    </form>
+                </div>
             </div>
             <?php endif; ?>
         </div>

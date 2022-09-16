@@ -24,10 +24,12 @@ if(isset($_GET['id'])){
 if(isset($_POST['send'])){
     extract($_POST);
     $user_choice=$admin->getuserbyid($id);
+    $date=date("h:i:sa");
+    //$jason=json_encode($date);
     if(isset($_SESSION['userid'])){
-        $chat->send_message($_SESSION['userid'],$id,$message);
+        $chat->send_message($_SESSION['userid'],$id,$message,$date);
     }else if(isset($_SESSION['name'])){
-        $chat->send_message($_SESSION['id'],$id,$message);
+        $chat->send_message($_SESSION['id'],$id,$message,$date);
     }
  
 }

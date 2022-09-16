@@ -6,9 +6,9 @@
             $this->pdo=new database();
          }
 
-       public function  send_message(int $idenvoi,int $idrecu,String $message){
-        $sql="INSERT INTO chat (idenvoi,idrecent,message) VALUES (:idenvoi,:idrecu,:message)";
-        $this->pdo->launch_query($sql,['idenvoi'=>$idenvoi,'idrecu'=>$idrecu,'message'=>$message]);
+       public function  send_message(int $idenvoi,int $idrecu,String $message,String $date){
+        $sql="INSERT INTO chat (idenvoi,idrecent,message,Date) VALUES (:idenvoi,:idrecu,:message,:date)";
+        $this->pdo->launch_query($sql,['idenvoi'=>$idenvoi,'idrecu'=>$idrecu,'message'=>$message,'date'=>$date]);
        }
 
        public function getmessageofuser(int $idenvoi,int $idrecu){
