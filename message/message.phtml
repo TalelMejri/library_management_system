@@ -5,12 +5,8 @@
 .card-header{
     background:blue;
 }
- .check{
-    float: right;
-}
-.check img{
-    width: 20px;
-}
+
+
  .check span{
     color: #000;
     font-size: 12px;
@@ -82,8 +78,8 @@
                 <?php if($message['idenvoi']==$check_admin_user):?>
                
                     <div class="float-end bg-primary p-2 rounded text-white fw-bolder">
-                         <span class="text-center" style="word-break: break-all;"><?=$message['message']?></span>
-                         <div class="check mt-4">
+                         <span class="text-center" ><?=$message['message']?></span>
+                         <div class="check">
                                <span><?=$message['Date']?></span>      
                        </div>
                     </div>
@@ -91,15 +87,16 @@
                     <br>
                     <br>
                     <?php else:?>
-                    <div>
+                        
+                    <div class="d-flex">
                        <span>
                            <img class="rounded-pill me-2" width="30px" src="<?=$user_choice['avatar_admin']?>" alt="">
                         </span> 
                        <span class="bg-info p-2 rounded text-white fw-bolder">
-                           <?=$message['message']?>
-                           <div class="check">
+                         <span class="text-center" ><?=$message['message']?></span>
+                             <div class="check">
                                <span><?=$message['Date']?></span>      
-                       </div>
+                            </div>
                       </span>
                     </div>
                     <br>
