@@ -70,7 +70,8 @@
             }
         }
 
-        public function  edit_admin(String $name,String $email,String $password,String $avatar,int $id){
+        public function  edit_admin(String $name,String $email,String $password,String $avatar,int $id,int $avatarupload){
+        if($avatarupload){
             $sql="UPDATE `admin` SET name=:name_admin,email=:email_admin,password=:pass,avatar_admin=:avatar where id=:id_admin";
             $this->pdo->launch_query($sql,[
                 'id_admin'=>$id,
@@ -79,6 +80,16 @@
                 'pass'=>$password,
                 'avatar'=>$avatar
             ]);
+          }else{
+                    $sql="UPDATE `admin` SET name=:name_admin,email=:email_admin,password=:pass where id=:id_admin";
+                    $this->pdo->launch_query($sql,[
+                        'id_admin'=>$id,
+                        'name_admin'=>$name,
+                        'email_admin'=>$email,
+                        'pass'=>$password,
+                       
+                    ]);
+        }
             $sql="SELECT * FROM admin where id=:id";
             $query=$this->pdo->launch_query($sql,[
                 'id'=>$id,
@@ -90,6 +101,45 @@
             $_SESSION['password']=$admin['password'];
             $_SESSION['role']=$admin['role'];
             $_SESSION['avatar_admin']=$admin['avatar_admin'];
+        }
+
+        public function edituser(String $name,String $email,String $pass,String $tlf,String $cin,String $avatar,int $id,int $avatarupload){
+            
+            if($avatarupload){
+                $sql="UPDATE `admin` SET name=:name,email=:email,password=:pass,avatar_admin=:avatar,tlf=:tlf,cin=:cin where id=:iduser";
+                $this->pdo->launch_query($sql,[
+                 'iduser'=>$id,
+                 'cin'=>$cin,
+                 'tlf'=>$tlf,
+                 'name'=>$name,
+                 'email'=>$email,
+                 'pass'=>$pass,
+                 'avatar'=>$avatar
+             ]);
+         }else{
+            $sql="UPDATE `admin` SET name=:name,email=:email,password=:pass,tlf=:tlf,cin=:cin where id=:iduser";
+            $this->pdo->launch_query($sql,[
+             'iduser'=>$id,
+             'cin'=>$cin,
+             'tlf'=>$tlf,
+             'name'=>$name,
+             'email'=>$email,
+             'pass'=>$pass
+            
+           ]);
+            }
+            $sql="SELECT * FROM admin where id=:id";
+            $query=$this->pdo->launch_query($sql,['id'=>$id]);
+            $user=$query->fetch();
+            $_SESSION['userid']=$user['id'];
+            $_SESSION['username']=$user['name'];
+            $_SESSION['useremail']=$user['email'];
+            $_SESSION['userpassword']=$user['password'];
+            $_SESSION['userrole']=$user['role'];
+            $_SESSION['usertlf']=$user['tlf'];
+            $_SESSION['usercin']=$user['cin'];
+            $_SESSION['useravatar']=$user['avatar_admin'];
+
         }
 
         public function signup(String $name,String $email,int $cin,int $tlf,String $password,String $avatar,string $token){
