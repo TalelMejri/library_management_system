@@ -1,0 +1,63 @@
+
+ <h4 class="p-4 m-4 text-center"><i class="fa-solid fa-user-tie me-2"></i>Personal Info</h4>
+<div class="container d-flex justify-content-center">
+    <form class="shadow m-3 p-4 rounded" action="index.php" method="POST"  enctype="multipart/form-data">
+       <?php if(!empty($errors)): ?>
+          <div class="alert alert-danger" role="alert">
+              <?=$errors[0];?>
+           </div>
+        <?php endif;?>
+ 
+         <div class="row">
+            <div class="col-md-12 text-center">
+               <div class="d-flex justify-content-center">
+                <div class="col-md-10">
+                <div class="d-flex flex-column">
+                  <div >
+                    <img src="<?=$_SESSION['useravatar']?>" width="20%" class="mb-2 rounded-circle img-thumbnail shadow-sm" alt="">
+                    <span class="mx-4">Profil Photo</span>
+                    </div>
+                    <div>
+                      <input type="file" name="avatar" >
+                    </div>
+                </div>
+                </div>
+      
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 py-4">
+                   
+                     <div class="mb-3">
+                        <label for="exampleFormControlInput1"  class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" value=<?=$_SESSION['username']?>>
+                     </div>
+                     
+                     <div class="mb-3">
+                        <label  class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control"  value=<?=$_SESSION['useremail']?>>
+                     </div>
+
+                     <div class="mb-3">
+                        <label  class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control"  value=<?=$_SESSION['userpassword']?>>
+                     </div>
+
+                     <div class="mb-3">
+                        <label  class="form-label">tlf</label>
+                        <input type="text" class="form-control" name="tlf" value=<?=$_SESSION['usertlf']?>>
+                     </div>
+
+                     <div class="mb-3">
+                        <label  class="form-label">cin</label>
+                        <input type="text" class="form-control" name="cin" value=<?=$_SESSION['usercin']?>>
+                     </div>
+                    
+                        <button type="submit" class="btn btn-outline-success" name="edit">update</button>
+                  
+            </div>
+        </div>
+             
+    </form>
+</div>
+
