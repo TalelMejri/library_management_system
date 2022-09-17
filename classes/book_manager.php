@@ -22,10 +22,17 @@
           return $this->pdo->lastInsertId();
          }
 
-         public function get_all(){
-            $sql="SELECT * FROM book ";
-            $query= $this->pdo->launch_query($sql);
-            return $query->fetchAll();
+         public function get_all(int $limit,int $start,String $choix){
+            if(empty($choix)){
+               $sql="SELECT * FROM book  limit $start,$limit ";
+               $query= $this->pdo->launch_query($sql);
+               return $query->fetchAll();
+            }else{
+               $sql="SELECT * FROM book  order by $choix limit $start,$limit ";
+               $query= $this->pdo->launch_query($sql);
+               return $query->fetchAll();
+            }
+           
          }
 
          public function getbookbyid(int $id){
@@ -33,19 +40,14 @@
             $query=$this->pdo->launch_query($sql,['id'=>$id]);
             return $query->fetch();
          }
-
-         /*public function count_books():String{
+          public function count_book(){
             $sql="SELECT count(*) FROM book";
             $query=$this->pdo->launch_query($sql);
             $value=$query->fetch();
             return $value['count(*)'];
-         }*/
+          }
 
          public function nombre_books_enable(){
-           /*$sql="SELECT count(*) from book where status=:statu";
-            $query=$this->pdo->launch_query($sql,['statu'=>$stat]);
-            $value=$query->fetch();
-            return $value['count(*)'];*/
             $sql="SELECT Sum(nbr_book) from book";
             $query=$this->pdo->launch_query($sql);
             $value=$query->fetch();
@@ -53,10 +55,6 @@
          }
 
          public function nombre_books_not_enable(){
-            /* $sql="SELECT count(*) from book where status=:statu";
-             $query=$this->pdo->launch_query($sql,['statu'=>$stat]);
-             $value=$query->fetch();
-             return $value['count(*)'];*/
              $sql="SELECT Sum(quantity) from line_commande";
              $query=$this->pdo->launch_query($sql);
              $value=$query->fetch();
