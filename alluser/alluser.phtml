@@ -32,8 +32,9 @@
   </div>
   <div class="col-md-7">
   <form action="index.php" method="POST">
-      <input type="search" name="search">
-      <button class="btn btn-outline-success" name="btn_search">search</button>
+      <input type="hidden" id="search_contenu" value=<?=isset($_POST['search']) ? $_POST['search'] : ''?>>
+      <input type="search" name="search" id="initiale">
+      <button class="btn btn-outline-success"  name="btn_search">search</button>
      </form>
   </div>
 </div>
@@ -115,6 +116,11 @@
       select[i].setAttribute('selected','selected');
     }
   }
+
+  let hidden_search=document.getElementById('search_contenu').value;
+  console.log(hidden_search);
+  let search_btn=document.getElementById('initiale');
+  search_btn.value= hidden_search;
   
 </script>
 
