@@ -4,8 +4,9 @@
 }
 </style>
 
-<h1 class="h2 text-center py-5">List Of user </h1>
+
  <?php if(empty($alluser)): ?>
+  <h1 class="h2 text-center py-5">List Of user </h1>
        <div class="h3 text-center fw-bolder"> no user yet !!</div>
     <?php else :?>
       <?php if(array_key_exists('type',$_GET)): ?>
@@ -13,8 +14,10 @@
              <?=$_GET['msg'] ?>
         </div>
     <?php endif;?>
-<div class="container py-2 mt-3">
-<div class="row text-center  gap-4">
+<div class="container mt-5 ">
+  <p class="text-center h4 fw-bolder mb-5 me-5 px-2">User List Data Table <span style="border-left:1px solid #000;" class="mx-2 px-2"><?=$user->Count_User()?></span></p> 
+<div class="row text-center py-2 gap-4">
+
   <div class="col-md-4">
 <div class="float-end ">
      <form action="index.php" method="GET">
@@ -32,8 +35,13 @@
   <div class="col-md-7">
   <form action="index.php" method="POST">
       <input type="hidden" id="search_contenu" value=<?=isset($_POST['search']) ? $_POST['search'] : ''?>>
-      <input type="search" name="search" id="initiale">
-      <button class="btn btn-outline-success"  name="btn_search">search</button>
+      <input  style=" 
+        border-radius: 60px;
+        outline: none;
+        border: 2px solid #ccc;
+        padding-left:15px"
+         type="search" placeholder="Search by Name" name="search" id="initiale">
+      <button  class="btn btn-outline-success"  name="btn_search">search</button>
      </form>
   </div>
 </div>
@@ -41,22 +49,26 @@
 <table class="table shadow rounded mt-5 w-50 p-5 table-striped">
   <thead>
     <tr>
+      <th><input type="checkbox" id="select_all" onclick="check()"></th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Cin</th>
       <th scope="col">tlf</th>
+      <th scope="col">Status</th>
       <th scope="col">operation</th>
     </tr>
   </thead>
   <tbody>
   <?php foreach($alluser as $value): ?>
     <tr>
+      <th><input type="checkbox" id="select" value=<?=$value['id']?>></th>
       <td><?=$value['name'];?></td>
       <td><?=$value['email'];?></td>
       <td><?=$value['cin'];?></td>
       <td><?=$value['tlf'];?></td>
+      <td ><button class="btn btn-<?=$value['corbeille'] ? "danger" : "success"?>"><?=$value['corbeille'] ? "blocked" : "active"?></button></td>
       <td>
-        <a class="btn btn-outline-primary" href="../detailsuser?id=<?=$value['id'];?>"><i class="fa-solid fa-circle-info"></i></a>
+        <a class="btn btn-outline-primary mb-1" href="../detailsuser?id=<?=$value['id'];?>"><i class="fa-solid fa-circle-info"></i></a>
         <a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$value['id'];?>" href="#"><i class="fa-solid fa-trash"></i></a>
         
         <div class="modal fade" id="exampleModal<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,6 +98,9 @@
 </div>
 </div>
 <nav class="d-flex justify-content-center">
+ 
+
+  
   <ul class="pagination">
     <li class="page-item">
     <a class="page-link" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=($previous)?>">previous</a>
@@ -103,6 +118,8 @@
       <a class="page-link" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=$next?>">Next</a>
     </li>
   </ul>
+
+  
 </nav>
 <?php endif;?>
 
@@ -117,10 +134,26 @@
   }
 
   let hidden_search=document.getElementById('search_contenu').value;
-  console.log(hidden_search);
   let search_btn=document.getElementById('initiale');
   search_btn.value= hidden_search;
-  
+
+  values=[];
+  function check(){
+  let select_one=document.querySelectorAll("#select");
+   for(let i=0;i<select_one.length;i++){
+    if(select_one[i].checked ==false){
+       select_one[i].checked = true;
+       values.push(select_one[i].value);
+    }else{
+      select_one[i].checked = false;
+    }
+}
+  }
+
+   
+
+  //document.getElementById('values_id').value=values[1].value;
+ 
 </script>
 
 
