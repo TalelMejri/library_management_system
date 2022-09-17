@@ -166,21 +166,21 @@
         }
 
         public function getalluser(int $limit,int $start){
-            $sql="SELECT * from admin where role=:rolee AND corbeille=:corb limit $start,$limit";
-            $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>0]);
+            $sql="SELECT * from admin where role=:rolee   limit $start,$limit";
+            $query=$this->pdo->launch_query($sql,['rolee'=>0]);
             return $query->fetchAll();
         }
 
         public function getbyname(STRING $name){
             $name_search="%".$name."%";
-            $sql="SELECT * FROM admin where role=:rolee AND corbeille=:corb AND name like :name";
-            $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>0,'name'=>$name_search]);
+            $sql="SELECT * FROM admin where role=:rolee AND name like :name";
+            $query=$this->pdo->launch_query($sql,['rolee'=>0,'name'=>$name_search]);
             return $query->fetchAll();
         }
 
         public function countuser(){
-            $sql="SELECT count(*) from admin where role=:rolee AND corbeille=:corb";
-            $query=$this->pdo->launch_query($sql,['rolee'=>0,'corb'=>0]);
+            $sql="SELECT count(*) from admin where role=:rolee ";
+            $query=$this->pdo->launch_query($sql,['rolee'=>0]);
             $value=$query->fetch();
             return $value['count(*)'];
         }
@@ -348,6 +348,13 @@
             $sql="SELECT * from admin where id!=:id and  corbeille=:corb";
             $query=$this->pdo->launch_query($sql,['id'=>$id,'corb'=>0]);
             return $query->fetchAll();
+        }
+
+        public function Count_User(){
+            $sql="SELECT count(id) from admin where role=:role";
+            $query=$this->pdo->launch_query($sql,['role'=>0]);
+            $value= $query->fetch();
+            return $value['count(id)'];
         }
 
      
