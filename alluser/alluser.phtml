@@ -21,10 +21,9 @@
         <label>Show</label>
         <input type="hidden" id="choix" value=<?=isset($_GET['record']) ? $_GET['record'] : 5?>>
         <select name="record" id="record" onchange="this.form.submit()">
-            <option value="10">10</option>
-            <option value="5">5</option>
-            <option value="2">2</option>
-            <option value="100">100</option>
+           <?php foreach([10,100,5,2] as $initiale):?>
+               <option value="<?=$initiale?>"><?=$initiale?></option>
+           <?php endforeach; ?>
         </select>
         users
      </form>
