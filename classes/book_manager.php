@@ -121,8 +121,8 @@
             return $query->fetchAll();
          }
        
-         public function orderbyname(){
-            $sql="SELECT * FROM book   order by name_book DESC";
+         public function orderBy(String $choix){
+            $sql="SELECT * FROM book order by $choix DESC";
             $query=$this->pdo->launch_query($sql);
             return $query->fetchAll();
          }
