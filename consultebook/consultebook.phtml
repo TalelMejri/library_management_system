@@ -3,7 +3,9 @@
 .reglage_card{
    transition-duration: 0.4s;
  }
-
+.active{
+  background-color:blue;
+}
  .reglage_card:hover{
     transform: scale(150px);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -26,15 +28,30 @@
     <button name="btn_search" class="btn btn-success mx-2">search</button>
     </div>
  </form>
- <div class="d-flex justify-content-center mt-4">
-     <form action="index.php" method="POST">
-        <input type="hidden" id="contenu_order" value=<?=isset($_POST['choix']) ? $_POST['choix'] : ''?>>
+ <div class=" mt-4">
+  <div class="row">
+    <div class="col-md-6">
+     <form action="index.php" method="GET">
+        <input type="hidden" id="contenu_order" value=<?=isset($_GET['choix']) ? $_GET['choix'] : ''?>>
         <select name="choix" id="select_contenu" onchange="this.form.submit()">
             <?php foreach(['name_book'=>"Name Book","author_book"=>"Author","nbr_book"=>"Nombre Book","Prix"=>"Prix"] as $key=>$value) : ?>
                  <option value="<?=$key?>"><?=$value?></option>
             <?php endforeach; ?>
         </select>
-     </form>
+     
+     </div>
+     <div class="col-md-6 ">
+              <input type="hidden" id="record" value=<?=isset($_GET['show_book']) ? $_GET['show_book'] : 5?>>
+             <label >Show</label>
+             <select name="show_book" id="show_book" onchange="this.form.submit()">
+                <?php foreach([100,10,5,2] as $value) :?>
+                   <option value="<?=$value?>"><?=$value?></option>
+                <?php endforeach; ?>
+             </select>
+             books
+         </form>
+     </div>
+     </div>
  </div>
 <div class="row d-flex justify-content-center">
 <?php if(array_key_exists('type',$_GET)): ?>
@@ -113,10 +130,33 @@
 </div>
 </div>
 <?php endforeach;?>
-</div>
+
 </div>
 
+</div>
+<div class="d-flex justify-content-center">
+<ul class="pagination">
+    <li class="page-item">
+    <a class="page-link" href="index.php?<?=isset($_GET['show_book']) ? 'show_book='.$_GET['show_book'].'&' : '' ?>page=<?=$previous?>&<?=isset($_GET['choix']) ? 'choix='.$_GET['choix'] : ''?>">previous</a>
+    </li>
+       <?php for($i=1;$i<=$pages;$i++):
+        
+        if($i==$page){
+          $active="active";
+       }else{
+        $active="";
+       }?>
+  
+       
+      <li class="page-item <?=$active?>"><a class="page-link" href="index.php?<?=isset($_GET['show_book']) ? 'show_book='.$_GET['show_book'].'&' : '' ?>page=<?=$i?>&<?=isset($_GET['choix']) ? 'choix='.$_GET['choix'] : ''?>"><?=$i?></a></li>
+      <?php endfor; ?>
+    <li class="page-item">
+      <a class="page-link" href="index.php?<?=isset($_GET['show_book']) ? 'show_book='.$_GET['show_book'].'&' : '' ?>page=<?=$next?>&<?=isset($_GET['choix']) ? 'choix='.$_GET['choix'] : ''?>">Next</a>
+    </li>
+  </ul>
+  </div>
 <script>
+
   let hidden_contenu=document.getElementById('contenu_order').value;   
   console.log(hidden_contenu);
   let select_contenu=document.getElementById('select_contenu');
@@ -125,4 +165,15 @@
       select_contenu[i].setAttribute("selected","selected");
     }
   }   
+
+let hidden_choix=document.getElementById('record').value;  
+let choix= document.getElementById('show_book');
+for(let i=0;i<choix.length;i++){
+  if(choix[i].value==hidden_choix){
+    choix[i].setAttribute("selected","selected");
+  }
+}
+
 </script>
+
+
