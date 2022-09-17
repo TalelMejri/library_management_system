@@ -11,14 +11,20 @@
           echo "<script>alert('delete done')</script>";
      }
 
-     $books=$book->get_all();
+     $limit=isset($_GET['show_book']) ? $_GET['show_book'] : 5;
+     $page=isset($_GET['page']) ? $_GET['page'] : 1;
+     $choix_order=isset($_GET['choix']) ? $_GET['choix'] : '';
+     $pages=ceil($book->count_book()/$limit);
+     $start=($page -1 )* $limit;
+     $next=$page+1 < $pages ? $page+1 : $pages;
+     $previous=($page>1) ? $page-1 : 1;
+     $books=$book->get_all($limit,$start,$choix_order);
+    // $books=$book->orderBy($_POST['choix']);
      if(isset($_POST['btn_search'])){
           extract($_POST);
           $books=$book->searchforbook($search);
      }
-     if(isset($_POST['choix'])){
-          $books=$book->orderBy($_POST['choix']);
-     }
+     
      $template="consultebook";
      $show=null;
      $page_titel="all book";
