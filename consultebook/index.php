@@ -16,8 +16,8 @@
           extract($_POST);
           $books=$book->searchforbook($search);
      }
-     if(isset($_GET['order_by_name'])){
-          $books=$book->orderbyname();
+     if(isset($_POST['choix'])){
+          $books=$book->orderBy($_POST['choix']);
      }
      $template="consultebook";
      $show=null;

@@ -27,12 +27,14 @@
     </div>
  </form>
  <div class="d-flex justify-content-center mt-4">
-     <a class="text-decoration-none" href="?order_by_name">
-          <button class="btn btn-outline-dark">
-              <i class="fa-solid fa-signature me-2"></i>
-               Show Order  By Name
-          </button>
-     </a>
+     <form action="index.php" method="POST">
+        <input type="hidden" id="contenu_order" value=<?=isset($_POST['choix']) ? $_POST['choix'] : ''?>>
+        <select name="choix" id="select_contenu" onchange="this.form.submit()">
+            <?php foreach(['name_book'=>"Name Book","author_book"=>"Author","nbr_book"=>"Nombre Book","Prix"=>"Prix"] as $key=>$value) : ?>
+                 <option value="<?=$key?>"><?=$value?></option>
+            <?php endforeach; ?>
+        </select>
+     </form>
  </div>
 <div class="row d-flex justify-content-center">
 <?php if(array_key_exists('type',$_GET)): ?>
@@ -73,6 +75,11 @@
                  <p class="text-muted"><?=$book['description_book']?></p> 
              </div>
 
+             <div class="mt-2 mb-3">
+               <h5 class="fw-bolder">Prix :</h5>
+                 <p style="font-size:25px" class="text-warning"><?=$book['Prix']?> Dt</p> 
+             </div>
+
              <div class="row py-3 mb-0">
                   <div class="col-md-6 mb-2">
                        <button class="btn btn-outline-danger text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash"></i></button>
@@ -108,3 +115,14 @@
 <?php endforeach;?>
 </div>
 </div>
+
+<script>
+  let hidden_contenu=document.getElementById('contenu_order').value;   
+  console.log(hidden_contenu);
+  let select_contenu=document.getElementById('select_contenu');
+  for(let i=0;i<select_contenu.length;i++){
+    if(select_contenu[i].value==hidden_contenu){
+      select_contenu[i].setAttribute("selected","selected");
+    }
+  }   
+</script>
