@@ -107,8 +107,8 @@
 
        
 
-         public function getnewbok(){
-            $sql="SELECT * from book  order by date_book DESC limit 3";
+         public function getBookfavoris(int $id){
+            $sql="SELECT * from book b";
             $query=$this->pdo->launch_query($sql);
             return $query->fetchAll();
          }
@@ -130,17 +130,20 @@
             $query=$this->pdo->launch_query($sql);
             return $query->fetchAll();
          }
+
          public function searchforbook(string $name_book){
             $name="%".$name_book."%";
             $sql="SELECT * from book where name_book like :name";
             $query=$this->pdo->launch_query($sql,['name'=>$name]);
             return $query->fetchAll();
          }
+
          public function getcommande_user(int $id){
              $sql="SELECT * from book b,comande c,line_commande l  where b.idbook=l.idbook and c.idcommande=l.idcommande and c.iduser=:id";
              $query=$this->pdo->launch_query($sql,['id'=>$id]);
              return $query->fetchAll();
          }
+
         public function allcommandeinadmin(){
             $sql="SELECT * from book b,comande c,line_commande l,admin a where b.idbook=l.idbook and c.idcommande=l.idcommande and c.iduser=a.id";
             $query=$this->pdo->launch_query($sql);
