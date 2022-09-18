@@ -9,9 +9,7 @@
   $book=new book();
   $carte=new carte();
   $books=$book->getBookfavoris($_SESSION['userid']);
-  echo "<pre>";
-   print_r($books);
-  echo "</pre>";
+ 
   //exit;
  
   $page_titel="Dashbord";
