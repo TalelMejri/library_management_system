@@ -21,6 +21,12 @@
          ]);
           return $this->pdo->lastInsertId();
          }
+         
+         public function get_all_book(){
+            $sql="SELECT * FROM book";
+            $query= $this->pdo->launch_query($sql);
+            return $query->fetchAll();
+         }
 
          public function get_all(int $limit,int $start,String $choix){
             if(empty($choix)){
