@@ -8,7 +8,7 @@
  $admin=new user();
  $book=new book();
  $trouve=0;
- $book_click=$book->get_all();
+ $book_click=$book->get_all_book();
  if(!isset($_SESSION['userid'])){
    header("location:../login");
    exit;
@@ -54,7 +54,7 @@
     }
 }
  else if(isset($_POST['all'])){
-    $book_click=$book->get_all();
+    $book_click=$book->get_all_book();
  }
  else if(isset($_POST['action'])){
     $book_click=$book->getbookbygenre('action');
