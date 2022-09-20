@@ -1,6 +1,7 @@
 <?php
+   session_start();
    require_once("./classes/classes.php");
-    include "./send.php";
+   include "./send.php";
     use PHPMailer\PHPMailer\PHPMailer;
     $errors=[];
     if(isset($_POST['submit'])){
