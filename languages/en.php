@@ -6,7 +6,7 @@
         "popular"=>"Popular_Books",
         "profil"=>"profile",
         "contact"=>"contact",
-        "our_library"=>"مكتبتنا",
+        "our_library"=>"OUR Library",
         "welcome"=>"welcome",
         "amazing_library"=>"To Our Amazing Library",
         "tell_me"=>"Tell Me More",
