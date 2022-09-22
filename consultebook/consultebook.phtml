@@ -99,7 +99,7 @@
 
              <div class="row py-3 mb-0">
                   <div class="col-md-6 mb-2">
-                       <button class="btn btn-outline-danger text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash"></i></button>
+                       <button class="btn btn-outline-danger text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$book['idbook'];?>"><i class="fa-solid fa-trash"></i></button>
                   </div>
                   <div class="col-md-6">
                        <button class="btn btn-outline-warning"><a class="text-decoration-none  text-dark" href="../updatebook?id=<?=$book['idbook'];?>"> <i class="fa-solid fa-pen-to-square"></i> </a></button>
@@ -111,7 +111,7 @@
 </div>
 
        
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel<?=$book['idbook'];?>" aria-hidden="true">
+<div class="modal fade" id="exampleModal<?=$book['idbook'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
