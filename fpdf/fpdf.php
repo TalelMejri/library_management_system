@@ -359,12 +359,16 @@ function AddPage($orientation='', $size='', $rotation=0)
 
 function Header()
 {
-	// To be implemented in your own inherited class
+	
 }
 
 function Footer()
 {
-	// To be implemented in your own inherited class
+	 $this->SetY(-15);    
+	// Arial italic 8
+	$this->SetFont('Arial','I',8);
+	// Page number
+	$this->Cell(0,10,'Page 1',0,0,'C');
 }
 
 function PageNo()
