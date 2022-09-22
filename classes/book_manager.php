@@ -152,6 +152,13 @@
             $query=$this->pdo->launch_query($sql);
             return $query->fetchAll();
         }
+        
+        public function check_info_user(int $idcommande){
+         $sql="SELECT * from admin a,comande c where a.id=c.iduser and idcommande=$idcommande";
+         $query=$this->pdo->launch_query($sql);
+         return $query->fetch();
+     }
+
 
         public  function updatevalider(int $idcommande,int $idbook,int $quantity)
         {
