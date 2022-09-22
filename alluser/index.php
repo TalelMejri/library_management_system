@@ -5,7 +5,7 @@
         header("location:../login");
         exit;
     }
-
+    $error=[];
     require_once("../classes/classes.php");
     $user=new user();
     $page=isset($_GET['page']) ? $_GET['page'] : 1 ;
@@ -16,7 +16,15 @@
     $pages=ceil($user->countuser()/$limit);
     if(isset($_POST['btn_search'])){
         extract($_POST);
+        if(empty($search)){
+            $error['search']="field empty";
+        }
         $alluser=$user->getbyname($search);
+        if($alluser){
+            $alluser=$user->getbyname($search);
+        }else{
+            $alluser="vide";
+        }
         $pages=ceil($user->countusersearch($search)/$limit);
         $next=$page < $user->countusersearch($search) /$limit ? $page+1 : 1 ;
         $previous= $page > 1 ? $page-1 : 1;

@@ -17,7 +17,7 @@ if(!$email || !$token){
         goto show;
     }else if ($result == 1){
         $notif->addnotifi("new user avec email ".$email);
-        header("location:../login?verfiy=Your account has been verified avec succefully&color=success");
+        header("location:../login?verfiy=Your account has been verified with succefully&color=success");
         exit;
     }
     else if ($result == 2 ){

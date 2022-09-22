@@ -40,12 +40,15 @@
   <form action="index.php" method="POST">
       <input type="hidden" id="search_contenu" value=<?=isset($_POST['search']) ? $_POST['search'] : ''?>>
       <input  style=" 
-        border-radius: 60px;
-        outline: none;
-        border: 2px solid #ccc;
-        padding-left:15px"
-         type="search" placeholder="Search by Name" name="search" id="initiale">
-      <button  class="btn btn-outline-success"  name="btn_search">search</button>
+         outline: none;
+         border:none;
+         padding-left:15px;
+         border-bottom:2px solid <?=array_key_exists('search',$error) ? "#FF0000" : "#000" ?>" 
+         type="search" class="mx-2"  class="form-control"   placeholder="Search by Name" name="search" id="initiale">
+         <button  class="btn btn-outline-success"  name="btn_search">search</button>
+         <br>
+        <small class="text-danger"><?= array_key_exists('search',$error) ? $error['search'] :''; ?></small>
+    
      </form>
   </div>
 </div>
@@ -73,7 +76,17 @@
       <th scope="col">operation</th>
     </tr>
   </tfoot>
-  <tbody>
+ 
+    <?php if($alluser=='vide'): ?>
+      <tbody>
+        <tr class="table-primary" >
+          <td class="text-center py-4" colspan="7">
+                  <p class="fw-bolder text-danger">No matching records found</p> 
+          </td>
+         </tr>
+    </tbody>
+      <?php else: ?> 
+        <tbody>
   <?php foreach($alluser as $value): ?>
     <tr>
       <th><input type="checkbox" id="select" value=<?=$value['id']?>></th>
@@ -107,6 +120,7 @@
       </td>
     </tr>
     <?php endforeach; ?>
+    <?php endif; ?>
   </tbody>
 </table>
 

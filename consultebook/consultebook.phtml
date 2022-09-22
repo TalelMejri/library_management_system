@@ -33,7 +33,7 @@
     <div class="col-md-6">
      <form action="index.php" method="GET">
         <input type="hidden" id="contenu_order" value=<?=isset($_GET['choix']) ? $_GET['choix'] : ''?>>
-        <select name="choix" id="select_contenu" onchange="this.form.submit()">
+        <select name="choix" class="custom-select custom-select-sm form-control-sm" id="select_contenu" onchange="this.form.submit()">
             <?php foreach(['name_book'=>"Name Book","author_book"=>"Author","nbr_book"=>"Nombre Book","Prix"=>"Prix"] as $key=>$value) : ?>
                  <option value="<?=$key?>"><?=$value?></option>
             <?php endforeach; ?>
@@ -43,7 +43,7 @@
      <div class="col-md-6 ">
               <input type="hidden" id="record" value=<?=isset($_GET['show_book']) ? $_GET['show_book'] : 5?>>
              <label >Show</label>
-             <select name="show_book" id="show_book" onchange="this.form.submit()">
+             <select name="show_book" class="custom-select custom-select-sm form-control-sm" id="show_book" onchange="this.form.submit()">
                 <?php foreach([100,10,5,2] as $value) :?>
                    <option value="<?=$value?>"><?=$value?></option>
                 <?php endforeach; ?>
