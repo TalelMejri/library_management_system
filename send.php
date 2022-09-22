@@ -1,7 +1,7 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 
-function sendmail($name,$email,$subject,$message){
+function sendmail($name,$email,$subject,$message,$file_name=null){
 /* Envoi de mail */
     /*verification que champs nom et email sont non null */
     /* remplissage des variables avec les champs des form */
@@ -23,8 +23,8 @@ function sendmail($name,$email,$subject,$message){
     $mail->setFrom("testlibrary05@gmail.com",$name);
     $mail->addAddress("$email");               //Adresse reception
     $mail->Subject=("$subject");                       //Le sujet de l'email
-    $mail->Body=$message;                                       //Le contenu de mail
-    
+    $mail->Body=$message;   
+    $mail->addAttachment($file_name);                                    //Le contenu de mail
     /* Commande pour envoyer le mail */
     if ($mail->send())
         return 1;
