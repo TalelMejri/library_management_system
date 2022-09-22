@@ -23,8 +23,10 @@ function sendmail($name,$email,$subject,$message,$file_name=null){
     $mail->setFrom("testlibrary05@gmail.com",$name);
     $mail->addAddress("$email");               //Adresse reception
     $mail->Subject=("$subject");                       //Le sujet de l'email
-    $mail->Body=$message;                                       //Le contenu de mail
-    $mail->addAttachment($file_name);
+    $mail->Body=$message;     
+   if($file_name!=null){                                   //Le contenu de mail
+      $mail->addAttachment("../comande_for_all_user/facture/".$file_name);
+   }
     /* Commande pour envoyer le mail */
     if ($mail->send())
         return 1;
