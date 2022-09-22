@@ -26,12 +26,13 @@
     $user_client=$book->check_info_user($idcommande);
     $pdf->AddPage();
     $pdf->SetFont('Arial','B',16);
-    $pdf->Cell(40,10,'Hello World!');
+    $pdf->Cell(40,10,$user_client['email']);
     $file_name=$user_client['name'].rand(10,9999).".pdf";
-    $file=$pdf->Output();
-    ob_end_flush(); 
+    $file=$pdf->Output(dirname(__FILE__)."/facture/".$file_name,"F");
+    /*$file=$pdf->Output("../facture/".$file_name,"F");*/
     file_put_contents($file_name,$file);
     sendmail("library",$user_client['email'],"Facture","votre facture",$file_name);
+    ob_end_flush(); 
   }
 
   if(isset($_POST['rejeter'])){
