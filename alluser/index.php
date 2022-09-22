@@ -13,18 +13,17 @@
     $next=$page < $user->countuser() /$limit ? $page+1 : 1 ;
     $previous= $page > 1 ? $page-1 : 1;
     $start=($page-1)* $limit;
-
     $pages=ceil($user->countuser()/$limit);
-
     if(isset($_POST['btn_search'])){
         extract($_POST);
         $alluser=$user->getbyname($search);
+        $pages=ceil($user->countusersearch($search)/$limit);
+        $next=$page < $user->countusersearch($search) /$limit ? $page+1 : 1 ;
+        $previous= $page > 1 ? $page-1 : 1;
     }else{
         $alluser=$user->getalluser($limit,$start);
     }
 
- 
-    
     $show=null;
     $template="alluser";
     $page_titel="all user";

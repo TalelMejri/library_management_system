@@ -1,5 +1,9 @@
 <?php
    session_start();
+if(!isset($_SESSION['lang'])){
+    $_SESSION['lang']="en";
+}
+require_once "./languages/".$_SESSION['lang'].".php";
    require_once("./classes/classes.php");
    include "./send.php";
     use PHPMailer\PHPMailer\PHPMailer;

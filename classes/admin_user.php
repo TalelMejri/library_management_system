@@ -178,6 +178,14 @@
             return $query->fetchAll();
         }
 
+        public function countusersearch(string $name){
+            $name_search="%".$name."%";
+            $sql="SELECT count(*) FROM admin where role=:rolee AND name like :name";
+            $query=$this->pdo->launch_query($sql,['rolee'=>0,'name'=>$name_search]);
+            $value=$query->fetch();
+            return $value['count(*)'];
+        }
+
         public function countuser(){
             $sql="SELECT count(*) from admin where role=:rolee ";
             $query=$this->pdo->launch_query($sql,['rolee'=>0]);

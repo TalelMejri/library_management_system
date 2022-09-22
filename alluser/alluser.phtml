@@ -4,7 +4,6 @@
 }
 </style>
 
-</div>
  <?php if(empty($alluser)): ?>
   <h1 class="h2 text-center py-5">List Of user </h1>
        <div class="h3 text-center fw-bolder"> no user yet !!</div>
@@ -14,16 +13,17 @@
              <?=$_GET['msg'] ?>
         </div>
     <?php endif;?>
+    
 <div class="container mt-5 ">
 <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                     <h6 class="m-0 font-weight-bold text-primary text-center" >User List Data Table <span style="border-left:1px solid #000;" class="mx-2 px-2"><?=$user->Count_User()?></span></h6>
-                </div>
-                <div class="card-body">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary text-center" >User List Data Table <span style="border-left:1px solid #000;" class="mx-2 px-2"><?=$user->Count_User()?></span></h6>
+      </div>
+<div class="card-body">
 <div class="row  py-2 ">
 
 <div class="col-md-6 text-center">
-<div class="">
+<div>
      <form action="index.php" method="GET">
         <input type="hidden" id="choix" value=<?=isset($_GET['record']) ? $_GET['record'] : 5?>>
         <label>Show <select class="custom-select custom-select-sm form-control-sm" name="record" id="record" onchange="this.form.submit()">
@@ -154,6 +154,7 @@
   search_btn.value= hidden_search;
 
   values=[];
+  
   function check(){
   let select_one=document.querySelectorAll("#select");
    for(let i=0;i<select_one.length;i++){
