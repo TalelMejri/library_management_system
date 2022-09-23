@@ -35,7 +35,7 @@
     $pdf->cell(110,7,"bahra Elkef",0,0);
     $pdf->cell(22,7,"Customer Id :",0,0);
     $pdf->cell(30,7,$user_client['id'],0,1);
-    $pdf->cell(110,7,"bahra 7716",0,0);
+    $pdf->cell(110,7,"bahra 7116",0,0);
     $pdf->cell(23,7,"Facture Date :",0,0);
     $pdf->cell(22,7,date('Y/m/d'),0,1);
     $pdf->cell(110,7,"",0,0);
