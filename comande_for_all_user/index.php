@@ -22,17 +22,56 @@
   if(isset($_POST['valider'])){
     extract($_POST);
     $book->updatevalider($idcommande,$idbook,$quantity);
-    $commande_checked=$book->getcommnadebyid($idcommande);
+    $commande_checked=$book->all_line_commande_by_id($idcommande);
     $user_client=$book->check_info_user($idcommande);
     $pdf->AddPage();
     $pdf->SetFont('Arial','',16);
     $pdf->cell(0,20,"Votre Facture",1,0,'C');
     $pdf->cell(0,30);
+    $pdf->SetFont('Arial','B',10);
     $pdf->Ln();
-    $pdf->Cell(40,10,"dd",1,0,'C');
-    $pdf->Cell(40,10,"dd",1,0,'C');
-    $pdf->Cell(40,10,"dd",1,0,'C');
-    $pdf->Cell(40,10,"dd",1,1,'C');
+    $pdf->Ln();
+    $pdf->Cell(220 ,10,'',0,1);
+    $pdf->Cell(50,10,'',0,1);    
+    $pdf->Cell(15,10,"#",1,0,'C');
+    $pdf->Cell(70,7,"name book",1,0,'C');
+    $pdf->Cell(30,7,"Quantity",1,0,'C');
+    $pdf->Cell(30,7,"Unit Price",1,0,'C');
+    $pdf->Cell(30,7,"Total",1,1,'C');/*end of line*/
+    $total=1;
+    $i=0;
+    $total_commande=0;
+    $livraison=0;
+    foreach($commande_checked as $value){
+      $i++;
+      $total=($value['quantity']*$value['Prix']);
+      $pdf->SetFont('Arial','',8);
+      $pdf->Cell(15,7,$i,1,0,'C');
+      $pdf->Cell(70,7,$value['name_book'],1,0,'C');
+      $pdf->Cell(30,7,$value['quantity'],1,0,'C');
+      $pdf->Cell(30,7,$value['Prix'],1,0,'C');
+      if($value['aveclivraison']){
+        $livraison=7.500;
+      }else{
+        $livraison=0.00;
+      }
+      $pdf->Cell(30,7,$total,1,1,'C');
+      $total_commande+=$total;
+    }
+    $pdf->Cell(125,6,"",0,0);
+    $pdf->SetFont('Arial','B',8);
+    $pdf->Cell(20,7,"livraison",0,0,'C');
+    $pdf->SetFont('Arial','',8);
+    $pdf->Cell(30,7,$livraison,1,1,'C');
+    $pdf->Cell(120,6,"",0,0);
+    $pdf->SetFont('Arial','B',10);
+    $pdf->Cell(25,7,"Total",1,0,'C');
+    $pdf->SetFont('Arial','',10);
+    $pdf->Cell(30,7,$total_commande+$livraison,1,0,'C');
+    $pdf->setY(-35);
+    $pdf->Cell(0,0,"Nous apprecions votre clinetele,",0,0,'C');
+    $pdf->setY(-30);
+    $pdf->Cell(0,0,"si vous-avez des questions sur cette facture,n hesitez pas a nous contacter.",0,0,'C');
     $file_name=$user_client['name'].rand(10,9999).".pdf";
     $file=$pdf->Output(dirname(__FILE__)."./facture/".$file_name,"F");
     //$file=$pdf->Output("../facture/".$file_name,"F");
