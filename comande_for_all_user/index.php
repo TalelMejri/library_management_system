@@ -19,15 +19,20 @@
   $user=new user;
 
   $commandes=$book->allcommandeinadmin();
-
   if(isset($_POST['valider'])){
     extract($_POST);
     $book->updatevalider($idcommande,$idbook,$quantity);
+    $commande_checked=$book->getcommnadebyid($idcommande);
     $user_client=$book->check_info_user($idcommande);
     $pdf->AddPage();
     $pdf->SetFont('Arial','',16);
-    $pdf->SetTextColor(1,0,0);
     $pdf->cell(0,20,"Votre Facture",1,0,'C');
+    $pdf->cell(0,30);
+    $pdf->Ln();
+    $pdf->Cell(40,10,"dd",1,0,'C');
+    $pdf->Cell(40,10,"dd",1,0,'C');
+    $pdf->Cell(40,10,"dd",1,0,'C');
+    $pdf->Cell(40,10,"dd",1,1,'C');
     $file_name=$user_client['name'].rand(10,9999).".pdf";
     $file=$pdf->Output(dirname(__FILE__)."./facture/".$file_name,"F");
     //$file=$pdf->Output("../facture/".$file_name,"F");
