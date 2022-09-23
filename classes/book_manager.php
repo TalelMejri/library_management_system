@@ -133,7 +133,13 @@
             $query=$this->pdo->launch_query($sql);
             return $query->fetchAll();
          }
-
+     
+          public function getnamebookById(int $id){
+            $sql="SELECT name_book from book where idbook=$id";
+            $query=$this->pdo->launch_query($sql);
+            $value=$query->fetch();
+            return $value['name_book'];
+          }
          public function searchforbook(string $name_book){
             $name="%".$name_book."%";
             $sql="SELECT * from book where name_book like :name";
@@ -147,11 +153,28 @@
              return $query->fetchAll();
          }
 
-        public function allcommandeinadmin(){
+      /*  public function allcommandeinadmin(){
             $sql="SELECT * from book b,comande c,line_commande l,admin a where b.idbook=l.idbook and c.idcommande=l.idcommande and c.iduser=a.id";
             $query=$this->pdo->launch_query($sql);
             return $query->fetchAll();
-        }
+        }*/
+        public function allcommandeinadmin(){
+         $sql="SELECT * from comande c where c.valider=0";
+         $query=$this->pdo->launch_query($sql);
+         return $query->fetchAll();
+     }
+     public function all_line_commande_by_id(int $id){
+      $sql="SELECT * from book b,comande c,line_commande l,admin a where b.idbook=l.idbook and c.idcommande=l.idcommande and c.iduser=a.id and l.idcommande=$id";
+      $query=$this->pdo->launch_query($sql);
+      return $query->fetchAll();
+  }
+
+        
+        public function getcommnadebyid(int $id){
+         $sql="SELECT * from book b,comande c,line_commande l  where b.idbook=l.idbook and c.idcommande=l.idcommande and c.idcommande=$id";
+         $query=$this->pdo->launch_query($sql);
+         return $query->fetchAll();
+     }
         
         public function check_info_user(int $idcommande){
          $sql="SELECT * from admin a,comande c where a.id=c.iduser and idcommande=$idcommande";
