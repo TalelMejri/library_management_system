@@ -69,7 +69,15 @@
                 return 1;
             }
         }
-
+ /**
+         * edit admin
+         * @param String $name
+         * @param String $email
+         * @param String $password
+         * @param String $avatar
+         * @param int $id
+         * @param int $avatarupload
+         */
         public function  edit_admin(String $name,String $email,String $password,String $avatar,int $id,int $avatarupload){
         if($avatarupload){
             $sql="UPDATE `admin` SET name=:name_admin,email=:email_admin,password=:pass,avatar_admin=:avatar where id=:id_admin";
