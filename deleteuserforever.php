@@ -5,6 +5,10 @@
       header("location:../login");
       exit;
   }
+  if(!array_key_exists('id',$_GET)){
+   header("location:../login");
+   exit;
+  }
    require_once("./classes/classes.php");
    $user=new user();
    $user->deleteuserforever($_GET['id']);
