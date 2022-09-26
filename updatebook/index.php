@@ -23,15 +23,13 @@
          $avatar="../storage/book/".$file->getfilename();
         $avatarUploaded = true;
      }
-         $idbook = array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['idbook'];
+            $idbook = array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['idbook'];
             $new=$book->updatebook($idbook,$name_book,$author,$description,$nbr,$avatar,$avatarUploaded);
             header("location:../consultebook");
             exit;
-     
 }
 
     $books=$book->getbookbyid(array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['idbook']);
-    show_form:
     $show=null;
     $template="updatebook";
     $page_titel="Update book";
