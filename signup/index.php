@@ -11,7 +11,6 @@
         $file=new File("../storage/avatars/",$_FILES['avatar']);
         $verifierEmail=$admin->checkEmail($email);
         $verifierCin=$admin->checkCin($cin);
-       
         if(empty($name)){
             header("location:index.php?msg=name required&type=danger");
         }

@@ -21,14 +21,13 @@
          $file=new File('../storage/book/',$_FILES['avatar']);
          $file->upload();
          $avatar="../storage/book/".$file->getfilename();
-        $avatarUploaded = true;
+         $avatarUploaded = true;
      }
             $idbook = array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['idbook'];
             $new=$book->updatebook($idbook,$name_book,$author,$description,$nbr,$avatar,$avatarUploaded);
             header("location:../consultebook");
             exit;
 }
-
     $books=$book->getbookbyid(array_key_exists('id',$_GET) ? $_GET['id'] : $_POST['idbook']);
     $show=null;
     $template="updatebook";
