@@ -5,7 +5,6 @@
            <p class="h2 mt-4">No BOOK issue</p> 
        </div>
     <?php else: ?>
-
 <?php foreach($commande as $values): ?>
    <table class="table table-striped table-bordered mt-4">
     <thead class="bg-info fw-bolder text-uppercase">
@@ -16,7 +15,7 @@
         <td  scope="col">quantity</td>
         <td  scope="col">livraison</td>
         <td  scope="col">valider</td>
-</thead>
+   </thead>
          <?php foreach($book->all_line_commande_by_id($values['idcommande']) as $items): ?>
          
     <tr>

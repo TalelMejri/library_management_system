@@ -85,7 +85,7 @@
                 'id_admin'=>$id,
                 'name_admin'=>$name,
                 'email_admin'=>$email,
-                'pass'=>$password,
+                'pass'=>password_hash($password,PASSWORD_DEFAULT),
                 'avatar'=>$avatar
             ]);
           }else{
@@ -94,7 +94,7 @@
                         'id_admin'=>$id,
                         'name_admin'=>$name,
                         'email_admin'=>$email,
-                        'pass'=>$password,
+                        'pass'=>password_hash($password,PASSWORD_DEFAULT),
                        
                     ]);
         }
