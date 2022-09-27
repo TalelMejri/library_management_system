@@ -9,28 +9,58 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
  }
 </style>
-
-<div class="row gap-5 justify-content-center">
-    <?php foreach($books as $book) :?>  
-      <div  class="col-lg-3 py-2 ">
-        <div class="card reglage_card text-center w-100">
-          <?php $newphoto=trim($book['avatar'],'.')?>
-            <img src=".<?=$newphoto;?>"  height="100px" class="card-img-top " alt="photo book">
-             <div class="card-body">
-              <div class="row">
-                 <h5 class="card-title col-md-6">name   :<?=$book['name_book'];?></h5>
-                 <h5 class="card-title col-md-6">author :<?=$book['author_book'];?></h5>
-                 </div>
-            <div class="row">
-              <div class="col-md-6">  <p class="card-text"> Nombre dispo : <?=$book['nbr_book'];?></p></div>
-              <div class="col-md-6">  Status :<span style="color:<?= $book['status']=='enable'? 'green' :''?>" ><?= $book['status'] ;?></span></div>
-             </div>
-                 decription : <p class="card-text"><?=$book['description_book'];?></p>
-                 <?php for($i=0;$i<$book['rate'];$i++):?>
-                     <i class="fa-solid fa-star text-warning"></i>
-                  <?php endfor;?>
-             </div>
+<div class="row">
+<?php foreach($books as $book) :?>  
+<div class="col-lg-4 ">
+<div class="card mb-3 reglage_card ">
+  <div class="row g-0">
+    <div class="col-md-5">
+      <?php $newphoto=trim($book['avatar'] ,'.'); ?>
+      <img src=".<?= $newphoto?>" width="100%"  class="img-fluid rounded-start" alt="photo book">
     </div>
-                 </div>
-<?php endforeach;?>
+    <div class="col-md-7">
+        <div class="card-header bg-info fw-bolder text-white">
+           <?=$book['name_book']?>
+        </div>
+        <div class="card-body">
+
+             <table class="table table-danger rounded ">
+                <thead>
+                  <tr>
+                    <td  class="fw-bolder">Author</td>
+                    <td class="text-center fw-bolder">Nbr Despo</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><?=$book['author_book']?></td>
+                    <td class="text-center"><?=$book['nbr_book']?></td>
+                  </tr>
+                </tbody>
+             </table>
+             
+             <div class="mt-2 mb-3">
+               <h5 class="fw-bolder">Description :</h5>
+                 <p class="text-muted"><?=$book['description_book']?></p> 
+             </div>
+
+             <div class="mt-2 mb-3">
+               <h5 class="fw-bolder">Prix :</h5>
+                 <p style="font-size:25px" class="text-warning"><?=$book['Prix']?> Dt</p> 
+             </div>
+
+             <div class="row py-3 mb-0">
+                  <div class="col-md-6 mb-2">
+                       <button class="btn btn-outline-danger text-dark" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$book['idbook'];?>"><i class="fa-solid fa-trash"></i></button>
+                  </div>
+                  <div class="col-md-6">
+                       <button class="btn btn-outline-warning"><a class="text-decoration-none  text-dark" href="../updatebook?id=<?=$book['idbook'];?>"> <i class="fa-solid fa-pen-to-square"></i> </a></button>
+                  </div>
+             </div>
+        </div>
+  </div>
  </div>
+</div>
+</div>
+<?php endforeach;?>
+</div>
