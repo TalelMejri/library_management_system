@@ -208,17 +208,12 @@
         }
 
         public function gettopratebook(){
-         //$sql="SELECT * from rate r,book b where r.idbook=b.idbook order by avg(r.rate)";
-         $sql="SELECT * from rate r,book b where r.idbook=b.idbook order by avg(r.rate) DESC";
+       //$sql="SELECT * from rate r,book b where r.idbook=b.idbook order by avg(r.rate)";
+         $sql="SELECT * from rate r,book b where r.idbook=b.idbook order by r.rate limit 3";
          $query=$this->pdo->launch_query($sql);
          return $query->fetchAll();
       }
 
-      
-      
-
-        
-        
        /*  public function decrease_nbr_book(int $id,int $iduser){
             $sql="SELECT * from book where idbook=:id";
             $query=$this->pdo->launch_query($sql,['id'=>$id]);
