@@ -198,7 +198,6 @@ section .service {
 }
 
 section .popular {
-    height: 100vh;
     background-image: linear-gradient(to right, #fc354c, #0abfbc);
 }
 
