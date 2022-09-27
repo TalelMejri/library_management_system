@@ -1,8 +1,4 @@
-<style>
-.active{
-  background-color:blue;
-}
-</style>
+
 
  <?php if(empty($alluser)): ?>
   <h1 class="h2 text-center py-5">List Of user </h1>
@@ -25,6 +21,7 @@
 <div class="col-md-6 text-center">
 <div>
      <form action="index.php" method="GET">
+        <input type="hidden" name="search" value=<?=isset($_GET['search']) ? $_GET['search'] : ''?> >
         <input type="hidden" id="choix" value=<?=isset($_GET['record']) ? $_GET['record'] : 5?>>
         <label>Show <select class="custom-select custom-select-sm form-control-sm" name="record" id="record" onchange="this.form.submit()">
            <?php foreach([10,100,5,2] as $initiale):?>
@@ -37,13 +34,14 @@
   </div>
   </div>
   <div class="col-md-6 text-center">
-  <form action="index.php" method="POST">
+  <form action="index.php?search=<?=isset($_GET['search']) ? $_GET['search'] : ''?>" method="GET">
       <input type="hidden" id="search_contenu" value=<?=isset($_POST['search']) ? $_POST['search'] : ''?>>
       <input  style=" 
          outline: none;
          border:none;
          padding-left:15px;
          border-bottom:2px solid <?=array_key_exists('search',$error) ? "#FF0000" : "#000" ?>" 
+         <?= isset($_GET['search'])?'value="'.$_GET['search'].'"':'' ?>
          type="search" class="mx-2"  class="form-control"   placeholder="Search by Name" name="search" id="initiale">
          <button  class="btn btn-outline-success"  name="btn_search">search</button>
          <br>
@@ -132,21 +130,22 @@
 <nav class=" float-end me-4">
   <ul class="pagination">
     <li class="page-item">
-    <a class="page-link" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=($previous)?>">previous</a>
+    <a class="page-link <?= ($alluser=='vide' || $previous==$page) ? 'disabled' : ''?>" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=($previous)?>&<?=isset($_GET['search']) ? 'search='.$_GET['search'] : ''?>">previous</a>
     </li>
+
     <?php for($i=1;$i<=$pages;$i++): 
          if($i==$page){
             $active="active";
          }else{
           $active="";
-         }?>
-         
-      <li class="page-item <?=$active?>"><a class="page-link" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=$i?>"><?=$i?></a></li>
+         }
+    ?>   
+  <li class="page-item <?=$active?>"><a class="page-link" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=$i?>&<?=isset($_GET['search']) ? 'search='.$_GET['search'] : ''?>"><?=$i?></a></li>
     <?php endfor;?>
-    <li class="page-item">
-      <a class="page-link" href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=$next?>">Next</a>
-    </li>
-  </ul>
+  <li class="page-item">
+      <a class="page-link <?= ($alluser=='vide' || $next==$page) ? 'disabled' : ''?>"  href="index.php?<?=isset($_GET['record']) ? 'record='.$_GET['record'].'&': ''?>page=<?=$next?>&<?=isset($_GET['search']) ? 'search='.$_GET['search'] : ''?>">Next</a>
+  </li>
+ </ul>
 </nav>
 </div>
 </div>
@@ -163,9 +162,6 @@
     }
   }
 
-  let hidden_search=document.getElementById('search_contenu').value;
-  let search_btn=document.getElementById('initiale');
-  search_btn.value= hidden_search;
 
   values=[];
   

@@ -179,9 +179,9 @@
             return $query->fetchAll();
         }
 
-        public function getbyname(STRING $name){
+        public function getbyname(STRING $name,int $limit,int $start){
             $name_search="%".$name."%";
-            $sql="SELECT * FROM admin where role=:rolee AND name like :name";
+            $sql="SELECT * FROM admin where role=:rolee AND name like :name limit $start,$limit";
             $query=$this->pdo->launch_query($sql,['rolee'=>0,'name'=>$name_search]);
             return $query->fetchAll();
         }
