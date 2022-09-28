@@ -1,10 +1,9 @@
 <div class="row mx-4 py-4">
 <h1>Demmande :</h1>
  <?php foreach($commandes as $commande): ?>
-    
-      <hr>
-    <p class="fw-bolder text-center"> Commande N° <?=$commande['idcommande']?></p> 
     <?php if($commande['valider']==0): ?> 
+        <hr>
+    <p class="fw-bolder text-center"> Commande N° <?=$commande['idcommande']?></p> 
          <?php foreach($book->all_line_commande_by_id($commande['idcommande']) as $line_commande): ?>
   <div class="col-md-3 mb-3 text-center">
         <div style="background:whitesmoke" class="card">
@@ -55,10 +54,11 @@
 
 <?php endforeach; ?>
 
-
 <div class="mt-5  rounded-pill ">
     <h1>Accepted</h1>
-     <table class="table table-dark table-hover">
+       <?php foreach($commandes as $commande): ?>
+        <?php if($commande['valider']==1): ?> 
+            <table class="table table-dark table-hover">
      <tr >
            <td>Name user</td>
            <td>Name Book</td>
@@ -67,17 +67,17 @@
            <td>Date validation</td> 
            <td>Info</td>
        </tr>
-       <?php foreach($commandes as $commande): ?>
-        <?php if($commande['valider']==1): ?> 
+          <?php foreach($book->all_line_commande_by_id($commande['idcommande']) as $value): ?>
             <tr>
-           <td><?=$commande['name']?></td>
-           <td><?=$commande['name_book']?></td>
-           <td><?=$commande['quantity']?></td>
-           <td><?=$commande['aveclivraison']?></td>
+           <td><?=$value['name']?></td>
+           <td><?=$value['name_book']?></td>
+           <td><?=$value['quantity']?></td>
+           <td><?=$value['aveclivraison']?></td>
            <td><?=date("d/m/Y")?></td>
-           <td><a class="btn btn-outline-primary" href="../detailsuser?id=<?=$commande['id']?>">Info</a></td>
+           <td><a class="btn btn-outline-primary" href="../detailsuser?id=<?=$value['id']?>">Info</a></td>
        </tr>
+       <?php endforeach; ?>
+       </table>
        <?php endif; ?>
        <?php endforeach; ?>
-    </table>
 </div>
