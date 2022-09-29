@@ -108,9 +108,20 @@
        
 
          public function getBookfavoris(int $id){
-            $sql="SELECT * from book b,books_favorite bf where b.idbook=bf.idbook and bf.favorite=1 and bf.iduser=$id";
+            $sql="SELECT b.genre from book b ,books_favorite bf,admin a where b.idbook=bf.idbook and bf.iduser=id and a.id=$id and bf.favorite=1";
             $query=$this->pdo->launch_query($sql);
             $value=$query->fetchAll();
+            if(empty($value)){
+               $sql="SELECT b.genre from book b ,user_liked ul,admin a where b.idbook=ul.id_book and ul.id_user=id and a.id=$id and ul.liked=1";
+               $query=$this->pdo->launch_query($sql);
+               $value=$query->fetchAll();
+            }
+           for($i=0;$i<count($value);$i++){ 
+             $sql="SELECT * from book where genre=:genre";
+             $query=$this->pdo->launch_query($sql,['genre'=>$value[0]['genre']]);
+             $final_result=$query->fetchAll();
+           }
+           return $final_result;
            /*$sql="SELECT * from book";
             $query=$this->pdo->launch_query($sql);
             $value=$query->fetchAll();*/
