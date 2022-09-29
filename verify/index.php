@@ -11,7 +11,7 @@ if(!$email || !$token){
     $errors[0]="Email or token missing";
     goto show;
 }else{
-    $result = $admin->validateEmail($email,$token);
+    $result=$admin->validateEmail($email,$token);
     if(!$result){
         $errors[0]="User doesn't exist";
         goto show;
