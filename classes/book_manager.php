@@ -116,12 +116,14 @@
                $query=$this->pdo->launch_query($sql);
                $value=$query->fetchAll();
             }
+            $tout_book=[];
            for($i=0;$i<count($value);$i++){ 
              $sql="SELECT * from book where genre=:genre";
-             $query=$this->pdo->launch_query($sql,['genre'=>$value[0]['genre']]);
+             $query=$this->pdo->launch_query($sql,['genre'=>$value[$i]['genre']]);
              $final_result=$query->fetchAll();
+             array_push($tout_book,$final_result);
            }
-           return $final_result;
+            return $final_result;
            /*$sql="SELECT * from book";
             $query=$this->pdo->launch_query($sql);
             $value=$query->fetchAll();*/
