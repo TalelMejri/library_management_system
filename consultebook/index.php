@@ -19,7 +19,6 @@
      $next=$page+1 < $pages ? $page+1 : $pages;
      $previous=($page>1) ? $page-1 : 1;
      $books=$book->get_all($limit,$start,$choix_order);
-    // $books=$book->orderBy($_POST['choix']);
      if(isset($_POST['btn_search'])){
           extract($_POST);
           $books=$book->searchforbook($search);
