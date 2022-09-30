@@ -110,7 +110,17 @@
             $_SESSION['role']=$admin['role'];
             $_SESSION['avatar_admin']=$admin['avatar_admin'];
         }
-
+/**
+ * edituser
+ * @param String $name
+ * @param String $email
+ * @param String $pass
+ * @param String $tlf
+ * @param String $cin
+ * @param String $avatar
+ * @param int $id
+ * @param int $avatarupload
+ */
         public function edituser(String $name,String $email,String $pass,String $tlf,String $cin,String $avatar,int $id,int $avatarupload){
             
             if($avatarupload){

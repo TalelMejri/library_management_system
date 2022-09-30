@@ -116,7 +116,7 @@
                $query=$this->pdo->launch_query($sql);
                $value=$query->fetchAll();
             }
-            $tout_book=[];
+           $tout_book=array();
            for($i=0;$i<count($value);$i++){ 
              $sql="SELECT * from book where genre=:genre";
              $query=$this->pdo->launch_query($sql,['genre'=>$value[$i]['genre']]);
@@ -124,9 +124,6 @@
              array_push($tout_book,$final_result);
            }
             return $final_result;
-           /*$sql="SELECT * from book";
-            $query=$this->pdo->launch_query($sql);
-            $value=$query->fetchAll();*/
          }
 
          public function getbooksfavorite(int $iduser){
