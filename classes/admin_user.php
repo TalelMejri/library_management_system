@@ -183,6 +183,11 @@
             return $query->fetchAll();
         }
 
+        public function allemail(){
+            $sql="SELECT email from admin";
+            $query=$this->pdo->launch_query($sql);
+            return $query->fetchAll();
+        }
         public function getalluser(int $limit,int $start){
             $sql="SELECT * from admin where role=:rolee   limit $start,$limit";
             $query=$this->pdo->launch_query($sql,['rolee'=>0]);
