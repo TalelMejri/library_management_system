@@ -5,7 +5,11 @@
             $this->pdo=new database();
             return isset($_SESSION['carte']) ? $_SESSION['carte']:[];
         }
-
+/**
+ * add carte 
+ * @param int $idbook
+ * @param int $quantity
+ */
         public function  add_carte(int $idbook,int $quantity){
             if(!isset($_SESSION['carte'])){
                 $_SESSION['carte']=array();
