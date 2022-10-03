@@ -16,7 +16,10 @@
         $this->tmp_directory=$info_file['tmp_name'];
         $this->size_file=$info_file['size'];
       }
-
+      /*
+        upload message
+         void
+*/
       public function upload():bool{
         $this->filename=md5(rand()).' . '.$this->file_type;
         if(!move_uploaded_file($this->tmp_directory,$this->storage_directory.$this->filename)){
