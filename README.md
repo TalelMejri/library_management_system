@@ -9,7 +9,10 @@
   *consulte user
   *delete user
   *block user
-  *accepter commande
-  *supprimer commande
-  *
+  *accept commande
+  *delete commande
+  *edit admin
+  *edit user
+  *mutli-language
+  *senf file.df
   
