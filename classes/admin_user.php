@@ -160,6 +160,11 @@
 
         }
 
+        /**
+         * login sigunp
+         * @param String $email
+         * @param String $pass
+         */
         public function signup(String $name,String $email,int $cin,int $tlf,String $password,String $avatar,string $token){
             $sql="INSERT INTO `admin`( `name`, `email`, `password`, `avatar_admin`, `tlf`, `cin`, `role`, `corbeille`, `status`, `token`)  VALUES (:name,:email,:pass,:avatar,:tlf,:cin,:role,:corbeille,:statu,:token)";
             $this->pdo->launch_query($sql,[
