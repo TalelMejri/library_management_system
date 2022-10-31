@@ -54,4 +54,6 @@
     $page_titel="Signup";
     $template="signup";
     include "../layout.phtml";
+
 ?>
+
