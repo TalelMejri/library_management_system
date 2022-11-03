@@ -13,6 +13,5 @@
   *delete commande
   *edit admin
   *edit user
-  *mutli-language
-  *senf file.df
+
   
