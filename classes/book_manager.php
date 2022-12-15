@@ -228,7 +228,7 @@
          return $query->fetchAll();
       }
 
-       /*  public function decrease_nbr_book(int $id,int $iduser){
+      /*   public function decrease_nbr_book(int $id,int $iduser){
             $sql="SELECT * from book where idbook=:id";
             $query=$this->pdo->launch_query($sql,['id'=>$id]);
             $book_add= $query->fetch();

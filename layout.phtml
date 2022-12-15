@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php if(!isset($_SESSION['name']) && !isset($_SESSION['username'])  && !$show  &&  (isset($_SESSION['lang'])) ): ?>
-    <title>titel></title> 
+    <title><?=$lang['titel']?></title> 
     <link rel="stylesheet" href="./css/style.css">
   <?php else:?>
     <link rel="stylesheet" href="../css/style.css">
@@ -26,35 +26,41 @@
 
       <nav class="navbar navbar-expand-lg text-center text-uppercase fixed-top">
             <div class="container mt-4">
-                <a class="navbar-brand" href="#page-top">our_library></a>
+                <a class="navbar-brand" href="#page-top"><?=$lang['our_library']?></a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li style="--clr:#00ade1" class="nav-item mx-4 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#accueil" data-text="&nbsp;accueil>">accueil></a></li>
-                        <li id="seconde" style="--clr:#ff6493" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#service" data-text="&nbsp;service>">service></a></li>
-                        <li style="--clr:#ff6535" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#pupular_books" data-text="&nbsp;popular>">popular></a></li>
-                        <li style="--clr:#ff6535" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#team" data-text="&nbsp;profil>">profil></a></li>
-                        <li style="--clr:#ff6535" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact_us" data-text="&nbsp;contact>">contact></a></li>
-                     
+                        <li style="--clr:#00ade1" class="nav-item mx-4 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#accueil" data-text="&nbsp;<?=$lang['accueil']?>"><?=$lang['accueil']?></a></li>
+                        <li id="seconde" style="--clr:#ff6493" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#service" data-text="&nbsp;<?=$lang['service']?>"><?=$lang['service']?></a></li>
+                        <li style="--clr:#ff6535" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#pupular_books" data-text="&nbsp;<?=$lang['popular']?>"><?=$lang['popular']?></a></li>
+                        <li style="--clr:#ff6535" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#team" data-text="&nbsp;<?=$lang['profil']?>"><?=$lang['profil']?></a></li>
+                        <li style="--clr:#ff6535" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact_us" data-text="&nbsp;<?=$lang['contact']?>"><?=$lang['contact']?></a></li>
+                       <span class="row mt-3 ">
+                           <div class="d-flex gap-4 justify-content-center mb-3">
+                              <a href="./select_lang.php?lang=tn"><img width="20px" src="./images/tunisie.png" alt=""></a>
+                              <a href="./select_lang.php?lang=fr"><img width="20px" src="./images/france.png" alt=""></a> 
+                              <a href="./select_lang.php?lang=en"><img width="20px" src="./images/royaume-uni.png" alt=""></a>
+                            </div>
+                          </span>
                       </ul>
                 </div> 
           </div>
       </nav>
   <div class="card card_profe shadow">
     <div class="card-body">
-      <h5 class="card-title text-center mb-2">welcome> <img src="./images/hello.png" width="40px" height="40px"/> </h5>
-      <h6 class="card-subtitle mb-2 text-muted text-center"> amazing_library> <i class="fa-solid fa-book"></i> </h6>
+      <h5 class="card-title text-center mb-2"><?=$lang['welcome']?> <img src="./images/hello.png" width="40px" height="40px"/> </h5>
+      <h6 class="card-subtitle mb-2 text-muted text-center"> <?=$lang['amazing_library']?> <i class="fa-solid fa-book"></i> </h6>
         <p class="card-text text-center py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus accusantium doloribus cupiditate amet laudantium maiores ab tempore magnam exercitationem aperiam.</p>
         <div class="mt-4 mb-2 text-center">
-            <a href="login"   class="card-link text-secondary text-center mx-4 btn btn-outline-primary  ">sign_in></a>
-            <a href="signup"  class="card-link text-center mx-5 btn btn-outline-secondary text-secondary">sign_up></a>
+            <a href="login"   class="card-link text-secondary text-center mx-4 btn btn-outline-primary  "><?=$lang['sign_in']?></a>
+            <a href="signup"  class="card-link text-center mx-5 btn btn-outline-secondary text-secondary"><?=$lang['sign_up']?></a>
         </div>
       </div>
  </div>
   <div class="more">
-      <a href="#service"><button class="btn btn-warning text-light p-3 m-3 fw-bolder">tell_me></button></a>
+      <a href="#service"><button class="btn btn-warning text-light p-3 m-3 fw-bolder"><?=$lang['tell_me']?></button></a>
   </div>
 </header>  
 
